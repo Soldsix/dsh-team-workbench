@@ -88,9 +88,9 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           npm install --prefix .qa-stock @deepseek-ai/dsh@0.2.1-rc.2 --no-audit --no-fund
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive deployment/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/release-tarball --workers 2 --pending-restart-fixture
+          python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive deployment/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/release-tarball --workers 2 --pending-restart-fixture --browser-locale en-US
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/stock-profile --workers 8 --network-fixture --mcp-fixture --mode-fixture qa-crack-create --image-fixture --ui-model-fixture --pending-restart-fixture --transform-input-fixture --serial-update-fixture --adviser-revision-fixture
+          python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/stock-profile --workers 8 --network-fixture --mcp-fixture --mode-fixture qa-crack-create --image-fixture --ui-model-fixture --pending-restart-fixture --transform-input-fixture --serial-update-fixture --adviser-revision-fixture --browser-locale zh-CN
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/custom-profile --workers 8 --custom-profile-fixture --pending-restart-fixture
           if ($LASTEXITCODE) { exit $LASTEXITCODE }

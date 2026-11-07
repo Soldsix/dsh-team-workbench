@@ -1,7 +1,7 @@
 {
   "version": "0.5.0-rc.1",
   "localRevision": "20261107.6",
-  "generatedAt": "2026-11-07T16:43:29.612017+00:00",
+  "generatedAt": "2026-11-07T17:07:30.721454+00:00",
   "releaseStatus": "candidate-validated",
   "host": "0.2.1-rc.2",
   "platform": "Windows",
@@ -97,10 +97,16 @@
     "failedSuites": 0,
     "exitCode": 0,
     "workspaceTestSHA256": "a18c93dd127079e5ff6c6878383325dd924d692cdd1d7285e9db5d83e5257a2a",
+    "policyTestSHA256": "de23708c5a33144f65a94117da65f962fd55a406b18371bf220c25497a9e93d1",
+    "goalsTestSHA256": "8bf04147c0c1d4ed2bd742597e2d52618257283cbd9914c13ab8ccba3ca01b68",
+    "nodeVersion": "v22.19.0",
+    "suite": "core",
+    "skippedTests": 0,
     "oldLexicalComparisonRejectedAlias": true,
     "canonicalTemporaryAliasUsed": true,
     "originalEnvironmentChanged": false,
-    "sourceTestUnchanged": true
+    "sourceTestUnchanged": true,
+    "goalsTestUnchanged": true
   },
   "canonicalWindowsPolicyRoot": {
     "passed": true,
@@ -109,7 +115,9 @@
     "failedSuites": 0,
     "exitCode": 0,
     "workspaceTestSHA256": "a18c93dd127079e5ff6c6878383325dd924d692cdd1d7285e9db5d83e5257a2a",
-    "policyTestSHA256": "f715e004b2460443d5000592898b4b56d5820a0e882d9dda6c86f4878e088b8a",
+    "policyTestSHA256": "de23708c5a33144f65a94117da65f962fd55a406b18371bf220c25497a9e93d1",
+    "goalsTestSHA256": "8bf04147c0c1d4ed2bd742597e2d52618257283cbd9914c13ab8ccba3ca01b68",
+    "nodeVersion": "v22.19.0",
     "suite": "compatibility",
     "skippedTests": 2,
     "oldLexicalComparisonRejectedAlias": true,
@@ -129,6 +137,26 @@
     "existingPackageVersionsChanged": false,
     "lockSHA256": "fb1c01f93f9dee130ad4dcbdb87c2543ecf21fc6e98acdbe7bb54c901a687751",
     "lockUnchanged": true
+  },
+  "englishStockProfile": {
+    "passed": true,
+    "browserLocale": "en-US",
+    "goalApprovalLabel": "Approve",
+    "completed": 4,
+    "members": 6,
+    "pendingExecutionColdRestart": true,
+    "inPlaceModelSwitch": true,
+    "restartPreserved": true,
+    "toolErrors": [],
+    "browserErrors": [],
+    "installedIntegrity": {
+      "passed": true,
+      "protectedFiles": 713,
+      "installedRuntimeManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
+      "matchesFinalManifest": true,
+      "testScriptSHA256": "3ef5e4565ede7979244b8e83f78d295edbfe490532edd4d2dd6147270ad9bd23"
+    },
+    "testScriptUnchanged": true
   },
   "customization": {
     "passed": true,

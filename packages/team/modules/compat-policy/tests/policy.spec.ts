@@ -143,7 +143,7 @@ describe('SandboxPolicyService', () => {
       const release = ctx.sandboxPolicy.capSessionWorkspace(child.id, privateCwd)
       ctx.sandboxPolicy.assertSessionWorkspaceCap(child.id, privateCwd)
       expect(ctx.sandboxPolicy.resolve({ session: child, mode: 'danger-full-access' })).toEqual({
-        mode: 'workspace-write', workspaceRoot: realpathSync(privateCwd), sessionId: child.id,
+        mode: 'workspace-write', workspaceRoot: realpathSync.native(privateCwd), sessionId: child.id,
       })
       setSandboxMode(child, 'read-only')
       expect(ctx.sandboxPolicy.resolve({ session: child }).mode).toBe('read-only')

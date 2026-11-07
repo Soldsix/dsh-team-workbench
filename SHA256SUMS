@@ -210,7 +210,6 @@
 4f04c66600e4f747b54a573211ec5aa6ea469331e993a7c548cd40d8013efcec  packages/team/modules/runtime/src/task-work-update.ts
 4f31712b8b68d1a6cb8dcafa16b4ab01405511cc41cd0de273fc6ca3a2046065  packages/team/modules/runtime/locale/en.json
 4f6b925a3f609607996e84267df25822c71ee13848255b6bfd609fa5abe7f77c  packages/team/modules/runtime/src/types.ts
-4f6e431dd41e44469e07ca52e312548dc96c3de57be7e54145d6a44606d35e03  packages/team/modules/runtime/tests/goals.spec.ts
 4fbfc227262138183e6e3742afe7da2161a982bbf4f41df03b6a77034649856d  packages/team/modules/runtime/tests/workspace-roster.spec.ts
 50f2e93ac57f9de52f17f3a4c2d41dc664be501780cc71acce1c97e810ba9f33  packages/team/modules/compat-subagent/src/out-of-process.ts
 5165ba5eef5c2e0ee682166536ffb67524608fc96622ce41bdae93df5e3ebf24  packages/team/modules/ui/src/client/locales.ts
@@ -354,6 +353,7 @@
 8b3e1002c85f48e54eb0121b84bc8c8e53e3cb9ab47dd5dba47213aaff88c4f3  packages/team/modules/ui/lib/types/client/mount.d.ts
 8b763fa31f0a6c12df52549ca9956174852b283fa047a92414b3cb85d85432ea  packages/team/modules/ui/src/client/mailbox-operations.ts
 8b7bf72750d885c1acb52e99ccac9e42542cc5efcb581098ad3507e83ca0a651  packages/team/modules/compat-tools/src/testing.ts
+8bf04147c0c1d4ed2bd742597e2d52618257283cbd9914c13ab8ccba3ca01b68  packages/team/modules/runtime/tests/goals.spec.ts
 8c9a73ff8b435ee22ae12ca95c77d0b792698dc593ea439a66c508fc75c60612  packages/team/modules/runtime/src/member-role.ts
 8cf2494d53030460f8f0da24f8bede510cbbd6cdfb4f1229868cba8401717515  packages/team/modules/runtime/src/activity.ts
 8d116686528cb30491a7f009d36c2a7b0b816bdc72c12ee132c54d4e75e4f225  packages/team/modules/compat-tools/lib/types/index.d.ts
@@ -550,6 +550,7 @@ dbbb54935d6169dee5e1e5558727f20935d892413b9a719bdf8d182bfd8c9a90  packages/team/
 dd23a7ebda4784d875c6834e13e2221c170588595cdff1b128e1a3cbabfd1e3a  packages/team/modules/tools/src/expert-tools.ts
 dd53d2c6d462e53d891da289e5595ebb0563385ec07c6339e6d8ba3a8f38373a  packages/team/modules/compat-fetch/src/policy.ts
 dd5ba530326508551635dd18c5dd54fe6a5d00b1f45f3f35d4f375f35aa9c8a1  packages/team/modules/runtime/src/publication.ts
+de23708c5a33144f65a94117da65f962fd55a406b18371bf220c25497a9e93d1  packages/team/modules/compat-policy/tests/policy.spec.ts
 de60a344aa4082e94f84f1d8acd71679836df296923d911e5cf91bd8f5afaae6  packages/team/modules/ui/lib/types/client/AdviserFindings.js
 deaae20b121b63893d9d1e8cf7fb1f91e913b2b1280e95f8f2451e83f033a6a4  packages/team/modules/compat-subagent/lib/index.js
 dec4248595672486852d36fba8fa712b3ed366dccbc7f3cdffd790554d46ef86  packages/team/modules/tools/lib/types/mailbox-tool.d.ts
@@ -629,7 +630,6 @@ f5f805b162882e841001c0a4fad7dcb15c5be3ed10b7d9b1c4ea3640c474e70f  packages/team/
 f609dedff7525e682ce97f6dc9e91ee3791b9a9b8767f5cd37b2a6dc7d3c75f9  packages/team/skills/team-workbench/references/team-product-ui-design/SKILL.md
 f61e161ccd89c695fc5294e67719d7f063208c7f6cb53e77da6ec4353d230122  packages/team/modules/runtime/lib/types/member-tool-menu.d.ts
 f67c616bba222aed777cbaa75978d407032e115a26459b19f707bfd05582cd40  packages/team/modules/runtime/src/expert-types.ts
-f715e004b2460443d5000592898b4b56d5820a0e882d9dda6c86f4878e088b8a  packages/team/modules/compat-policy/tests/policy.spec.ts
 f77b4e534e98f1273854bc0b3e6577b0cd39202f9ec76abf24428c85f7355cb0  packages/team/modules/runtime/lib/types/workspaces.d.ts
 f7c2b2c0fd8442d319e758d14c8cb4cd7b980eb5163f0813e248592f7d7edbac  packages/team/skills/team-workbench/references/team-jsvmp/SKILL.md
 f7d117f6fcaddb063054c3911e6d0bca035b53aa8bd19e7175ef0ce89e3ac110  packages/team/skills/team-workbench/references/team-workspace-handoff/SKILL.md

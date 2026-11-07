@@ -130,13 +130,13 @@ function fixtureSkills(ctx: Context) {
 }
 
 describe('user-reviewed Team goals', () => {
-  it('continues an inactive delivered execution after a user turn without changing its identity or duplicating an active resume', async () => {
+  it('continues an inactive delivered execution after a user turn without changing its identity or duplicating an active resume', async ({ task: test }) => {
     const { ctx, lead, adapter } = await setup(undefined, false, { requireStructuredPlans: true,
       autoProvisionPlannedMembers: true, autoAssignReadyTasks: true, autoDispatchReadyTasks: true,
       resumeIncompleteOnUserContinue: true, maxMembers: 8, maxConcurrentRequestsPerTeam: 8 })
     fixtureSkills(ctx); answerer(ctx)
     await confirm(ctx, lead, { kind: 'replace', definition: { ...definition, plan: JSON.stringify(automaticDeliveryPlan()) } })
-    await vi.waitFor(() => { expect(adapter.calls).toHaveLength(4) })
+    await vi.waitFor(() => { expect(adapter.calls).toHaveLength(4) }, { timeout: test.timeout })
     for (const call of adapter.calls) call.release()
     await vi.waitFor(() => { expect(adapter.calls).toHaveLength(5) })
     const original = ctx.agentTeams.listTasks(lead)[0]!
@@ -176,13 +176,13 @@ describe('user-reviewed Team goals', () => {
       expect(ctx.agentTeams.listMembers(lead)).toHaveLength(1)
     } finally { failure.mockRestore() }
   })
-  it('notifies the communicator only after the complete plan passes dual and independent review', async () => {
+  it('notifies the communicator only after the complete plan passes dual and independent review', async ({ task: test }) => {
     const { ctx, lead, adapter } = await setup(undefined, false, { requireStructuredPlans: true,
       autoProvisionPlannedMembers: true, autoAssignReadyTasks: true, autoDispatchReadyTasks: true, finalDelivery: 'publish-and-notify',
       maxMembers: 8, maxConcurrentRequestsPerTeam: 8 })
     fixtureSkills(ctx); answerer(ctx)
     await confirm(ctx, lead, { kind: 'replace', definition: { ...definition, plan: JSON.stringify(automaticDeliveryPlan()) } })
-    await vi.waitFor(() => { expect(adapter.calls).toHaveLength(4) })
+    await vi.waitFor(() => { expect(adapter.calls).toHaveLength(4) }, { timeout: test.timeout })
     for (const call of adapter.calls) call.release()
     await vi.waitFor(() => { expect(ctx.agentTeams.listTasks(lead)[0]?.status).toBe('in_progress') })
     const task = ctx.agentTeams.listTasks(lead)[0]!
@@ -216,7 +216,7 @@ describe('user-reviewed Team goals', () => {
     if (notice.type !== 'team/message/queued') throw new Error('Missing recorded delivery notice')
     expect(notice.data.message.content).toMatchSnapshot()
   })
-  it('provisions an approved hierarchy, gates execution on two advisers and retains members on subsequent dispatch', async () => {
+  it('provisions an approved hierarchy, gates execution on two advisers and retains members on subsequent dispatch', async ({ task: test }) => {
     const { ctx, lead, adapter } = await setup(undefined, false, { requireStructuredPlans: true, filterToolsByGoal: true,
       autoProvisionPlannedMembers: true, autoAssignReadyTasks: true, autoDispatchReadyTasks: true,
       maxMembers: 8, maxConcurrentRequestsPerTeam: 8 })
@@ -240,8 +240,8 @@ describe('user-reviewed Team goals', () => {
       resources: { maxMembers: 8, maxConcurrentRequests: 8 }, reviewPolicy: 'independent-and-dual-for-critical',
       previousTasks: [], recovery: 'Resume the retained execution after checking receipts' }
     await confirm(ctx, lead, { kind: 'replace', definition: { ...definition, plan: JSON.stringify(plan) } })
-    await vi.waitFor(() => { expect(ctx.agentTeams.listMembers(lead)).toHaveLength(5) })
-    await vi.waitFor(() => { expect(adapter.calls).toHaveLength(4) })
+    await vi.waitFor(() => { expect(ctx.agentTeams.listMembers(lead)).toHaveLength(5) }, { timeout: test.timeout })
+    await vi.waitFor(() => { expect(adapter.calls).toHaveLength(4) }, { timeout: test.timeout })
     expect(ctx.agentTeams.listMembers(lead).some(member => member.name === 'descendant')).toBe(false)
     for (const call of adapter.calls) call.release()
     await vi.waitFor(() => { expect(ctx.agentTeams.listTasks(lead)[0]?.status).toBe('in_progress') })
@@ -297,7 +297,7 @@ describe('user-reviewed Team goals', () => {
     expect(ctx.agentTeams.listMembers(lead).map(member => member.id)).toEqual(roster.map(member => member.id))
     expect(ctx.agentTeams.listTasks(lead).filter(task => task.inputKey === 'delivery')).toHaveLength(1)
     for (const call of adapter.calls) call.release()
-  }, 20000)
+  })
   it('reports stale work and explicitly rebinds pinned skills without changing the task or its authorization', async () => {
     const { ctx, lead, adapter } = await setup()
     answerer(ctx)

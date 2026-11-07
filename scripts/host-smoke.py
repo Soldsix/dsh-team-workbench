@@ -35,6 +35,7 @@ parser.add_argument('--serial-update-fixture', action='store_true')
 parser.add_argument('--adviser-revision-fixture', action='store_true')
 parser.add_argument('--ui-model-fixture', action='store_true')
 parser.add_argument('--shell-fixture', action='store_true', help='Run harmless Node, Python and loopback curl commands through a Windows member')
+parser.add_argument('--browser-locale', choices=['zh-CN','en-US'], help='Select the synthetic browser locale explicitly')
 parser.add_argument('--pwsh-executable', help='Select an installed PowerShell executable for the isolated Windows profile')
 args = parser.parse_args()
 if args.shell_fixture and os.name != 'nt': parser.error('The PowerShell fixture requires Windows')
@@ -497,7 +498,9 @@ try:
     chrome = os.environ.get('CHROME_BINARY')
     if not chrome and os.name == 'nt': chrome = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
     browser = playwright.chromium.launch(headless=True, **({'executable_path': chrome} if chrome else {}))
-    page = browser.new_page(viewport={'width': 1600, 'height': 1000})
+    page = browser.new_page(viewport={'width': 1600, 'height': 1000},
+        **({'locale': args.browser_locale} if args.browser_locale else {}))
+    result['browserLocale'] = page.evaluate('navigator.language')
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.goto(startup, wait_until='domcontentloaded')
@@ -521,8 +524,9 @@ try:
         else: raise RuntimeError('The selected synthetic mode did not reach the Session projection')
     rpc('session/prompt', {'request': {'sessionId': sid, 'requestId': str(uuid.uuid4()), 'mode': 'queue',
         'content': [{'type': 'text', 'text': 'V5_SMOKE_ROOT: use the synthetic Team plan.'}], 'clientTimeZone': 'Asia/Taipei'}})
-    approve = page.get_by_role('button', name=re.compile('^(同意执行|Approve and run|Confirm this goal and scope)$', re.I))
+    approve = page.get_by_role('button', name=re.compile('^(同意执行|Approve|Approve and run|Confirm this goal and scope)$', re.I))
     approve.wait_for(state='visible', timeout=45000)
+    result['goalApprovalLabel'] = approve.inner_text()
     page.screenshot(path=str(RUN / 'goal-review.png'), full_page=True)
     approve.click()
     print('Synthetic goal approved through browser', flush=True)
@@ -796,6 +800,7 @@ except Exception as error:
         try:
             page.screenshot(path=str(RUN / 'failure.png'), full_page=True)
             (RUN / 'failure-ui.txt').write_text(page.locator('body').inner_text(), encoding='utf-8')
+            result['visibleButtonNames'] = page.get_by_role('button').all_text_contents()
         except Exception: pass
     result.update({'passed': False, 'error': str(error)})
     raise
