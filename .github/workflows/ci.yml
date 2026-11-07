@@ -35,14 +35,22 @@ jobs:
           ref: 687f282e8625c6b8d11ff58211a90524be2e4317
           path: .qa-host
           persist-credentials: false
-      - name: Build the pinned development host
+      - name: Install the pinned package manager
         run: |
-          corepack enable
-          pnpm --dir .qa-host install --frozen-lockfile
+          $toolPrefix = Join-Path $env:RUNNER_TEMP 'dsh-workbench-pnpm'
+          npm install --prefix $toolPrefix pnpm@11.28.5 --no-audit --no-fund
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          pnpm --dir .qa-host run build:native-system
+          Join-Path $toolPrefix 'node_modules/.bin' | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Build the pinned development host
+        working-directory: .qa-host
+        run: |
+          pnpm --version
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
-          pnpm --dir .qa-host run build:lib
+          pnpm install --frozen-lockfile
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          pnpm run build:native-system
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          pnpm run build:lib
       - name: Build and test the portable source
         run: |
           npm ci
