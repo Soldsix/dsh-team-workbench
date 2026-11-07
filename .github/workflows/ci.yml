@@ -41,6 +41,10 @@ jobs:
           npm install --prefix $toolPrefix pnpm@11.28.5 --no-audit --no-fund
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           Join-Path $toolPrefix 'node_modules/.bin' | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Prepare the official Linux sandbox backend
+        if: runner.os == 'Linux'
+        shell: bash
+        run: bash .qa-host/scripts/prepare-ci-bubblewrap.sh
       - name: Build the pinned development host
         working-directory: .qa-host
         run: |

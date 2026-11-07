@@ -110,7 +110,7 @@ Windows 额外命令测试使用显式批准的完整程序执行范围。PowerS
 
 首次 GitHub CI 在插件测试前因工作目录和 Corepack 选择的 pnpm 版本失败；现固定为宿主声明的 pnpm 11.28.5，并从宿主目录构建。第二轮暴露 Node 22 内置 npm 10 对锁文件的检查差异、Windows 临时目录短路径与真实路径不一致，以及固定 Playwright 1.60.0 在 Ubuntu 26.04 镜像上的安装限制。
 
-锁文件已由 npm 10.9.3 补齐嵌套 TypeScript 依赖，项目 TypeScript 6.0.3 不变；实际 Node 22 安装通过。清理测试改为比较双方真实路径，并拒绝删除临时目录本身或其上级；通过真实 Windows 目录联接运行全部 395 项核心测试，旧比较会拒绝的路径现能安全清理。Linux CI 固定为 Ubuntu 24.04，保留 Windows／Linux 与 Node 22／24 四组及全部原检查。最终 CI 是否通过以对应提交的 GitHub Actions 结果为准。
+锁文件已由 npm 10.9.3 补齐嵌套 TypeScript 依赖，项目 TypeScript 6.0.3 不变；实际 Node 22 安装通过。清理测试改为比较双方真实路径，并拒绝删除临时目录本身或其上级；通过真实 Windows 目录联接运行全部 395 项核心测试，旧比较会拒绝的路径现能安全清理。权限策略测试也按真实路径核对成员目录，保留原始路径输入和只读上限断言。Linux CI 固定为 Ubuntu 24.04，使用固定官方宿主的 prepare-ci-bubblewrap.sh 安装并功能探测隔离后端；不能建立隔离时仍然失败。保留 Windows／Linux 与 Node 22／24 四组及全部原检查。最终 CI 是否通过以对应提交的 GitHub Actions 结果为准。
 
 ## 限制
 

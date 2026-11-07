@@ -4,7 +4,7 @@
  * override kit (fold + write path) every enforcing capability reads.
  */
 
-import { mkdirSync, mkdtempSync, rmSync, symlinkSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, realpathSync, rmSync, symlinkSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve, sep } from 'node:path'
 import { describe, expect, it } from 'vitest'
@@ -143,7 +143,7 @@ describe('SandboxPolicyService', () => {
       const release = ctx.sandboxPolicy.capSessionWorkspace(child.id, privateCwd)
       ctx.sandboxPolicy.assertSessionWorkspaceCap(child.id, privateCwd)
       expect(ctx.sandboxPolicy.resolve({ session: child, mode: 'danger-full-access' })).toEqual({
-        mode: 'workspace-write', workspaceRoot: privateCwd, sessionId: child.id,
+        mode: 'workspace-write', workspaceRoot: realpathSync(privateCwd), sessionId: child.id,
       })
       setSandboxMode(child, 'read-only')
       expect(ctx.sandboxPolicy.resolve({ session: child }).mode).toBe('read-only')

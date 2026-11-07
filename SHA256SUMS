@@ -10,7 +10,6 @@
 04511ddd3f8e59950f06b3edc84af2d9504b5250f47a74bd85351cabe3ca6fe1  packages/team/modules/ui/src/client/TeamGoals.tsx
 04c52e32f801ad36a3e5f4a4d29c6cfa39251d42ea234377e0405fa9e764baf7  packages/team/skills/team-workbench/references/team-adspower-browser/official/references/fingerprint-config.md
 04caa30241c47ce48b357b0e8716efa7c91a052fbeb6aa4b1e9f06b2a62e4033  packages/team/modules/compat-subagent/README.md
-04eb87350207fef78eadc7e3e7900415256ea5f8b24a5794bb0201c968f4496f  packages/team/modules/compat-policy/tests/policy.spec.ts
 04ed062bd322c39207f564fc092dcc157500d2fa5c08f5cecab2d3b7053bb4b2  packages/team/modules/compat-subagent/src/structured.ts
 052bb02cae475d2ce450a8d3d1bb278df6bbac1d60fa997ebfba44422278c6f3  packages/team/modules/compat-fetch/src/index.ts
 05a5e774a3efe933201ba422b272e52eab74ef61f735fa8dd4a1b7cf000c8028  packages/team/modules/runtime/lib/types/task-work.d.ts
@@ -630,6 +629,7 @@ f5f805b162882e841001c0a4fad7dcb15c5be3ed10b7d9b1c4ea3640c474e70f  packages/team/
 f609dedff7525e682ce97f6dc9e91ee3791b9a9b8767f5cd37b2a6dc7d3c75f9  packages/team/skills/team-workbench/references/team-product-ui-design/SKILL.md
 f61e161ccd89c695fc5294e67719d7f063208c7f6cb53e77da6ec4353d230122  packages/team/modules/runtime/lib/types/member-tool-menu.d.ts
 f67c616bba222aed777cbaa75978d407032e115a26459b19f707bfd05582cd40  packages/team/modules/runtime/src/expert-types.ts
+f715e004b2460443d5000592898b4b56d5820a0e882d9dda6c86f4878e088b8a  packages/team/modules/compat-policy/tests/policy.spec.ts
 f77b4e534e98f1273854bc0b3e6577b0cd39202f9ec76abf24428c85f7355cb0  packages/team/modules/runtime/lib/types/workspaces.d.ts
 f7c2b2c0fd8442d319e758d14c8cb4cd7b980eb5163f0813e248592f7d7edbac  packages/team/skills/team-workbench/references/team-jsvmp/SKILL.md
 f7d117f6fcaddb063054c3911e6d0bca035b53aa8bd19e7175ef0ce89e3ac110  packages/team/skills/team-workbench/references/team-workspace-handoff/SKILL.md

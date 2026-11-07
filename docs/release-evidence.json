@@ -1,7 +1,7 @@
 {
   "version": "0.5.0-rc.1",
   "localRevision": "20261107.6",
-  "generatedAt": "2026-11-07T16:31:01.413254+00:00",
+  "generatedAt": "2026-11-07T16:43:29.612017+00:00",
   "releaseStatus": "candidate-validated",
   "host": "0.2.1-rc.2",
   "platform": "Windows",
@@ -97,6 +97,21 @@
     "failedSuites": 0,
     "exitCode": 0,
     "workspaceTestSHA256": "a18c93dd127079e5ff6c6878383325dd924d692cdd1d7285e9db5d83e5257a2a",
+    "oldLexicalComparisonRejectedAlias": true,
+    "canonicalTemporaryAliasUsed": true,
+    "originalEnvironmentChanged": false,
+    "sourceTestUnchanged": true
+  },
+  "canonicalWindowsPolicyRoot": {
+    "passed": true,
+    "passedTests": 987,
+    "failedTests": 0,
+    "failedSuites": 0,
+    "exitCode": 0,
+    "workspaceTestSHA256": "a18c93dd127079e5ff6c6878383325dd924d692cdd1d7285e9db5d83e5257a2a",
+    "policyTestSHA256": "f715e004b2460443d5000592898b4b56d5820a0e882d9dda6c86f4878e088b8a",
+    "suite": "compatibility",
+    "skippedTests": 2,
     "oldLexicalComparisonRejectedAlias": true,
     "canonicalTemporaryAliasUsed": true,
     "originalEnvironmentChanged": false,
@@ -368,7 +383,7 @@
     "originalSessions": 1207,
     "originalSessionIdsRetained": 1207,
     "verified": true,
-    "checkedAt": "2026-11-07T15:50:27.191360+00:00"
+    "checkedAt": "2026-11-07T16:34:22.378035+00:00"
   },
   "limitations": [
     "No production deployment",
