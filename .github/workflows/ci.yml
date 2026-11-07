@@ -114,4 +114,5 @@ jobs:
             private-qa/install-profile/result.json
             private-qa/native-shell/result.json
             private-qa/release-gates/result.json
+            private-qa/*/handoff-snapshot.json
           if-no-files-found: ignore

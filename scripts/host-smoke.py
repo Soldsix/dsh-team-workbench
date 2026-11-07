@@ -54,7 +54,7 @@ if RUN.exists() and any(RUN.iterdir()): parser.error('--run must be a new or emp
 RUN.mkdir(parents=True, exist_ok=True)
 WORK = RUN / 'workspace'
 WORK.mkdir(exist_ok=True)
-(WORK / 'fixture.txt').write_text('V5_SYNTHETIC_INPUT\n', encoding='utf-8')
+(WORK / 'fixture.txt').write_bytes(b'V5_SYNTHETIC_INPUT\n')
 if args.image_fixture:
     (WORK / 'fixture.png').write_bytes(base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4z8AAAAMBAQDJ/pLvAAAAAElFTkSuQmCC'))
 if args.shell_fixture:

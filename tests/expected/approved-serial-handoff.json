@@ -16,7 +16,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "fixture.txt": "cfbc2f2916579293b738cae2ea767816f6d7a0ca3c6091f17ed3df1ef2784341"
       }
@@ -26,7 +26,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "worker-0.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
       }
@@ -36,7 +36,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "worker-1.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
       }
@@ -46,7 +46,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "worker-2.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
       }
@@ -56,7 +56,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "worker-3.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
       }
@@ -66,7 +66,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "worker-4.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
       }
@@ -76,7 +76,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "worker-5.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
       }
@@ -86,7 +86,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {
         "worker-6.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
       }
@@ -96,7 +96,7 @@
       "status": "completed",
       "attempts": 1,
       "phase": "accepted",
-      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "fixtureInput": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
       "artifacts": {}
     },
     {

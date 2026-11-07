@@ -1,7 +1,7 @@
 {
   "version": "0.5.0-rc.1",
   "localRevision": "20261107.6",
-  "generatedAt": "2026-11-07T17:07:30.721454+00:00",
+  "generatedAt": "2026-11-07T17:23:04.726718+00:00",
   "releaseStatus": "candidate-validated",
   "host": "0.2.1-rc.2",
   "platform": "Windows",
@@ -154,9 +154,60 @@
       "protectedFiles": 713,
       "installedRuntimeManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
       "matchesFinalManifest": true,
-      "testScriptSHA256": "3ef5e4565ede7979244b8e83f78d295edbfe490532edd4d2dd6147270ad9bd23"
+      "testScriptSHA256": "5673d801ff3734d457dd668fe281115d7c93406fa3c72efe39b0901947052cdf"
     },
     "testScriptUnchanged": true
+  },
+  "portableLFHandoff": {
+    "passed": true,
+    "browserLocale": "zh-CN",
+    "goalApprovalLabel": "同意执行",
+    "completed": 11,
+    "members": 12,
+    "handoffSessionSnapshot": true,
+    "adviserRevisionRecovery": true,
+    "mcpProcessesCleaned": true,
+    "toolErrors": [],
+    "browserErrors": [],
+    "installedIntegrity": {
+      "passed": true,
+      "protectedFiles": 713,
+      "installedRuntimeManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
+      "matchesFinalManifest": true,
+      "testScriptSHA256": "5673d801ff3734d457dd668fe281115d7c93406fa3c72efe39b0901947052cdf"
+    },
+    "fixtureCorrection": {
+      "passed": true,
+      "previousCRLFInputSHA256": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "newLFInputSHA256": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b",
+      "normalizerAdded": false,
+      "snapshots": [
+        {
+          "name": "approved-input-handoff.json",
+          "initialInputHashesChanged": 9,
+          "remainingFieldsUnchanged": true,
+          "onlyInitialInputHashFieldsChanged": true
+        },
+        {
+          "name": "approved-serial-handoff.json",
+          "initialInputHashesChanged": 9,
+          "remainingFieldsUnchanged": true,
+          "onlyInitialInputHashFieldsChanged": true
+        },
+        {
+          "name": "approved-revision-handoff.json",
+          "initialInputHashesChanged": 9,
+          "remainingFieldsUnchanged": true,
+          "onlyInitialInputHashFieldsChanged": true
+        }
+      ],
+      "fixtureSHA256": {
+        "approved-input-handoff.json": "a7eb90b64dd027d4f8ad9648b410e42c3c7e66cc1c995b70b58d3b4ebd3b4ea7",
+        "approved-serial-handoff.json": "faa8976b1dfae5938e0dde1b4987bd2cbbc14f1152ad35875b8002c20f404102",
+        "approved-revision-handoff.json": "adc6c6bcf83e229b76ad9b67ec91bec8a97f6d439808ebedd2742d8c2a4af12f"
+      },
+      "expectedFilesUnchanged": true
+    }
   },
   "customization": {
     "passed": true,
