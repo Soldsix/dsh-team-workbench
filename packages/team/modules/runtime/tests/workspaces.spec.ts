@@ -2,7 +2,7 @@ import { afterEach, beforeEach, expect, it } from 'vitest'
 import { createHash } from 'node:crypto'
 import { mkdtemp, mkdir, readFile, readlink, realpath, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { join, relative, resolve, sep } from 'node:path'
+import { isAbsolute, join, relative, sep } from 'node:path'
 import { checkAutomaticWorkspaceSize, createMemberWorkspace, integrateMemberWorkspace } from '../src/workspaces.ts'
 import { refreshMemberInputs } from '../src/workspace-refresh.ts'
 
@@ -27,11 +27,20 @@ beforeEach(async () => {
   await mkdir(store)
 })
 
+async function cleanupPath(path: string) {
+  const canonical = await realpath(path)
+  const rel = relative(await realpath(tmpdir()), canonical)
+  if (rel === '' || isAbsolute(rel) || rel === '..' || rel.startsWith(`..${sep}`)) throw new Error('test cleanup escaped the temporary root')
+  return canonical
+}
+
 afterEach(async () => {
-  const canonical = await realpath(root)
-  const rel = relative(resolve(tmpdir()), canonical)
-  if (rel === '' || rel === '..' || rel.startsWith(`..${sep}`)) throw new Error('test cleanup escaped the temporary root')
-  await rm(canonical, { recursive: true, force: true })
+  await rm(await cleanupPath(root), { recursive: true, force: true })
+})
+
+it('rejects cleaning the temporary directory itself or its ancestor', async () => {
+  await expect(cleanupPath(tmpdir())).rejects.toThrow('test cleanup escaped the temporary root')
+  await expect(cleanupPath(join(tmpdir(), '..'))).rejects.toThrow('test cleanup escaped the temporary root')
 })
 
 it('publishes only accepted hashes and preserves another member file and unsubmitted scratch', async () => {

@@ -1,7 +1,7 @@
 {
   "version": "0.5.0-rc.1",
   "localRevision": "20261107.6",
-  "generatedAt": "2026-11-07T15:50:27.336498+00:00",
+  "generatedAt": "2026-11-07T16:31:01.413254+00:00",
   "releaseStatus": "candidate-validated",
   "host": "0.2.1-rc.2",
   "platform": "Windows",
@@ -11,7 +11,7 @@
   ],
   "strictSourceFiles": 139,
   "core": {
-    "passed": 394,
+    "passed": 395,
     "failed": 0,
     "skipped": 0
   },
@@ -89,6 +89,31 @@
   "installer": {
     "passed": true,
     "commands": 9
+  },
+  "canonicalWindowsTemporaryRoot": {
+    "passed": true,
+    "passedTests": 395,
+    "failedTests": 0,
+    "failedSuites": 0,
+    "exitCode": 0,
+    "workspaceTestSHA256": "a18c93dd127079e5ff6c6878383325dd924d692cdd1d7285e9db5d83e5257a2a",
+    "oldLexicalComparisonRejectedAlias": true,
+    "canonicalTemporaryAliasUsed": true,
+    "originalEnvironmentChanged": false,
+    "sourceTestUnchanged": true
+  },
+  "npm10LockCompatibility": {
+    "passed": true,
+    "nodeVersion": "22.19.0",
+    "npmVersion": "10.9.3",
+    "npmCiPassed": true,
+    "rootTypeScriptVersion": "6.0.3",
+    "addedPeerPackages": {
+      "node_modules/vite-tsconfig-paths/node_modules/typescript": "5.9.3"
+    },
+    "existingPackageVersionsChanged": false,
+    "lockSHA256": "fb1c01f93f9dee130ad4dcbdb87c2543ecf21fc6e98acdbe7bb54c901a687751",
+    "lockUnchanged": true
   },
   "customization": {
     "passed": true,
