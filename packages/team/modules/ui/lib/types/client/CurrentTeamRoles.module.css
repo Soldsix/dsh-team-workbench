@@ -1,0 +1,14 @@
+.current { margin: 0 0 22px; padding: 14px; border: 1px solid var(--dsw-alias-border-l1); border-radius: 9px; }
+.current header { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.current h3 { margin: 0; font-size: 14px; font-weight: 600; }
+.current header small, .current p { color: var(--dsw-alias-label-secondary); }
+.planned { margin: 0 0 12px; padding: 12px; border-radius: 7px; background: var(--dsw-alias-bg-layer-1); }
+.planned h4 { margin: 0 0 7px; font-size: 12px; font-weight: 600; }
+.planned p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; line-height: 1.6; }
+.current ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.member { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; min-width: 0; padding: 9px; border-radius: 7px; background: var(--dsw-alias-bg-layer-1); }
+.member > div:first-child { display: flex; flex-direction: column; min-width: 0; }
+.member strong { font-size: 12px; font-weight: 500; overflow-wrap: anywhere; }
+.member span { font-size: 11px; color: var(--dsw-alias-label-secondary); overflow-wrap: anywhere; }
+.route { display: flex; flex-direction: column; align-items: flex-end; min-width: 72px; text-align: end; }
+.route small { color: var(--dsw-alias-label-tertiary); }

@@ -1,0 +1,25 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.mjs text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.png binary
+*.tgz binary
+*.zip binary
+# Generated Three.js bundles retain upstream shader text.
+demos/harbor/*/dist/app.js binary
+packages/team/lib/** linguist-generated
+packages/team/modules/*/lib/** linguist-generated
+demos/harbor/*/dist/** linguist-generated
+packages/team/lib/** -text whitespace=cr-at-eol
+packages/team/modules/*/lib/** -text whitespace=cr-at-eol
+packages/team/skills/** -text whitespace=cr-at-eol
+packages/team/cordis.patch.yml -text whitespace=cr-at-eol
+packages/team/modules/tools/src/index.ts -text whitespace=cr-at-eol
+packages/team/modules/ui/src/client/TeamView.module.css -text whitespace=cr-at-eol
+packages/team/modules/runtime/lib/typert.remote-client.d.ts whitespace=-blank-at-eof,cr-at-eol
+packages/team/modules/compat-subagent/lib/typert.remote-client.d.ts whitespace=-blank-at-eof,cr-at-eol
+packages/team/skills/team-workbench/references/team-adspower-browser/official/** whitespace=-blank-at-eol,cr-at-eol

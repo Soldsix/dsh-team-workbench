@@ -1,0 +1,43 @@
+/** Serialized Team transactions over the exact live Lead Session log. */
+import type { Agent } from '@deepseek-ai/dsh-agent';
+import type { Context } from '@deepseek-ai/cordis';
+import type { SessionEventMap, SessionId } from '@deepseek-ai/dsh-session';
+import type { TeamEventType, TeamState } from './projection.ts';
+type MutableTeamEventType = TeamEventType;
+/** Owns per-Lead transaction order and committed Team event publication. */
+export declare class TeamJournal {
+    private readonly ctx;
+    private readonly onCommit;
+    private readonly portableEventEnvelope;
+    private readonly beforeWrite?;
+    private readonly tails;
+    /**
+     * @param ctx - Team service context with the injected Session service.
+     * @param onCommit - synchronous notification with the event type after the Team event flush succeeds.
+     * @param portableEventEnvelope - Write Team payloads inside a known Session event name for independent installations.
+     */
+    constructor(ctx: Context, onCommit: (root: Agent, type: TeamEventType) => void, portableEventEnvelope?: boolean, beforeWrite?: ((rootId: SessionId) => Promise<void>) | undefined);
+    /**
+     * Read authoritative Team state for one exact live Lead.
+     * @param root - exact live Team Lead.
+     * @returns current projected state selected by the Lead Team id.
+     */
+    state(root: Agent): TeamState;
+    /**
+     * Serialize one Lead's asynchronous mutation operation.
+     * @param rootId - Lead Session identity selecting the transaction queue.
+     * @param operation - complete read-check-append operation.
+     * @returns the operation result.
+     */
+    transact<T>(rootId: SessionId, operation: () => Promise<T>): Promise<T>;
+    /** Wait for queued operations and appended checkpoints after their owners close admission. */
+    drain(): Promise<void>;
+    /**
+     * Append and checkpoint one root-owned Team event before publication.
+     * @param root - exact live Lead whose Session owns the event.
+     * @param type - Team event discriminant.
+     * @param data - payload correlated with the event type.
+     */
+    appendAndFlush<T extends MutableTeamEventType>(root: Agent, type: T, data: SessionEventMap[T]): Promise<void>;
+}
+export {};

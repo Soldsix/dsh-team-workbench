@@ -1,0 +1,11 @@
+node_modules/
+source/
+private-qa/
+artifacts/
+.qa-host/
+.qa-stock/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.log

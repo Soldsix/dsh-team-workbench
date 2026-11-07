@@ -1,0 +1,27 @@
+name: Bug report / 问题反馈
+description: Report a reproducible workbench problem without private session content.
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Versions / 版本
+      description: Workbench, DSH, Node and operating system versions.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction / 复现步骤
+      description: Use a small synthetic task. Include the expected result and the actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Relevant configuration / 相关配置
+      description: Mode name, model protocol and affected tool names. Include only the necessary settings; omit keys, account details and persona bodies.
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics / 诊断
+      description: Attach the metadata export from Diagnostics and resources, or a redacted screenshot. Do not attach authentication URLs, complete sessions or full model requests.

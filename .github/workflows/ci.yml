@@ -1,0 +1,105 @@
+name: Independent bundle checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  compatibility:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        node: ['22.19.0', '24.13.1']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      COREPACK_ENABLE_DOWNLOAD_PROMPT: '0'
+      DSH_DEV_HOST: ${{ github.workspace }}/.qa-host
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: 687f282e8625c6b8d11ff58211a90524be2e4317
+          path: .qa-host
+          persist-credentials: false
+      - name: Build the pinned development host
+        run: |
+          corepack enable
+          pnpm --dir .qa-host install --frozen-lockfile
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          pnpm --dir .qa-host run build:native-system
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          pnpm --dir .qa-host run build:lib
+      - name: Build and test the portable source
+        run: |
+          npm ci
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          node scripts/setup-dev.mjs
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          node scripts/typecheck.mjs --emit
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm run build
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm run check:published-types
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm test
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm run test:ui
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm run test:compat
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm run check
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          New-Item -ItemType Directory -Force artifacts | Out-Null
+          npm run pack
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14'
+      - name: Exercise a stock profile with a local model
+        run: |
+          python -m pip install -r requirements-qa.txt
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python -m playwright install --with-deps chromium
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm install --prefix .qa-stock @deepseek-ai/dsh@0.2.1-rc.2 --no-audit --no-fund
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive deployment/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/release-tarball --workers 2 --pending-restart-fixture
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/stock-profile --workers 8 --network-fixture --mcp-fixture --mode-fixture qa-crack-create --image-fixture --ui-model-fixture --pending-restart-fixture --transform-input-fixture --serial-update-fixture --adviser-revision-fixture
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/custom-profile --workers 8 --custom-profile-fixture --pending-restart-fixture
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          if ($env:RUNNER_OS -eq 'Windows') {
+            python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/native-shell --workers 8 --shell-fixture
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          }
+          python scripts/test-install.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/install-profile
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/test-release-gates.py --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/release-gates
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: results-${{ matrix.os }}-node-${{ matrix.node }}
+          path: |
+            private-qa/*-results.json
+            private-qa/published-types-result.json
+            private-qa/release-tarball/result.json
+            private-qa/stock-profile/result.json
+            private-qa/custom-profile/result.json
+            private-qa/install-profile/result.json
+            private-qa/native-shell/result.json
+            private-qa/release-gates/result.json
+          if-no-files-found: ignore

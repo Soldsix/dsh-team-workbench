@@ -1,0 +1,467 @@
+{
+  "version": "0.5.0-rc.1",
+  "localRevision": "20261107.6",
+  "generatedAt": "2026-11-07T15:50:27.336498+00:00",
+  "releaseStatus": "candidate-validated",
+  "host": "0.2.1-rc.2",
+  "platform": "Windows",
+  "nodeVersions": [
+    "22.19.0",
+    "24.13.1"
+  ],
+  "strictSourceFiles": 139,
+  "core": {
+    "passed": 394,
+    "failed": 0,
+    "skipped": 0
+  },
+  "ui": {
+    "passed": 110,
+    "failed": 0,
+    "skipped": 0
+  },
+  "compatibility": {
+    "passed": 987,
+    "failed": 0,
+    "skipped": 2
+  },
+  "parallel": {
+    "8": {
+      "passed": true,
+      "completed": 11,
+      "members": 12,
+      "parallelRequests": 8,
+      "pendingExecutionColdRestart": true,
+      "inPlaceModelSwitch": true,
+      "restartPreserved": true,
+      "configuredOutputLimitRetained": true,
+      "adviserRevisionRecovery": true,
+      "archivedInputReadableAfterPublication": true,
+      "toolErrors": [],
+      "browserErrors": [],
+      "soakSeconds": 0,
+      "lastObservedSoakSampleSeconds": 0,
+      "soakSamples": 0
+    },
+    "20": {
+      "passed": true,
+      "completed": 23,
+      "members": 24,
+      "parallelRequests": 20,
+      "pendingExecutionColdRestart": true,
+      "inPlaceModelSwitch": true,
+      "restartPreserved": true,
+      "configuredOutputLimitRetained": true,
+      "adviserRevisionRecovery": true,
+      "archivedInputReadableAfterPublication": true,
+      "toolErrors": [],
+      "browserErrors": [],
+      "soakSeconds": 0,
+      "lastObservedSoakSampleSeconds": 0,
+      "soakSamples": 0
+    },
+    "32": {
+      "passed": true,
+      "completed": 35,
+      "members": 36,
+      "parallelRequests": 32,
+      "pendingExecutionColdRestart": true,
+      "inPlaceModelSwitch": true,
+      "restartPreserved": true,
+      "configuredOutputLimitRetained": true,
+      "adviserRevisionRecovery": true,
+      "archivedInputReadableAfterPublication": true,
+      "toolErrors": [],
+      "browserErrors": [],
+      "soakSeconds": 10800,
+      "lastObservedSoakSampleSeconds": 10796.739427100001,
+      "soakSamples": 1060,
+      "completedDuringSoak": [
+        35
+      ],
+      "membersDuringSoak": [
+        36
+      ],
+      "maxObservedSampleGapSeconds": 35.637222600000314,
+      "samplingCoverageHealthy": true
+    }
+  },
+  "installer": {
+    "passed": true,
+    "commands": 9
+  },
+  "customization": {
+    "passed": true,
+    "customProfileAndSkill": true
+  },
+  "nativeWindowsShell": {
+    "passed": true,
+    "cases": [
+      {
+        "passed": true,
+        "powershellVersion": "5.1.19041.3693",
+        "calls": 1,
+        "privateWorkingDirectory": true,
+        "unicodeRoundTrip": true,
+        "unicodeAndSpaceWorkingPath": false
+      },
+      {
+        "passed": true,
+        "powershellVersion": "7.6.9",
+        "calls": 1,
+        "privateWorkingDirectory": true,
+        "unicodeRoundTrip": true,
+        "unicodeAndSpaceWorkingPath": false
+      },
+      {
+        "passed": true,
+        "powershellVersion": "7.6.9",
+        "calls": 1,
+        "privateWorkingDirectory": true,
+        "unicodeRoundTrip": true,
+        "unicodeAndSpaceWorkingPath": true
+      }
+    ]
+  },
+  "portableSourceBuild": {
+    "passed": true,
+    "canonicalBuild": {
+      "passed": true,
+      "runtimeFiles": 713,
+      "runtimeManifestSHA256": "1da3d9089d4838fe6f31ba92e9e72bfb292cb802c50c3e03cc25f38c299dd903",
+      "matchesTestedRuntime": true,
+      "buildFromDifferentCwd": true,
+      "initialDifference": "Two copies of the same generated browser comment recorded the external development host path",
+      "buildScriptSHA256": "c4c297b44acd3b47130940f3152ee1030c295ea86cc23a7c3dd13e48e634ace4",
+      "buildScriptUnchanged": true
+    },
+    "finalProtectedManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
+    "executionFilesUnchanged": true
+  },
+  "gitSourceRoundTrip": {
+    "passed": true,
+    "sourceFromGitIndex": true,
+    "protectedFiles": 713,
+    "runtimeManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
+    "matchesFinalManifest": true
+  },
+  "gitStaging": {
+    "passed": true,
+    "stagedPublicFiles": 892,
+    "privateFilesStaged": 0,
+    "authoredWhitespaceRejected": true,
+    "crlfSourceWhitespaceRejected": true,
+    "upstreamBytesUnchanged": true
+  },
+  "publicSourceGitExport": {
+    "passed": true,
+    "windowsAutoCRLF": true,
+    "trackedFiles": 897,
+    "protectedFilesCompared": 408,
+    "componentHashesCompared": 64,
+    "changedPinnedFiles": [],
+    "privateInputsTracked": false
+  },
+  "publishedDeclarations": {
+    "passed": true,
+    "hostEntries": 13,
+    "clientEntries": 3,
+    "hostErrors": 0,
+    "clientErrors": 0,
+    "rejectsMissingLocale": true,
+    "regressionErrors": 2,
+    "separateFaces": true,
+    "peerLibraryChecking": "Skipped; checks consumers and their concrete property types against the pinned Host declaration environment",
+    "sourceFilesUnchanged": true,
+    "checkScriptUnchanged": true
+  },
+  "packagingLint": {
+    "tool": "publint 0.3.24",
+    "allRulesPassed": false,
+    "passedModules": [
+      "modules/compat-tools",
+      "modules/compat-policy",
+      "modules/compat-subagent",
+      "modules/compat-web",
+      "modules/compat-fetch"
+    ],
+    "modulesWithRuleErrors": [
+      "bundle",
+      "modules/runtime",
+      "modules/tools",
+      "modules/ui"
+    ],
+    "deliveryMode": "Complete bundled tarball, not separate internal npm packages",
+    "documentedDeviations": [
+      "Bundled file dependencies",
+      "Nested source package exports",
+      "DSH browser factory loader"
+    ]
+  },
+  "declarationCorrection": {
+    "passed": true,
+    "changedFiles": [
+      "package/modules/ui/lib/types/client/index.d.ts",
+      "package/modules/ui/lib/types/client/mount.d.ts",
+      "package/node_modules/@dsh-workbench/team-ui/lib/types/client/index.d.ts",
+      "package/node_modules/@dsh-workbench/team-ui/lib/types/client/mount.d.ts"
+    ],
+    "executionFilesUnchanged": true,
+    "executionFileCount": 423,
+    "originalManifestSHA256": "1da3d9089d4838fe6f31ba92e9e72bfb292cb802c50c3e03cc25f38c299dd903",
+    "updatedManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
+    "executionManifestSHA256": "ba244ab6588d1b61cf4103ce7c2de248851a182a600b462535b98a2d0e1d7a1a",
+    "publishedConsumers": {
+      "passed": true,
+      "hostEntries": 13,
+      "clientEntries": 3,
+      "hostErrors": 0,
+      "clientErrors": 0,
+      "rejectsMissingLocale": true,
+      "regressionErrors": 2,
+      "separateFaces": true,
+      "peerLibraryChecking": "Skipped; checks consumers and their concrete property types against the pinned Host declaration environment"
+    },
+    "validatedSourceSHA256": {
+      "packages/team/modules/ui/src/client/index.ts": "c5f66f7a2e0be5c5962049683bac13319c3a7ab99a4fcb5a050b8c6d9524bae6",
+      "packages/team/modules/ui/src/client/mount.ts": "2c5f26c286a3b1655679a01256e2a5a6ea5c78ee6009e69232496d5690ce9ae6"
+    },
+    "checkScriptSHA256": "d813b8e9efff9f50c6eacfb27eab7b8fbe4435caeb788d24a5fbc8c34953fbf9"
+  },
+  "finalTypedArchiveAcceptance": {
+    "passed": true,
+    "completed": 11,
+    "members": 12,
+    "parallelRequests": 8,
+    "uiModelFormSaved": true,
+    "uiRoleAndRetirementRoundTrip": true,
+    "mcpProcessesCleaned": true,
+    "toolErrors": [],
+    "browserErrors": []
+  },
+  "installedFinalArchiveIntegrity": {
+    "passed": true,
+    "protectedFiles": 713,
+    "missing": [],
+    "different": [],
+    "runtimeManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26"
+  },
+  "installedSustainedArchiveIntegrity": {
+    "passed": true,
+    "protectedFiles": 713,
+    "installedRuntimeManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
+    "matchesFinalManifest": true
+  },
+  "naturalLanguageOnboarding": {
+    "passed": true,
+    "members": 6,
+    "completedTasks": 3,
+    "actualRequestRoute": {
+      "provider": "wb-remote",
+      "model": "cn:deepseek-v4.1-flash",
+      "reasoningEffort": "max",
+      "maxTokens": 393216
+    },
+    "recordedToolErrors": 8,
+    "errorKinds": {
+      "futureOutputUsedAsExistingInput": 5,
+      "missingReviewEvidence": 1,
+      "staleRevision": 1,
+      "privateMetadataOutsideTaskScope": 1
+    },
+    "providerModelLabelCorrectedFromRequestHeaders": true,
+    "noSeededTeamGoal": true
+  },
+  "finalRealProjectRoutes": {
+    "passed": true,
+    "actualRequestHeaders": 49,
+    "activeRoles": [
+      "artist-04-stairs",
+      "artist-06-tetrapods",
+      "artist-12-moorings",
+      "artist-29-gulls",
+      "artist-31-sun-clouds",
+      "integrator",
+      "lead",
+      "planning-adviser",
+      "quality-adviser",
+      "verifier"
+    ],
+    "configuredOutputLimitRetained": true,
+    "rejectedToolCalls": 3,
+    "rejectionCategories": {
+      "stale-goal-step": 1,
+      "image-through-text-tool": 2
+    },
+    "toolCalls": {
+      "team_goal": 2,
+      "team_task_list": 3,
+      "team_context": 5,
+      "send_message": 6,
+      "team_task_get": 24,
+      "team_adviser_review": 10,
+      "team_workspace": 25,
+      "team_task_reconcile": 6,
+      "team_task_update": 1,
+      "glob": 9,
+      "read": 49,
+      "read_image": 12,
+      "grep": 35,
+      "team_task_review": 6,
+      "write": 3,
+      "team_task_submit": 6,
+      "team_task_archive": 1,
+      "edit": 16
+    },
+    "model": "cn:deepseek-v4.1-flash",
+    "reasoningEffort": "max",
+    "allTasksAccepted": true,
+    "retainedMembers": 37
+  },
+  "resumedRealProviderCheck": {
+    "checkedAt": "20261107T123819Z",
+    "model": "cn:deepseek-v4.1-flash",
+    "reasoningEffort": "max",
+    "directHTTPStatus": 200,
+    "directHealthy": true,
+    "freshInstalledDSHSession": true,
+    "actualReadTool": true,
+    "actualReplyMarker": true,
+    "toolErrors": 0,
+    "passed": true,
+    "futureAvailabilityGuaranteed": false
+  },
+  "testedRuntimeManifestSHA256": "92351b59e1afc63cd5d61a7880648822328f32873d6fb8a7b5f3bdeb038e7f26",
+  "testedExecutionManifestSHA256": "ba244ab6588d1b61cf4103ce7c2de248851a182a600b462535b98a2d0e1d7a1a",
+  "executedArchiveRuntimeManifestSHA256": "1da3d9089d4838fe6f31ba92e9e72bfb292cb802c50c3e03cc25f38c299dd903",
+  "production": {
+    "changed": false,
+    "personaBodiesRead": false,
+    "verification": "opaque profile SHA-256 and Session directory IDs; no message or persona body reads",
+    "profileFilesUnchanged": true,
+    "profileFilesCompared": 4,
+    "originalSessions": 1207,
+    "originalSessionIdsRetained": 1207,
+    "verified": true,
+    "checkedAt": "2026-11-07T15:50:27.191360+00:00"
+  },
+  "limitations": [
+    "No production deployment",
+    "No macOS validation; hosted Linux results are tracked by release CI",
+    "No arbitrary external-tool filesystem enforcement",
+    "No universal model correctness or policy guarantee",
+    "No paid model comparison",
+    "No complete memory-leak proof",
+    "No support for DSH 0.2.2-rc.1",
+    "Real-model onboarding recovered from eight invalid tool calls"
+  ],
+  "realHarborRounds": {
+    "1": {
+      "members": 37,
+      "completed": 34
+    },
+    "2": {
+      "passed": true,
+      "members": 37,
+      "completedTotal": 44,
+      "goalRevision": 2,
+      "round": 2,
+      "resumedConfirmedVersion": true
+    },
+    "3": {
+      "passed": true,
+      "members": 37,
+      "completedTotal": 52,
+      "goalRevision": 3,
+      "round": 3,
+      "resumedConfirmedVersion": true
+    },
+    "4": {
+      "passed": true,
+      "members": 37,
+      "completedTotal": 66,
+      "goalRevision": 4,
+      "round": 4,
+      "resumedConfirmedVersion": false
+    },
+    "5": {
+      "passed": true,
+      "members": 37,
+      "completedTotal": 71,
+      "goalRevision": 5,
+      "round": 5,
+      "resumedConfirmedVersion": false
+    }
+  },
+  "realRetainedProbe": {
+    "passed": true,
+    "retainedMembers": 37,
+    "retainedCompletedTasks": 71,
+    "actualReplyMarker": true,
+    "completedChildSteps": 0,
+    "sourceAndPublicationUnchanged": true
+  },
+  "firstSubmissionVerification": {
+    "count": 32,
+    "immutableReceiptMatches": 32,
+    "componentBytesPreserved": true,
+    "firstDraftFeedbackRounds": 0
+  },
+  "realSceneBrowser": {
+    "passed": true,
+    "loadedComponents": 32,
+    "visibleUI": 0,
+    "detailViews": 14,
+    "drawCallsAtInitialView": 5169,
+    "geometries": 2076,
+    "orbitChanged": true,
+    "zoomChanged": true,
+    "animationAdvanced": true,
+    "acceleratedTimestampSampling": true,
+    "cpuBoundsInvalidNodes": 0
+  },
+  "sceneMotionInspection": {
+    "passed": true,
+    "samples": 26,
+    "controlledTimestampSampling": true,
+    "checks": {
+      "actualSupportAtLanding": true,
+      "takesOffAndReturns": true,
+      "foldedWingsAtRest": true,
+      "fixedRopeAnchor": true,
+      "movingRopeEndAndSag": true,
+      "ropeClearsConcrete": true,
+      "ropeFiniteAndGeometryReused": true,
+      "subtleCloudIllumination": true,
+      "fillUnchanged": true,
+      "rebuildPreservesSunBaseline": true,
+      "rareBeaconAndRainbow": true,
+      "sceneGeometryReferencesStable": true,
+      "noUI": true
+    },
+    "qaScaffoldBaselineFix": true,
+    "geometryReferenceCheck": true,
+    "memoryLeakProof": false
+  },
+  "resourceObservation": {
+    "samples": 178,
+    "partialObservation": true,
+    "firstSoakElapsedSeconds": 40.101431900000534,
+    "lastSoakElapsedSeconds": 10766.657249200001,
+    "workingSetBytesRange": [
+      182280192,
+      437403648
+    ],
+    "privateBytesRange": [
+      263168000,
+      457142272
+    ],
+    "hostProcessesObserved": 18,
+    "memoryLeakProof": false
+  },
+  "nativeUiActions": {
+    "passed": true,
+    "uiModelFormSaved": true,
+    "uiRoleAndRetirementRoundTrip": true
+  }
+}

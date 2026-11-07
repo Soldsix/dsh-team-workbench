@@ -1,0 +1,20 @@
+name: Feature request / 功能建议
+description: Describe a workflow or customization that the current workbench cannot express.
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Desired workflow / 希望完成的流程
+      description: Describe the user goal, roles, tools and acceptance criteria.
+    validations:
+      required: true
+  - type: textarea
+    id: configuration
+    attributes:
+      label: Configuration tried / 已尝试的配置
+      description: Explain which project-plan or profile settings you tried and what remains missing. Use synthetic values.
+  - type: textarea
+    id: validation
+    attributes:
+      label: Observable result / 怎样验收
+      description: Explain how another person could verify the requested behavior.

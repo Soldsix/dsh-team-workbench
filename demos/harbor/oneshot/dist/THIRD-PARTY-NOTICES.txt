@@ -1,0 +1,1 @@
+three.js is licensed under MIT; Copyright (c) 2010-2026 three.js authors. See THIRD-PARTY-LICENSES/three.txt for the complete license.

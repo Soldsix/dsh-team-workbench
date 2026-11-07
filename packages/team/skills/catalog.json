@@ -1,0 +1,226 @@
+[
+  {
+    "name": "team-adspower-browser",
+    "description": "在 DSH 中核对 AdsPower Local API、读取浏览器环境清单并按任务占用独立环境；仅在实际需要浏览器环境时加载。"
+  },
+  {
+    "name": "team-ai-engineering",
+    "description": "中文 AI 应用与多模型工程。用于模型路由、思考强度、提示词与角色、检索/记忆、工具调用、上下文按需装配和评测。"
+  },
+  {
+    "name": "team-akamai-web-sdk",
+    "description": "已授权站点的 Akamai 浏览器 SDK 与 _abck 相关研究。用于脚本版本、采集与请求链、Cookie 生命周期、环境差异和受控实验；不替代通用网页指纹技能。"
+  },
+  {
+    "name": "team-android-fingerprint",
+    "description": "Android 设备指纹 SDK 逆向。用于 AAR/APK/DEX/SO 的 Java/Kotlin/JNI 采集链、系统标识、安装身份、缓存、权限、加密上报和设备注册分析。"
+  },
+  {
+    "name": "team-android-toolchain",
+    "description": "在 Windows DSH 环境中发现并验证 ADB、scrcpy、Frida、mitmproxy、jadx 与 apktool，连接真机或模拟器并检查版本与证据；需要 Android 工具链时加载。"
+  },
+  {
+    "name": "team-browser-behavior",
+    "description": "中文网页行为与风控采集研究。用于鼠标/触摸/键盘/滚动轨迹、传感器事件、时间序列、SDK 采样聚合及受控环境差分验证。"
+  },
+  {
+    "name": "team-business-authorization",
+    "description": "中文业务与字段权限测试。用于授权环境核对前端只读、姓名等字段修改、对象/功能权限、批量属性绑定及服务端持久结果。"
+  },
+  {
+    "name": "team-byte-device",
+    "description": "中文抖音/TikTok 字节系设备注册与请求签名研究。用于按客户端和版本梳理注册状态、Native VM、网关参数与业务请求的实际依赖。"
+  },
+  {
+    "name": "team-captcha-challenges",
+    "description": "中文验证码与挑战研究。用于授权测试中的图像、滑块、点选、动态、无感、跨设备和计算挑战，区分识别结果、票据绑定与服务端验证。"
+  },
+  {
+    "name": "team-cloud-security",
+    "description": "中文云、容器与供应链安全研究。用于云账号/IAM、Kubernetes、镜像、CI/CD、依赖和制品权限的配置核查、受控验证及修复。"
+  },
+  {
+    "name": "team-cn-commerce",
+    "description": "中文淘宝/天猫、京东、拼多多多端接口专项。用于授权商品数据、签名链、验证码、设备与会话状态的分平台验证及匿名字段矩阵。"
+  },
+  {
+    "name": "team-code-development",
+    "description": "中文项目开发与维护。用于需求拆解、架构与接口、前后端/移动端功能、兼容迁移、并行实现、代码审查和可回滚交付。"
+  },
+  {
+    "name": "team-commerce-platforms",
+    "description": "中文电商平台接口研究。用于淘宝/天猫、京东、拼多多、Shopee 及美团的授权商品接口、签名、验证码、匿名访问与多端版本差异。"
+  },
+  {
+    "name": "team-crawler-discovery",
+    "description": "中文网页数据采集入口研究。用于在已确认范围内，从页面与接口观察、JavaScript 调用链、版本资料和单条验证形成可复用的采集方案，再交给批量协议采集。"
+  },
+  {
+    "name": "team-crawler-pipeline",
+    "description": "中文授权协议采集工程。用于将已验证的匿名、游客或授权接口组织成可恢复批量采集，管理会话、并发、增量、数据质量和失败分类。"
+  },
+  {
+    "name": "team-crypto-parameters",
+    "description": "中文加密参数与签名链逆向。用于 SDK/JS/APP 的编码、压缩、摘要、MAC、加解密、密钥派生、规范化和本地测试向量复现。"
+  },
+  {
+    "name": "team-delivery",
+    "description": "中文成果交付、专家记忆与续跑。用于验收清单、版本化证据、运行说明、未完成项、有效成果复用和跨会话交接。"
+  },
+  {
+    "name": "team-deployment-operations",
+    "description": "部署、运维与故障恢复的证据流程，覆盖环境盘点、健康检查、数据备份、灰度、配置/密钥、迁移、回滚、止损与恢复演练。"
+  },
+  {
+    "name": "team-device-fingerprint",
+    "description": "网页、Android、iOS 设备指纹 SDK 逆向总流程。用于识别采集字段、跨层调用链、编码加密、设备注册、缓存重置和服务端验证，组织多个专家交叉分析。"
+  },
+  {
+    "name": "team-experiment",
+    "description": "中文实验设计与证据对齐。用于逆向观测、设备指纹稳定性和碰撞率、对照实验、重复结果复用，以及多代理结论冲突的复核。"
+  },
+  {
+    "name": "team-fiction-craft",
+    "description": "专业中文小说构思与精修，覆盖读者定位、人物欲望、情感与潜台词、场景节奏、叙述声音、连载吸引力、独立编辑和商业验证。"
+  },
+  {
+    "name": "team-forensics",
+    "description": "中文日志、流量与样本取证。用于 PCAP、应用/系统日志、崩溃与内存线索、事件时间线、证据关联和可重现结论。"
+  },
+  {
+    "name": "team-fuzzing",
+    "description": "中文模糊测试与差分验证。用于本地解析器、SDK 编解码、虚拟机和函数接口的输入探索、崩溃归并、最小化与修复回归。"
+  },
+  {
+    "name": "team-handoff-continuity",
+    "description": "团队沟通与长期交接：固定身份和目标，保存版本、已完成工作、失败尝试与恢复点。"
+  },
+  {
+    "name": "team-ios-fingerprint",
+    "description": "iOS 设备指纹 SDK 逆向。用于 framework/xcframework/IPA/Mach-O 的 Objective-C/Swift 采集链、标识与缓存生命周期、DeviceCheck/App Attest 接口及注册上报分析。"
+  },
+  {
+    "name": "team-js-reverse",
+    "description": "中文 JavaScript 逆向。用于混淆代码、动态加载、签名链、补环境、AST 变换、WASM 交互与可复现语义恢复。"
+  },
+  {
+    "name": "team-jsvmp",
+    "description": "中文 JSVMP 专项。用于 JavaScript 字节码解释器、多层虚拟化、动态解码和 JS/WASM/Native 混合调用的目标语义恢复及独立复现。"
+  },
+  {
+    "name": "team-meituan-signature",
+    "description": "中文美团移动端签名专项。用于授权样本中 mtgsig 3.0 等版本标签的请求规范化、设备状态、计算复现及协议接受差异分析。"
+  },
+  {
+    "name": "team-memory-recovery",
+    "description": "长期成员、换模型、上下文压缩和重启后的目标对齐与任务恢复；辨别串记忆、未知副作用、拒绝原因与重复执行。"
+  },
+  {
+    "name": "team-mobile-unpacking",
+    "description": "中文移动端加固与可分析样本恢复。用于授权 Android/iOS 应用的壳识别、动态加载、DEX/Mach-O 可读性、内存与文件映射、脱壳完整性验证。"
+  },
+  {
+    "name": "team-native-reverse",
+    "description": "中文原生二进制逆向。用于 PE/ELF/Mach-O、SO/动态库、JNI、C/C++/Rust/Swift、固件和编译代码的调用链、数据结构与行为恢复。"
+  },
+  {
+    "name": "team-network-research",
+    "description": "联网搜索、网页读取、公开方案与源码研究的分阶段流程；区分权限、服务能力、限流、重定向和网络错误，减少无变化重试。"
+  },
+  {
+    "name": "team-network-security",
+    "description": "中文授权网络与内网安全验证。用于资产范围、身份关系、服务暴露、分段、漏洞路径、受控验证和修复复核。"
+  },
+  {
+    "name": "team-novel-continuity",
+    "description": "长篇小说与商业连载的持续创作管理：人物状态、时间线、世界规则、伏笔、叙述视角、章节依赖、并行分工与修改传播。"
+  },
+  {
+    "name": "team-offline-computation",
+    "description": "中文纯算与协议直连验收。用于将逆向结果实现为无浏览器/DOM 运行依赖的计算模块，明确网络握手、动态输入来源及独立样本差分。"
+  },
+  {
+    "name": "team-product-ui-design",
+    "description": "产品与 UI 设计的完整交付流程：用户任务、信息架构、状态模型、三栏/分组布局、交互原型、可访问性、性能与开发验收。"
+  },
+  {
+    "name": "team-quality-engineering",
+    "description": "项目质量工程：需求到证据的对应、独立复核、回归、性能基准、发布与回滚。"
+  },
+  {
+    "name": "team-quality-performance",
+    "description": "中文质量、兼容性与性能验证。用于关键用户路径、异常与恢复、多模型/多设备并发、上下文开销、UI 可用性和回归标准。"
+  },
+  {
+    "name": "team-registration-protocol",
+    "description": "设备注册与 SDK 协议逆向。用于初始化握手、挑战、令牌、请求签名、字段编码、WebSocket/Protobuf、重试和状态迁移的取证与本地复现。"
+  },
+  {
+    "name": "team-research",
+    "description": "中文公开方案研究与技能更新。用于核对官方文档、GitHub 项目、版本、许可证和可复现实验，决定采用、部分采用或替换技术方案。"
+  },
+  {
+    "name": "team-research-design",
+    "description": "研究设计与任务拆解：确认可检验目标、独立假设、控制变量、证据和停止条件。"
+  },
+  {
+    "name": "team-review-decisions",
+    "description": "双军师的低成本方案、路线决策与质量审核；执行复现独立于审核，证据不足、意见分歧和旧版本结果都有明确处理。"
+  },
+  {
+    "name": "team-risk-sdk",
+    "description": "中文数美、瑞数等风控 SDK 专项。用于授权样本中的初始化、指纹、动态脚本、上报、令牌与版本差异研究及接入故障诊断。"
+  },
+  {
+    "name": "team-runtime-instrumentation",
+    "description": "中文运行时取证与 Hook。用于 Frida、调试器、浏览器断点的最小观测、参数和调用链追踪、跨线程关联、工具兼容与观测开销验证。"
+  },
+  {
+    "name": "team-shopee-detail",
+    "description": "中文 Shopee 商品详情专项。用于按国家站、币种、客户端和身份状态验证商品详情、SKU/变体、价格库存、接口保护与匿名可见字段。"
+  },
+  {
+    "name": "team-threat-intelligence",
+    "description": "中文安全研究情报与新漏洞验证。用于追踪官方更新、原始研究、CVE/KEV/EPSS、补丁差异和疑似 0day，并将证据限定到当前资产与版本。"
+  },
+  {
+    "name": "team-tool-health-recovery",
+    "description": "工具健康与故障恢复：区分安装、注册、成员准入、授权、凭据、服务故障和真实调用结果。"
+  },
+  {
+    "name": "team-tool-operations",
+    "description": "团队任务工具的准确调用、版本冲突、自动派工、提交验收、重复检测和无副作用恢复；用于队长、组长与执行成员。"
+  },
+  {
+    "name": "team-vm-reverse",
+    "description": "中文虚拟机与 VMP/Crackme 分析。用于授权练习样本、自定义 JS/原生字节码解释器、指令语义、虚拟寄存器、控制流恢复与验证。"
+  },
+  {
+    "name": "team-web-fingerprint",
+    "description": "网页设备指纹 SDK 逆向。用于 JS/WASM 指纹采集、浏览器特征、iframe/Worker、存储、哈希与上报链路、跨环境稳定性及版本差异分析。"
+  },
+  {
+    "name": "team-web-security",
+    "description": "中文授权 Web/API/CVE 安全测试。用于范围确认、攻击面建模、身份权限、会话与业务逻辑、漏洞复现、证据、修复和回归，支持本地靶场与 CTF。"
+  },
+  {
+    "name": "team-wechat-miniprogram",
+    "description": "微信小程序开发与授权分析：项目/分包清点、WXML/WXSS/JS、登录态、wx.request 调用链、真机抓包、自动化、数据采集与兼容验收。"
+  },
+  {
+    "name": "team-windows-execution",
+    "description": "Windows 与 PowerShell 工具的一致执行规则，覆盖实际环境探测、参数与编码、中文路径、后台任务、取消、依赖和错误恢复。"
+  },
+  {
+    "name": "team-workbench",
+    "description": "按需选择中文工作技能。用于团队协作、授权网页采集、设备指纹 SDK 逆向、JS/二进制分析、安全测试和项目开发；仅加载当前问题所需的专业步骤。"
+  },
+  {
+    "name": "team-workflow",
+    "description": "中文团队工作流程。用于长期多模型协作的目标确认、粒度对齐、专家复用、模型与工具选择、并行调度、证据交接和独立验收。"
+  },
+  {
+    "name": "team-workspace-handoff",
+    "description": "成员私有工作区的输入选择、容量预检、产物发布、文件归属、冲突处理与可恢复删除；防止多人覆盖共同成果。"
+  }
+]

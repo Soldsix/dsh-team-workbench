@@ -1,0 +1,59 @@
+{
+  "description": "Bundle component inventory, not a complete host SBOM",
+  "components": [
+    {
+      "name": "@dsh-workbench/team",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team"
+    },
+    {
+      "name": "@dsh-workbench/compat-fetch",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/compat-fetch"
+    },
+    {
+      "name": "@dsh-workbench/compat-policy",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/compat-policy"
+    },
+    {
+      "name": "@dsh-workbench/compat-subagent",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/compat-subagent"
+    },
+    {
+      "name": "@dsh-workbench/compat-tools",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/compat-tools"
+    },
+    {
+      "name": "@dsh-workbench/compat-web",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/compat-web"
+    },
+    {
+      "name": "@dsh-workbench/team-runtime",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/runtime"
+    },
+    {
+      "name": "@dsh-workbench/team-tools",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/tools"
+    },
+    {
+      "name": "@dsh-workbench/team-ui",
+      "version": "0.5.0-rc.1",
+      "license": "MIT",
+      "sourcePath": "packages/team/modules/ui"
+    }
+  ]
+}

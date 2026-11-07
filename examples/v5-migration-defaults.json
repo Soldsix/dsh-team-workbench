@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "packageVersion": "0.5.0-rc.1",
+  "config": {
+    "portableEventEnvelope": true,
+    "autoProvisionPlannedMembers": true,
+    "maxProvisionPerPass": 4,
+    "plannedMemberProvider": "spawn",
+    "finalDelivery": "publish-and-notify",
+    "filterToolsByGoal": true,
+    "resumeIncompleteOnUserContinue": true
+  },
+  "coordinationRootPath": "team-coordination"
+}

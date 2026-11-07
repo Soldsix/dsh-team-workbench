@@ -1,0 +1,104 @@
+{
+  "format": "dsh-team-project-plan",
+  "version": 2,
+  "automation": {
+    "provision": "on-demand",
+    "requirePlanningGate": true
+  },
+  "members": [
+    {
+      "parent": "lead",
+      "modelProvider": "<configured-provider>",
+      "model": "<exact-model-id>",
+      "reasoningEffort": "<highest-supported-effort>",
+      "responsibility": "Review the supplied synthetic fixture and retain evidence",
+      "skills": [
+        "team-quality-engineering"
+      ],
+      "name": "planner",
+      "function": "planning_adviser"
+    },
+    {
+      "parent": "lead",
+      "modelProvider": "<configured-provider>",
+      "model": "<exact-model-id>",
+      "reasoningEffort": "<highest-supported-effort>",
+      "responsibility": "Review the supplied synthetic fixture and retain evidence",
+      "skills": [
+        "team-quality-engineering"
+      ],
+      "name": "quality",
+      "function": "quality_adviser"
+    },
+    {
+      "parent": "lead",
+      "modelProvider": "<configured-provider>",
+      "model": "<exact-model-id>",
+      "reasoningEffort": "<highest-supported-effort>",
+      "responsibility": "Review the supplied synthetic fixture and retain evidence",
+      "skills": [
+        "team-quality-engineering"
+      ],
+      "name": "writer",
+      "function": "executor",
+      "instructions": "Work only on the assigned task and preserve accepted artifacts."
+    },
+    {
+      "parent": "lead",
+      "modelProvider": "<configured-provider>",
+      "model": "<exact-model-id>",
+      "reasoningEffort": "<highest-supported-effort>",
+      "responsibility": "Review the supplied synthetic fixture and retain evidence",
+      "skills": [
+        "team-quality-engineering"
+      ],
+      "name": "verifier",
+      "function": "verifier"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "planning-v1",
+      "owner": "writer",
+      "reviewer": "verifier",
+      "description": "Fix the input and acceptance matrix",
+      "kind": "plan",
+      "dependencies": [],
+      "inputs": [
+        "fixture.txt"
+      ],
+      "outputs": [],
+      "acceptanceCriteria": [
+        "Input and acceptance matrix are explicit"
+      ],
+      "critical": true
+    },
+    {
+      "id": "report-v1",
+      "owner": "writer",
+      "reviewer": "verifier",
+      "description": "Write and independently verify the fixture report",
+      "kind": "delivery",
+      "dependencies": [
+        "planning-v1"
+      ],
+      "inputs": [
+        "fixture.txt"
+      ],
+      "outputs": [
+        "reports/result.md"
+      ],
+      "acceptanceCriteria": [
+        "The report matches the supplied fixture"
+      ],
+      "critical": true
+    }
+  ],
+  "resources": {
+    "maxMembers": 4,
+    "maxConcurrentRequests": 4
+  },
+  "reviewPolicy": "independent-and-dual-for-critical",
+  "previousTasks": [],
+  "recovery": "Resume retained members; inspect receipts before repeating any operation"
+}

@@ -1,0 +1,70 @@
+/**
+ * Continuation integration markers and host adapters outside the public
+ * Service Definition and model-facing Agent messaging contract.
+ * @module @dsh-workbench/compat-subagent/internal
+ */
+import type { Agent } from '@deepseek-ai/dsh-agent';
+import type { ContentBlock, MessageId, MessageSource } from '@deepseek-ai/dsh-llm';
+import type { SessionId } from '@deepseek-ai/dsh-session';
+import type { ToolDefinition } from '@deepseek-ai/dsh-tools';
+import type SubagentRuntime from './index.ts';
+import type { SubagentDelivery } from './control-types.ts';
+/** Process-stable identity carried only by the standard adjacent-Agent messaging tool. */
+export declare const adjacentAgentSendMessageTool: unique symbol;
+/**
+ * Mark the standard adjacent-Agent messaging tool without changing its model-visible schema.
+ * @param definition - the standard `send_message` definition.
+ * @returns the same definition with its internal identity installed.
+ */
+export declare function markAdjacentAgentSendMessageTool(definition: ToolDefinition): ToolDefinition;
+/**
+ * Test whether one visible definition is the standard adjacent-Agent messaging tool.
+ * @param definition - the scope-resolved `send_message` candidate.
+ * @returns whether the definition carries the internal standard-tool identity.
+ */
+export declare function isAdjacentAgentSendMessageTool(definition: ToolDefinition | undefined): boolean;
+/**
+ * Process-stable symbol-keyed host delivery shared by the bundled runtime
+ * entry and this unbundled internal subpath.
+ * @internal
+ */
+export declare const deliverSubagentPrompt: unique symbol;
+/** Host-only operation retaining an ancestor chain without sending model prompts. */
+export declare const withSubagentAncestors: unique symbol;
+/**
+ * Restore and retain each direct ancestor while a host operation establishes new work.
+ * @param runtime - Owner of continuation residency and capacity.
+ * @param root - Exact live ancestor authorizing the first edge.
+ * @param ancestorIds - Ordered retained descendants ending at the required direct parent.
+ * @param signal - Cancellation before materialization and throughout the callback.
+ * @param operation - Host work performed with the final exact live parent.
+ * @returns the callback result; restoration submits no ancestor model requests.
+ */
+export declare function withHostSubagentAncestors<T>(runtime: SubagentRuntime, root: Agent, ancestorIds: readonly SessionId[], signal: AbortSignal, operation: (parent: Agent) => Promise<T>): Promise<T>;
+/** Runtime face required by the host-only prompt adapters. */
+export interface HostPromptDeliverer {
+    [deliverSubagentPrompt](parent: Agent, childId: SessionId, content: ContentBlock[], source: MessageSource, signal: AbortSignal, delivery: SubagentDelivery, ancestorIds?: readonly SessionId[]): Promise<MessageId>;
+}
+/**
+ * Queue one host-protocol message without exposing another Service operation.
+ * @param runtime - subagent runtime owning continuation residency.
+ * @param parent - exact live direct parent authorizing delivery.
+ * @param childId - durable direct-child session id.
+ * @param content - host-authored content to deliver.
+ * @param source - durable host-protocol source descriptor.
+ * @param signal - caller cancellation before inbox acceptance.
+ * @returns the accepted message's inbox id.
+ */
+export declare function queueHostSubagentPrompt(runtime: SubagentRuntime, parent: Agent, childId: SessionId, content: ContentBlock[], source: MessageSource, signal: AbortSignal): Promise<MessageId>;
+/**
+ * Steer one host-protocol message without exposing another Service operation.
+ * @param runtime - subagent runtime owning continuation residency.
+ * @param parent - exact live direct parent authorizing delivery.
+ * @param childId - durable direct-child session id.
+ * @param content - host-authored content to deliver.
+ * @param source - durable host-protocol source descriptor.
+ * @param signal - caller cancellation before inbox acceptance.
+ * @param ancestorIds - Retained ancestors to materialize for caller-owned Team delivery; omitted uses ordinary parent delivery.
+ * @returns the accepted message's inbox id.
+ */
+export declare function steerHostSubagentPrompt(runtime: SubagentRuntime, parent: Agent, childId: SessionId, content: ContentBlock[], source: MessageSource, signal: AbortSignal, ancestorIds?: readonly SessionId[]): Promise<MessageId>;

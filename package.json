@@ -1,0 +1,37 @@
+{
+  "name": "dsh-team-workbench-source",
+  "private": true,
+  "type": "module",
+  "version": "0.5.0-rc.1",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node node_modules/vitest/vitest.mjs run --config vitest.config.ts",
+    "test:ui": "node node_modules/vitest/vitest.mjs run --config vitest.ui.config.ts",
+    "test:compat": "node node_modules/vitest/vitest.mjs run --config vitest.compat.config.ts",
+    "typecheck": "node scripts/typecheck.mjs",
+    "check:published-types": "node scripts/check-published-types.mjs",
+    "pack": "node scripts/pack.mjs",
+    "check": "node scripts/check-release.mjs",
+    "setup:dev": "node scripts/setup-dev.mjs",
+    "prepare:docs": "node scripts/prepare-docs.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "esbuild-bundle": "npm:esbuild@0.25.12",
+    "vite": "8.2.2",
+    "typescript": "6.0.3",
+    "vitest": "4.1.11",
+    "vite-tsconfig-paths": "6.1.1",
+    "jsdom": "29.1.1",
+    "@testing-library/react": "16.3.3",
+    "@types/node": "22.20.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "js-yaml": "4.3.2",
+    "zod": "4.4.3",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "ipaddr.js": "2.5.0",
+    "undici": "8.11.2"
+  }
+}

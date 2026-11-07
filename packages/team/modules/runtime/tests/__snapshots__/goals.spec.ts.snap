@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`user-reviewed Team goals > notifies the communicator only after the complete plan passes dual and independent review 1`] = `
+[
+  {
+    "text": "确认方案版本 1 的 1 项任务均已独立验收，最终文件已完成受检查的发布。请读取当前目标与 team_task_archive 的验收回执，向用户汇总交付位置、逐项结果与已知限制。不要重新执行已验收任务，也不要把方案完成扩大为未经验证的业务结论。",
+    "type": "text",
+  },
+]
+`;

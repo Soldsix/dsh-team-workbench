@@ -1,0 +1,79 @@
+{
+  "authors": 32,
+  "retainedTeamMembers": 37,
+  "model": "cn:deepseek-v4.1-flash",
+  "reasoningEffort": "max",
+  "firstSubmissionReceiptMatches": 32,
+  "componentFilesChangedAfterFirstDraft": 20,
+  "rounds": [
+    {
+      "round": 1,
+      "completedTotal": 34
+    },
+    {
+      "round": 2,
+      "completedTotal": 44
+    },
+    {
+      "round": 3,
+      "completedTotal": 52
+    },
+    {
+      "round": 4,
+      "completedTotal": 66
+    },
+    {
+      "round": 5,
+      "completedTotal": 71
+    }
+  ],
+  "baseline": {
+    "drawCalls": 7426,
+    "geometries": 3842,
+    "triangles": 265902,
+    "animatedGroups": 89
+  },
+  "final": {
+    "drawCalls": 5169,
+    "geometries": 2076,
+    "triangles": 276180,
+    "animatedGroups": 110
+  },
+  "finalInteractionPassed": true,
+  "finalDetailViews": 14,
+  "finalDetailPassed": true,
+  "cpuBoundsInvalidNodes": 0,
+  "acceleratedRareEventSampling": true,
+  "cpuBoundsLimitations": "CPU vertex and instance bounds at sampling time; GPU-only deformation and full motion extrema are not inferred",
+  "motionInspection": {
+    "passed": true,
+    "samples": 26,
+    "checks": {
+      "actualSupportAtLanding": true,
+      "takesOffAndReturns": true,
+      "foldedWingsAtRest": true,
+      "fixedRopeAnchor": true,
+      "movingRopeEndAndSag": true,
+      "ropeClearsConcrete": true,
+      "ropeFiniteAndGeometryReused": true,
+      "subtleCloudIllumination": true,
+      "fillUnchanged": true,
+      "rebuildPreservesSunBaseline": true,
+      "rareBeaconAndRainbow": true,
+      "sceneGeometryReferencesStable": true,
+      "noUI": true
+    },
+    "controlledTimestampSampling": true,
+    "unbatchedGeometryInspection": true
+  },
+  "qaScaffoldChanges": [
+    "Restore the original sun baseline when rebuilding the world; component submissions remain separate"
+  ],
+  "coldFinalPluginProbe": {
+    "passed": true,
+    "retainedMembers": 37,
+    "retainedCompletedTasks": 71,
+    "completedChildSteps": 0,
+    "actualReplyMarker": true
+  }
+}

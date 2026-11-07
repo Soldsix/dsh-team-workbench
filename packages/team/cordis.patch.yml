@@ -1,0 +1,131 @@
+# Keep original provider rows available for rollback; the include loader cannot replace a row's name.
+- id: tools
+  disabled: true
+- id: sandbox-policy
+  disabled: true
+- id: subagent
+  disabled: true
+- id: web
+  disabled: true
+- id: web-fetch-http
+  disabled: true
+
+# Team tools shadow control names only in enabled session scopes.
+
+- insert:
+    - id: workbench-tools
+      name: '@dsh-workbench/compat-tools'
+    - id: workbench-sandbox-policy
+      name: '@dsh-workbench/compat-policy'
+    - id: workbench-subagent
+      name: '@dsh-workbench/compat-subagent'
+    - id: workbench-web
+      name: '@dsh-workbench/compat-web'
+    - id: workbench-web-fetch-http
+      name: '@dsh-workbench/compat-fetch'
+    - id: team-workbench-skills
+      name: '@dsh-workbench/team'
+
+    - id: agent-team
+      name: '@dsh-workbench/team-runtime'
+      config:
+        enabledPresets: ['*']
+        requireConfirmedGoal: true
+        requireStructuredPlans: true
+        portableEventEnvelope: true
+        maxGoalBytes: 262144
+        requireExecutionScope: true
+        requireTaskPlans: true
+        requireTaskResults: true
+        deduplicateTaskInputs: true
+        autoDispatchReadyTasks: true
+        autoAssignReadyTasks: true
+        autoProvisionPlannedMembers: true
+        finalDelivery: publish-and-notify
+        filterToolsByGoal: true
+        resumeIncompleteOnUserContinue: true
+        maxProvisionPerPass: 4
+        plannedMemberProvider: spawn
+        coordinationRoot: !!js dshHomePath('team-coordination')
+        enforceWriteScopeExclusivity: true
+        defaultMemberReasoningEffort: highest
+        maxTaskReceiptPaths: 128
+        maxTaskReceiptBytes: 268435456
+        workspaceIsolation:
+          storageRoot: !!js dshHomePath('team-workspaces')
+          maxFiles: 100000
+          maxBytes: 2147483648
+          omittedDirectories: ['.git', '.artifacts', '.cache', '__pycache__']
+          readOnlySharedDirectories: ['node_modules', '.venv']
+          allowedTools:
+            - read
+            - read_image
+            - write
+            - edit
+            - glob
+            - grep
+            - bash
+            - pwsh
+            - run_code
+            - job_output
+            - job_list
+            - job_kill
+            - web_search
+            - web_fetch
+            - web_status
+            - todo_write
+            - ask_user_question
+            - team_goal
+            - team_help
+            - team_context
+            - team_mailbox
+            - team_workspace
+            - team_member
+            - list_agents
+            - list_team_models
+            - spawn_teammate
+            - send_message
+            - wait_agent
+            - interrupt_agent
+            - team_task_create
+            - team_task_list
+            - team_task_get
+            - team_task_update
+            - team_task_submit
+            - team_task_review
+            - team_task_reconcile
+            - team_adviser_review
+            - team_task_archive
+            - team_expert_catalog
+            - team_expert_save
+            - team_expert_assign
+            - team_skill
+            - team_skill_catalog
+            - team_skills
+            - skill
+        maxMembers: 256
+        maxResidentMembers: 64
+        maxConcurrentRequestsPerTeam: 32
+        providerConcurrency: []
+        modelConcurrency: []
+        maxDepth: 2
+        maxTasks: 256
+        maxPendingMessagesPerMember: 64
+        maxMessageBytes: 65536
+        disposalTimeoutMs: 5000
+
+    - id: team-experts
+      name: '@dsh-workbench/team-runtime/experts'
+
+    - id: tool-agent-team
+      name: '@dsh-workbench/team-tools'
+      config:
+        freshProvider: spawn
+        forkProvider: fork
+        automaticTeams: true
+        bindMemberPersonas: true
+        requireDetailedPlan: true
+        requireMemberSkills: true
+
+    - id: ui-agent-team
+      name: '@dsh-workbench/team-ui'

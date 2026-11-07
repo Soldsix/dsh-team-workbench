@@ -1,0 +1,3 @@
+playwright==1.60.0
+zstandard==0.25.0
+PyYAML==6.0.3

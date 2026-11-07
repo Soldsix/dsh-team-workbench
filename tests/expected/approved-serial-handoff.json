@@ -1,0 +1,114 @@
+{
+  "format": "approved-serial-handoff-v1",
+  "tasks": [
+    {
+      "planTask": "delivery",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "352ee84f5fab84a15f82a6f0768e19cb1fd24181bc89111a8b2075a0aa384d7e",
+      "artifacts": {
+        "final.txt": "352ee84f5fab84a15f82a6f0768e19cb1fd24181bc89111a8b2075a0aa384d7e"
+      }
+    },
+    {
+      "planTask": "execute-group",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "fixture.txt": "cfbc2f2916579293b738cae2ea767816f6d7a0ca3c6091f17ed3df1ef2784341"
+      }
+    },
+    {
+      "planTask": "execute-worker-0",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "worker-0.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
+      }
+    },
+    {
+      "planTask": "execute-worker-1",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "worker-1.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
+      }
+    },
+    {
+      "planTask": "execute-worker-2",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "worker-2.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
+      }
+    },
+    {
+      "planTask": "execute-worker-3",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "worker-3.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
+      }
+    },
+    {
+      "planTask": "execute-worker-4",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "worker-4.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
+      }
+    },
+    {
+      "planTask": "execute-worker-5",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "worker-5.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
+      }
+    },
+    {
+      "planTask": "execute-worker-6",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {
+        "worker-6.txt": "a548cbd0ce23e3ff361635c4a818e02a017af7c34b9eef74b0c5f0bd2fb69d3b"
+      }
+    },
+    {
+      "planTask": "planning",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "e20ed68f0839ad21c86ee2154e0ba7068404939dcaab0da090372513449ce65b",
+      "artifacts": {}
+    },
+    {
+      "planTask": "polish",
+      "status": "completed",
+      "attempts": 1,
+      "phase": "accepted",
+      "fixtureInput": "cfbc2f2916579293b738cae2ea767816f6d7a0ca3c6091f17ed3df1ef2784341",
+      "artifacts": {
+        "fixture.txt": "352ee84f5fab84a15f82a6f0768e19cb1fd24181bc89111a8b2075a0aa384d7e"
+      }
+    }
+  ],
+  "finalSha256": "352ee84f5fab84a15f82a6f0768e19cb1fd24181bc89111a8b2075a0aa384d7e"
+}
