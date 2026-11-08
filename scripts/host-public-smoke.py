@@ -94,7 +94,7 @@ try:
     overlay = [
         {'id': 'llm-pi-ai', 'config': {'providers': {'qa-public': {'apiKeyEnv': 'QA_MODEL_KEY', 'api': 'openai-completions',
             'baseURL': f'http://127.0.0.1:{server.server_address[1]}/v1', 'models': [{'id': 'qa-public-model',
-            'name': 'Synthetic public package test', 'contextWindow': 131072, 'maxTokens': 2048, 'reasoningEfforts': {'off': None}}]}}}},
+            'name': 'Synthetic public package test', 'contextWindow': 131072, 'maxTokens': 2048, 'reasoningEfforts': {'off': None, 'high': 'high'}}]}}}},
         {'id': 'agent-default-model', 'config': {'provider': 'qa-public', 'model': 'qa-public-model', 'reasoningEffort': 'off'}},
         {'id': 'hmr', 'disabled': True},
     ]
@@ -182,5 +182,7 @@ finally:
     if thread.is_alive():
         raise RuntimeError('Local model server did not stop')
     result['hostStopped'] = process is not None and process.poll() is not None
+    result['modelRequests'] = observations
+    result['fixtureErrors'] = failures
     (run / 'result.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
 print(json.dumps(result))

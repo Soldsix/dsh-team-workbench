@@ -23,6 +23,8 @@ for (const [name, spec] of Object.entries(meta.dependencies).filter(([name]) => 
   await mkdir(join(stage, 'node_modules/@dsh-workbench'), { recursive: true })
   await cp(join(root, spec.slice(5)), to, { recursive: true, filter: path => !path.split(/[\\/]/u).includes('node_modules') })
 }
+await writeFile(join(stage, 'package.json'), JSON.stringify({ ...meta,
+  bundleDependencies: Object.keys(meta.dependencies).filter(name => name.startsWith('@dsh-workbench/')) }, null, 2) + '\n')
 const packed = spawnSync(process.execPath, [npm, 'pack', stage, '--ignore-scripts', '--pack-destination', join(root, 'artifacts'), '--json'],
   { cwd: root, windowsHide: true, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })
 if (packed.error) throw packed.error

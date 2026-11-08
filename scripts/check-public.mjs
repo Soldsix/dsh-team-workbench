@@ -13,12 +13,12 @@ if (!meta.keywords?.includes('dsh-plugin') || meta.license !== 'MIT') errors.pus
 if (meta.repository?.url !== 'git+https://github.com/Soldsix/dsh-team-workbench.git') errors.push('Repository owner differs from the publication target')
 if (meta.peerDependencies?.['@deepseek-ai/dsh'] !== '0.2.1-rc.2') errors.push('Unverified host range')
 const internal = Object.entries(meta.dependencies ?? {}).filter(([name]) => name.startsWith('@dsh-workbench/'))
-if (internal.length !== 8 || meta.bundleDependencies?.length !== 8) errors.push('Eight internal modules must be supplied')
+if (internal.length !== 8 || meta.bundleDependencies !== undefined) errors.push('Git source must resolve eight local modules; archive bundling belongs to pack:public')
 for (const [name, spec] of internal) {
   if (!/^file:(?:\.\/)?modules\/[a-z-]+$/u.test(spec)) { errors.push(`Unsafe internal module path: ${name}`); continue }
   const dir = join(root, spec.slice(5))
   const module = JSON.parse(await readFile(join(dir, 'package.json'), 'utf8'))
-  if (module.name !== name || !meta.bundleDependencies.includes(name)) errors.push(`Internal module identity mismatch: ${name}`)
+  if (module.name !== name) errors.push(`Internal module identity mismatch: ${name}`)
   await access(join(dir, 'lib/index.js'))
 }
 const patch = await readFile(join(root, 'cordis.patch.yml'), 'utf8')

@@ -84,16 +84,6 @@
   "engines": {
     "node": "^22.19.0 || >=24.0.0"
   },
-  "bundleDependencies": [
-    "@dsh-workbench/team-runtime",
-    "@dsh-workbench/team-ui",
-    "@dsh-workbench/team-tools",
-    "@dsh-workbench/compat-tools",
-    "@dsh-workbench/compat-policy",
-    "@dsh-workbench/compat-subagent",
-    "@dsh-workbench/compat-web",
-    "@dsh-workbench/compat-fetch"
-  ],
   "author": {
     "name": "Soldsix",
     "url": "https://github.com/Soldsix"
