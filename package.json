@@ -1,8 +1,120 @@
 {
-  "name": "dsh-team-workbench-source",
-  "private": true,
+  "name": "dsh-team-workbench",
+  "version": "0.5.0-rc.2",
+  "license": "MIT",
+  "description": "给 DSH 配一支能长期协作的 AI 小队：双军师、孙代理、按需技能、独立验收和三栏工作台。",
   "type": "module",
-  "version": "0.5.0-rc.1",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "modules",
+    "skills",
+    "cordis.patch.yml",
+    "LICENSE",
+    "README.md",
+    "README.en.md",
+    "README.zh.md",
+    "docs",
+    "examples",
+    "NOTICE.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "SHA256SUMS",
+    "scripts/install.mjs",
+    "public-runtime-sha256.json",
+    "scripts/check-public.mjs"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "localRevision": "20261109.1"
+  },
+  "dependencies": {
+    "@dsh-workbench/team-runtime": "file:modules/runtime",
+    "@dsh-workbench/team-ui": "file:modules/ui",
+    "@dsh-workbench/team-tools": "file:modules/tools",
+    "zod": "^4.4.3",
+    "@dsh-workbench/compat-tools": "file:./modules/compat-tools",
+    "@dsh-workbench/compat-policy": "file:./modules/compat-policy",
+    "@dsh-workbench/compat-subagent": "file:./modules/compat-subagent",
+    "@dsh-workbench/compat-web": "file:./modules/compat-web",
+    "@dsh-workbench/compat-fetch": "file:./modules/compat-fetch"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "3.18.5",
+    "@deepseek-ai/dsh-skill-filesystem": "0.2.1-rc.2",
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-agent": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-skill": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2",
+    "@deepseek-ai/dsh": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-working-directory": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-jobs": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tool-jobs": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-agent-preset-registry": "0.2.1-rc.2"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-working-directory": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-jobs": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-tool-jobs": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-agent-preset-registry": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "bundleDependencies": [
+    "@dsh-workbench/team-runtime",
+    "@dsh-workbench/team-ui",
+    "@dsh-workbench/team-tools",
+    "@dsh-workbench/compat-tools",
+    "@dsh-workbench/compat-policy",
+    "@dsh-workbench/compat-subagent",
+    "@dsh-workbench/compat-web",
+    "@dsh-workbench/compat-fetch"
+  ],
+  "author": {
+    "name": "Soldsix",
+    "url": "https://github.com/Soldsix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soldsix/dsh-team-workbench.git"
+  },
+  "homepage": "https://github.com/Soldsix/dsh-team-workbench#readme",
+  "bugs": {
+    "url": "https://github.com/Soldsix/dsh-team-workbench/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "multi-agent",
+    "agent-team",
+    "skills",
+    "cordis",
+    "chinese"
+  ],
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node node_modules/vitest/vitest.mjs run --config vitest.config.ts",
@@ -13,7 +125,9 @@
     "pack": "node scripts/pack.mjs",
     "check": "node scripts/check-release.mjs",
     "setup:dev": "node scripts/setup-dev.mjs",
-    "prepare:docs": "node scripts/prepare-docs.mjs"
+    "prepare:docs": "node scripts/prepare-docs.mjs",
+    "pack:public": "node scripts/pack-public.mjs",
+    "check:public": "node scripts/check-public.mjs"
   },
   "devDependencies": {
     "esbuild": "0.28.2",

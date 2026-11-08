@@ -1,0 +1,39 @@
+{
+  "id": "2026-10-17-workbench-portable-events-and-continuation",
+  "pluginVersion": "0.5.0-rc.1",
+  "supportedDSH": "0.2.1-rc.2",
+  "projectPlanVersions": [1, 2],
+  "v5Storage": "V2 automation, resource keys and member instructions are JSON inside the existing goal.plan string; no new Session event or global format version is introduced.",
+  "carrier": {
+    "event": "team/task",
+    "outerVersion": 2,
+    "marker": "__dsh_workbench_event__",
+    "payloadVersion": 1,
+    "storage": "task.description"
+  },
+  "projectionStateVersion": 19,
+  "optionalPersistedFields": [
+    "TeamMessageSnapshot.notBefore",
+    "TeamMessageSnapshot.cooldownProvider",
+    "TeamMemberModelRoute.goalRevision",
+    "TeamMemberRole.goalRevision"
+  ],
+  "retainedExistingFields": [
+    "member id",
+    "member Session id",
+    "creation model",
+    "task execution id",
+    "task attempt count",
+    "artifact SHA-256 receipts"
+  ],
+  "en": {
+    "summary": "Adds a portable event carrier, durable cooldown delivery deadlines and goal-bound model and role decisions.",
+    "compatibility": "The independent distribution uses a known official event name. The Team plugin is required to interpret its version-one JSON carrier in existing task fields; older Team implementations are not supported for new writes. Legacy native records remain readable only on a host that recognizes their required event names. No committed Session generation is rewritten. Optional absent fields retain legacy behavior. Artifact copies are addressed by existing receipt digests and introduce no new Session field.",
+    "verification": "Portable projection, optional-field recovery, clean official installation, model changes and restart are verified by the release checks. The repository acknowledgement is 2026-10-17-team-portable-continuation; the global Session writer and committed generations remain unchanged."
+  },
+  "zh": {
+    "summary": "增加可移植事件载体、持久冷却投递期限以及绑定目标版本的模型与岗位决定。",
+    "compatibility": "独立发行版使用官方已知事件名。任务既有字段内的第一版 JSON 载体需要团队插件解释；不支持用旧团队实现读取新写入。旧原生记录仅能在认识其必读事件名的宿主读取。不重写已提交的会话世代。可选字段缺失时保留原有行为。产物副本按已有回执摘要寻址，不增加会话字段。",
+    "verification": "发行检查验证可移植投影、可选字段恢复、官方干净安装、换模与重启。仓库确认记录为 2026-10-17-team-portable-continuation；全局会话写入版本和已提交世代不变。"
+  }
+}

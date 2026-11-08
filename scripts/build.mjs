@@ -107,7 +107,7 @@ for await (const path of files(join(team, 'docs'))) if (path.endsWith('.md')) {
 }
 for (const name of ['NOTICE.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md']) await cp(join(root, name), join(team, name))
 await mkdir(join(team, 'scripts'), { recursive: true })
-await cp(join(root, 'scripts/install.mjs'), join(team, 'scripts/install.mjs'))
+await cp(join(root, 'scripts/install-legacy.mjs'), join(team, 'scripts/install.mjs'))
 const codeHashes = []
 for (const base of ['src', 'skills', 'modules']) for await (const path of files(join(team, base))) {
   if (path.split(/[\\/]/u).includes('node_modules')) continue
@@ -127,3 +127,4 @@ for (const dir of directories.slice(1)) {
   await cp(dir, target, { recursive: true, filter: path => !path.split(/[\\/]/u).includes('node_modules') })
 }
 console.log(`Built ${directories.length} plugin modules and ${catalog.length} on-demand skill entries.`)
+await import('./sync-public.mjs')

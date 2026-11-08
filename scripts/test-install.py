@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--cli', required=True)
 parser.add_argument('--archive', required=True)
 parser.add_argument('--run', required=True)
+parser.add_argument('--package-name', choices=['@dsh-workbench/team', 'dsh-team-workbench'], default='@dsh-workbench/team')
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 run = Path(args.run).resolve()
@@ -46,7 +47,13 @@ command([cli, '--profile', 'web', '--dump-default-config'])
 command([cli, 'plugin', '--profile', 'web', 'add', archive])
 profile = home / 'profiles/web'
 patch_path = profile / 'cordis.patch.yml'
-bundle = profile / 'node_modules/@dsh-workbench/team'
+bundle = profile / 'node_modules' / args.package_name
+other_package = '@dsh-workbench/team' if args.package_name == 'dsh-team-workbench' else 'dsh-team-workbench'
+initial_files = {name: (profile / name).read_bytes() for name in ('package.json', 'cordis.yml', 'pnpm-lock.yaml') if (profile / name).exists()}
+rejected = command([root / 'scripts/install.mjs', '--cli', cli, '--home', home, '--profile', 'web', '--archive', archive,
+                    '--package-name', other_package], succeeds=False)
+if 'cross-name migration' not in rejected.stderr or any((profile / name).read_bytes() != data for name, data in initial_files.items()):
+    raise RuntimeError('Cross-name installation was not rejected without modifying the profile')
 
 
 class FixtureLoader(yaml.SafeLoader):
@@ -72,7 +79,7 @@ patch_path.write_text(yaml.safe_dump([*originals, {'id': 'agent-team', 'config':
 sentinel = home / 'synthetic-session-sentinel.bin'
 sentinel.write_bytes(b'RETAIN_SYNTHETIC_SESSION_BYTES\x00\x01')
 before_sentinel = sentinel.read_bytes()
-helper = [root / 'scripts/install.mjs', '--cli', cli, '--home', home, '--profile', 'web', '--archive', archive]
+helper = [root / 'scripts/install.mjs', '--cli', cli, '--home', home, '--profile', 'web', '--archive', archive, '--package-name', args.package_name]
 original_patch = patch_path.read_bytes()
 command(helper)
 if patch_path.read_bytes() != original_patch:
@@ -103,7 +110,7 @@ if explicit['autoProvisionPlannedMembers'] is not False or explicit['finalDelive
 files = ['package.json', 'cordis.yml', 'cordis.patch.yml', 'pnpm-lock.yaml', 'pnpm-workspace.yaml']
 hashes = {name: hashlib.sha256((profile / name).read_bytes()).hexdigest() for name in files}
 dependency_path = bundle.resolve()
-runtime_path = profile / 'node_modules/@dsh-workbench/team/node_modules/@dsh-workbench/team-runtime/lib/index.js'
+runtime_path = bundle / 'node_modules/@dsh-workbench/team-runtime/lib/index.js'
 runtime_hash = hashlib.sha256(runtime_path.read_bytes()).hexdigest()
 wrong = run / 'wrong-version.tgz'
 with tarfile.open(archive, 'r:gz') as source, tarfile.open(wrong, 'w:gz') as target:
@@ -115,7 +122,7 @@ with tarfile.open(archive, 'r:gz') as source, tarfile.open(wrong, 'w:gz') as tar
             content = (json.dumps(data) + '\n').encode()
             entry.size = len(content)
         target.addfile(entry, io.BytesIO(content) if content is not None else None)
-wrong_helper = [root / 'scripts/install.mjs', '--cli', cli, '--home', home, '--profile', 'web', '--archive', wrong]
+wrong_helper = [root / 'scripts/install.mjs', '--cli', cli, '--home', home, '--profile', 'web', '--archive', wrong, '--package-name', args.package_name]
 command([*wrong_helper, '--apply', '--host-stopped'], succeeds=False)
 if any(hashlib.sha256((profile / name).read_bytes()).hexdigest() != digest for name, digest in hashes.items()):
     raise RuntimeError('Failed installation did not restore profile bytes')
@@ -125,11 +132,12 @@ if sentinel.read_bytes() != before_sentinel:
     raise RuntimeError('Session sentinel changed')
 command([cli, '--profile', 'web', '--dump-config'])
 patch_path.write_text(yaml.safe_dump(originals, allow_unicode=True), encoding='utf-8')
-command([cli, 'plugin', '--profile', 'web', 'remove', '@dsh-workbench/team'])
+command([cli, 'plugin', '--profile', 'web', 'remove', args.package_name])
 command([cli, '--profile', 'web', '--dump-config'])
 if sentinel.read_bytes() != before_sentinel or yaml.safe_load(patch_path.read_text(encoding='utf-8')) != originals:
     raise RuntimeError('Removal changed unrelated settings or Session sentinel')
-result = {'passed': True, 'realPaidRequests': 0, 'planIsReadOnly': True, 'providerSettingsRetained': True,
+result = {'passed': True, 'packageName': args.package_name, 'realPaidRequests': 0, 'planIsReadOnly': True, 'providerSettingsRetained': True,
+          'duplicateBundleRejectedBeforeMutation': True,
           'modelAndModeRowsRetained': True, 'v5DefaultsAdded': True, 'explicitChoicesRetained': True,
           'failureRestoredProfileBytes': True, 'failureRestoredDependencies': True,
           'sessionSentinelRetained': True, 'removalVerified': True, 'commands': counter}

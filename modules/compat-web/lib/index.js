@@ -1,0 +1,253 @@
+// packages/team/modules/compat-web/lib/types/index.js
+import { Service } from "@deepseek-ai/cordis";
+import { AsyncLocalStorage } from "node:async_hooks";
+import z from "@deepseek-ai/schemastery";
+
+// packages/team/modules/compat-web/lib/types/types.js
+import { HarnessError } from "@deepseek-ai/dsh-llm";
+var WebError = class extends HarnessError {
+};
+
+// packages/team/modules/compat-web/lib/types/index.js
+var WebRuntime = class extends Service {
+  config;
+  /**
+   * Provider selection config. Operational env overrides feed the SAME fields:
+   * `$DSH_WEB_SEARCH_PROVIDER` / `$DSH_WEB_FETCH_PROVIDER` are equivalent to
+   * `searchProvider` / `fetchProvider` and are NOT a hidden priority chain.
+   */
+  static Config = z.object({
+    searchProvider: z.string().volatile(),
+    fetchProvider: z.string().volatile(),
+    searchFallbackProviders: z.array(z.string()).default([]),
+    searchFailureCooldownMs: z.number().step(1).min(0).default(3e4)
+  });
+  searchProviders = /* @__PURE__ */ new Map();
+  fetchProviders = /* @__PURE__ */ new Map();
+  searchProviderEnv;
+  get searchProviderId() {
+    return this.config.searchProvider.get() ?? this.searchProviderEnv;
+  }
+  fetchProviderEnv;
+  get fetchProviderId() {
+    return this.config.fetchProvider.get() ?? this.fetchProviderEnv;
+  }
+  fetchOrigins = new AsyncLocalStorage();
+  searchFallbackProviderIds;
+  searchFailureCooldownMs;
+  searchFailures = /* @__PURE__ */ new Map();
+  constructor(ctx, config) {
+    super(ctx, "web");
+    this.config = config;
+    this.searchProviderEnv = process.env.DSH_WEB_SEARCH_PROVIDER;
+    this.fetchProviderEnv = process.env.DSH_WEB_FETCH_PROVIDER;
+    this.searchFallbackProviderIds = [...config.searchFallbackProviders ?? []];
+    this.searchFailureCooldownMs = config.searchFailureCooldownMs ?? 3e4;
+    if (!Number.isSafeInteger(this.searchFailureCooldownMs) || this.searchFailureCooldownMs < 0) {
+      throw new Error("searchFailureCooldownMs must be a nonnegative safe integer");
+    }
+    if (this.searchFallbackProviderIds.length > 0 && this.searchProviderId === void 0 || this.searchFallbackProviderIds.some((id) => id.trim() === "" || id === this.searchProviderId) || new Set(this.searchFallbackProviderIds).size !== this.searchFallbackProviderIds.length) {
+      throw new Error("searchFallbackProviders requires a pinned searchProvider and distinct nonempty backup ids");
+    }
+  }
+  /**
+   * Register a search provider. Throws {@link WebError} `WEB_DUPLICATE_PROVIDER`
+   * if its id is already registered for search. Returns a disposer; disposed
+   * with the calling fiber.
+   * @param provider - the provider; its `id` is the registry key.
+   * @returns the disposer that unregisters the provider.
+   */
+  registerSearchProvider(provider) {
+    return this.registerProvider(this.searchProviders, provider, () => {
+      this.searchFailures.delete(provider.id);
+    });
+  }
+  /**
+   * Register a fetch provider. Throws {@link WebError} `WEB_DUPLICATE_PROVIDER`
+   * if its id is already registered for fetch. Returns a disposer; disposed
+   * with the calling fiber.
+   * @param provider - the provider; its `id` is the registry key.
+   * @returns the disposer that unregisters the provider.
+   */
+  registerFetchProvider(provider) {
+    return this.registerProvider(this.fetchProviders, provider);
+  }
+  registerProvider(store, provider, onDispose) {
+    if (store.has(provider.id)) {
+      throw new WebError(`a web provider with id "${provider.id}" is already registered`, "WEB_DUPLICATE_PROVIDER");
+    }
+    const dispose = this.ctx.effect(function* () {
+      store.set(provider.id, provider);
+      yield () => {
+        store.delete(provider.id);
+        onDispose?.();
+      };
+    }, "web.registerProvider()");
+    return () => void dispose();
+  }
+  /**
+   * Run one search through the selected provider. Resolves the provider at call
+   * time with the selection rules above; throws {@link WebError} when the
+   * capability cannot run. The seam enforces `request.maxResults` on the result:
+   * if the provider over-returns, `sources[]` is truncated and `truncated` set.
+   * @param request - the query and optional result limit.
+   * @param signal - optional cancellation signal forwarded to the provider.
+   * @returns the provider's results, capped to `request.maxResults`.
+   */
+  async search(request, signal) {
+    if (signal?.aborted)
+      throw new WebError("web search aborted", "WEB_ABORTED", { cause: signal.reason });
+    const ids = this.searchProviderId === void 0 ? [resolveProvider({ providers: this.searchProviders }).id] : [this.searchProviderId, ...this.searchFallbackProviderIds];
+    const failures = [];
+    let lastError;
+    for (const id of ids) {
+      if (signal?.aborted)
+        throw new WebError("web search aborted", "WEB_ABORTED", { cause: signal.reason });
+      try {
+        const provider = resolveProvider({ providers: this.searchProviders, configuredId: id });
+        const held = this.searchFailures.get(id);
+        if (held !== void 0 && held.retryAt > Date.now()) {
+          throw new WebError(`search provider "${id}" is cooling down after ${held.code} until ${new Date(held.retryAt).toISOString()}; use web_status to inspect configured alternatives`, "WEB_SEARCH_COOLDOWN");
+        }
+        const result = await provider.search(request, signal);
+        if (signal?.aborted)
+          throw new WebError("web search aborted", "WEB_ABORTED", { cause: signal.reason });
+        this.searchFailures.delete(id);
+        const notice = failures.length === 0 ? void 0 : `Search used the configured backup provider "${id}" after ${failures.join(", ")}.`;
+        return capSources(notice === void 0 ? result : {
+          ...result,
+          content: [notice, result.content].filter((value) => value !== void 0 && value.length > 0).join("\n\n")
+        }, request.maxResults);
+      } catch (error) {
+        if (signal?.aborted)
+          throw new WebError("web search aborted", "WEB_ABORTED", { cause: signal.reason });
+        if (!(error instanceof WebError) || !searchCanUseBackup(error.code))
+          throw error;
+        if (error.code !== "WEB_SEARCH_COOLDOWN" && this.searchProviders.has(id)) {
+          const retryAt = error.code === "WEB_SEARCH_RATE_LIMITED" || error.code === "WEB_PROVIDER_ERROR" ? Date.now() + this.searchFailureCooldownMs : Date.now();
+          this.searchFailures.set(id, { code: error.code, retryAt });
+        }
+        lastError = error;
+        failures.push(`${id} (${error.code})`);
+      }
+    }
+    if (lastError === void 0)
+      throw new WebError("no search provider was selected", "WEB_PROVIDER_UNAVAILABLE");
+    throw new WebError(`${lastError.message}
+Search attempts: ${failures.join(", ")}. Inspect web_status before repeating; provider failures do not revoke user authorization.`, lastError.code, { cause: lastError });
+  }
+  /**
+   * Read local provider registration, configuration, and recent search failures without network access.
+   * @returns credential-free local observations; availability does not prove a remote request will succeed.
+   */
+  status() {
+    return {
+      search: {
+        ...this.searchProviderId === void 0 ? {} : { configuredProvider: this.searchProviderId },
+        fallbackProviders: [...this.searchFallbackProviderIds],
+        providers: [...this.searchProviders.values()].map((provider) => {
+          const failure = this.searchFailures.get(provider.id);
+          return { id: provider.id, available: provider.available(), ...failure === void 0 ? {} : { failure: { ...failure } } };
+        })
+      },
+      fetch: {
+        ...this.fetchProviderId === void 0 ? {} : { configuredProvider: this.fetchProviderId },
+        providers: [...this.fetchProviders.values()].map((provider) => ({
+          id: provider.id,
+          available: provider.available(),
+          preservesOrigin: provider.preservesOrigin === true
+        }))
+      }
+    };
+  }
+  /** Resolve the fetch provider without changing search recovery state. */
+  selectedFetchProvider() {
+    return resolveProvider({
+      providers: this.fetchProviders,
+      ...this.fetchProviderId !== void 0 ? { configuredId: this.fetchProviderId } : {}
+    });
+  }
+  /**
+   * Retrieve one URL through the selected provider. Resolves the provider at
+   * call time with the selection rules above; throws {@link WebError} when the
+   * capability cannot run. A non-2xx response is a result, not a throw.
+   * @param request - the URL plus retrieval options.
+   * @param signal - optional cancellation signal forwarded to the provider.
+   * @returns the retrieval outcome; non-2xx responses resolve descriptively.
+   */
+  async fetch(request, signal) {
+    const provider = this.selectedFetchProvider();
+    const requiredOrigins = this.fetchOrigins.getStore();
+    if (requiredOrigins !== void 0) {
+      const url = new URL(request.url);
+      if (provider.preservesOrigin !== true || !["http:", "https:"].includes(url.protocol) || url.username || url.password || requiredOrigins.some((origin) => origin !== url.origin)) {
+        throw new WebError("fetch provider or target cannot honor the required origin", "WEB_ORIGIN_RESTRICTION");
+      }
+    }
+    return provider.fetch(request, signal);
+  }
+  /**
+   * Enforce one requested origin at actual provider dispatch throughout an asynchronous operation.
+   * @param origin - Approved normalized HTTP(S) origin.
+   * @param operation - Work whose fetch calls must use a provider preserving that origin.
+   * @returns the operation result; nested requirements intersect and simultaneous calls remain isolated.
+   */
+  withFetchOrigin(origin, operation) {
+    return this.fetchOrigins.run([...this.fetchOrigins.getStore() ?? [], origin], operation);
+  }
+  /**
+   * Check the selected fetch provider's redirect enforcement before a scoped request.
+   * @returns true only for a usable provider that confines every redirect to the requested origin.
+   */
+  fetchPreservesOrigin() {
+    const provider = this.selectedFetchProvider();
+    return provider.preservesOrigin === true;
+  }
+};
+function searchCanUseBackup(code) {
+  return [
+    "WEB_PROVIDER_ERROR",
+    "WEB_PROVIDER_CONFIGURED_MISSING",
+    "WEB_PROVIDER_CONFIGURED_UNAVAILABLE",
+    "WEB_PROVIDER_CREDENTIAL_MISSING",
+    "WEB_PROVIDER_RESPONSE_INVALID",
+    "WEB_SEARCH_NOT_PERFORMED",
+    "WEB_SEARCH_RATE_LIMITED",
+    "WEB_SEARCH_TOOL_ERROR",
+    "WEB_SEARCH_COOLDOWN"
+  ].includes(code);
+}
+function resolveProvider(selection) {
+  const { configuredId, providers } = selection;
+  if (configuredId !== void 0) {
+    const provider = providers.get(configuredId);
+    if (!provider) {
+      throw new WebError(`configured web provider "${configuredId}" is not registered`, "WEB_PROVIDER_CONFIGURED_MISSING");
+    }
+    if (!provider.available()) {
+      throw new WebError(`configured web provider "${configuredId}" is registered but unavailable`, "WEB_PROVIDER_CONFIGURED_UNAVAILABLE");
+    }
+    return provider;
+  }
+  const usable = [...providers.values()].filter((provider) => provider.available());
+  const [single] = usable;
+  if (single === void 0) {
+    throw new WebError("no usable web provider is registered", "WEB_PROVIDER_UNAVAILABLE");
+  }
+  if (usable.length > 1) {
+    const ids = usable.map((provider) => provider.id).join(", ");
+    throw new WebError(`multiple usable web providers are registered (${ids}); configure one explicitly`, "WEB_PROVIDER_AMBIGUOUS");
+  }
+  return single;
+}
+function capSources(result, maxResults) {
+  if (maxResults === void 0 || result.sources.length <= maxResults)
+    return result;
+  return { ...result, sources: result.sources.slice(0, maxResults), truncated: true };
+}
+var index_default = WebRuntime;
+export {
+  WebError,
+  WebRuntime,
+  index_default as default
+};

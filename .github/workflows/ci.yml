@@ -77,6 +77,10 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           New-Item -ItemType Directory -Force artifacts | Out-Null
           npm run pack
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm run check:public
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          npm run pack:public
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.14'
@@ -100,6 +104,8 @@ jobs:
           }
           python scripts/test-install.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/install-profile
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/test-install.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-team-workbench-0.5.0-rc.2.tgz --package-name dsh-team-workbench --run private-qa/public-install-profile
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python scripts/test-release-gates.py --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/release-gates
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
@@ -112,6 +118,7 @@ jobs:
             private-qa/stock-profile/result.json
             private-qa/custom-profile/result.json
             private-qa/install-profile/result.json
+            private-qa/public-install-profile/result.json
             private-qa/native-shell/result.json
             private-qa/release-gates/result.json
             private-qa/*/handoff-snapshot.json

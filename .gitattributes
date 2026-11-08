@@ -23,3 +23,14 @@ packages/team/modules/ui/src/client/TeamView.module.css -text whitespace=cr-at-e
 packages/team/modules/runtime/lib/typert.remote-client.d.ts whitespace=-blank-at-eof,cr-at-eol
 packages/team/modules/compat-subagent/lib/typert.remote-client.d.ts whitespace=-blank-at-eof,cr-at-eol
 packages/team/skills/team-workbench/references/team-adspower-browser/official/** whitespace=-blank-at-eol,cr-at-eol
+# Public root ships the same prebuilt runtime and skill bytes as the tested bundle.
+cordis.patch.yml -text whitespace=cr-at-eol
+demos/harbor/standalone/*.html binary linguist-generated
+lib/** -text whitespace=cr-at-eol linguist-generated
+modules/**/lib/** -text whitespace=cr-at-eol linguist-generated
+src/** -text whitespace=cr-at-eol
+skills/** -text whitespace=cr-at-eol
+modules/**/src/** -text whitespace=cr-at-eol
+modules/runtime/lib/typert.remote-client.d.ts whitespace=-blank-at-eof,cr-at-eol
+modules/compat-subagent/lib/typert.remote-client.d.ts whitespace=-blank-at-eof,cr-at-eol
+skills/team-workbench/references/team-adspower-browser/official/** whitespace=-blank-at-eol,cr-at-eol

@@ -13,15 +13,17 @@
 
 ## 准备与计划
 
-先核对 [SHA-256 清单](../SHA256SUMS)与[兼容矩阵](compatibility.md)。发布包中的 `.tgz` 已包括八个内部模块；这些模块不是需要分别安装的插件。源码 ZIP 用于开发，不能直接当 bundle 根目录安装。
+先核对 [SHA-256 清单](../SHA256SUMS)与[兼容矩阵](compatibility.md)。发布包中的 `.tgz` 已包括八个内部模块；这些模块不是需要分别安装的插件。当前仓库根目录也是可安装的完整 bundle；GitHub 源码安装命令见主页。历史 `0.5.0-rc.1` 的开发根目录不具备这个入口。
 
 以下参数由部署者填写绝对路径。`--cli` 是当前 DSH 安装的 `lib/bin.js`，`--home` 是准备升级的 DSH home，`--profile` 是目标 profile；助手通过受支持的 `dsh` CLI 管理包，不直接启动底层应用。
 
 ```text
-node scripts/install.mjs --cli <DSH的lib/bin.js> --home <独立DSH_HOME> --profile web --archive <发行包.tgz>
+node scripts/install.mjs --cli <DSH的lib/bin.js> --home <独立DSH_HOME> --profile web --archive <发行包.tgz> --package-name dsh-team-workbench
 ```
 
 默认生成 `workbench-install-plans/<时间>/`，包括 proposed patch 和计划元数据。目录可能包含原配置中的私有值，应保留在本机，不随漏洞报告上传。助手只迁移 tools、sandbox-policy、subagent、web、web-fetch-http 五行的配置；模型与模式行保持原值。
+
+`--package-name dsh-team-workbench` 选择当前公开根包；省略该参数时仍识别历史 `@dsh-workbench/team`，供旧版回归和原部署流程使用。助手会校验实际安装的包名和版本。已有另一包名的团队 bundle 时会在修改前停止，避免两个 profile layer 同时启用；跨包名迁移请在新的隔离 home 中重建已备份的配置并验证，不支持直接覆盖切换。
 
 旧版用户补丁若覆盖了整块 agent-team 配置，助手只补充缺失的 V5 创建、协调与交付选项，保留已显式配置的值，并在计划中列出 addedRuntimeKeys。动态计算的整块配置需要手动迁移；不会在无法解释时悄悄覆盖。
 
@@ -41,7 +43,7 @@ node scripts/install.mjs --cli <DSH的lib/bin.js> --home <独立DSH_HOME> --prof
 
 新版本使用已知 Session 事件载体保存团队记录；读取仍需要本插件解释，卸载后不能继续原团队执行。回滚时停止目标宿主，恢复安装助手保存的 profile 原文件及对应旧包依赖；保留升级后新增的 Session 和成果，勿用旧目录覆盖整份数据。包缓存残留不会自动启动服务。
 
-确认不再需要团队运行时，可在隔离副本执行 `dsh plugin --profile web remove @dsh-workbench/team`。先恢复迁移前提供方补丁，再重启核查；不要只删除包而继续保留 `workbench-*` 的用户配置行。正式卸载前应结束团队任务并保存交接。
+确认不再需要团队运行时，可在隔离副本执行 `dsh plugin --profile web remove dsh-team-workbench`；历史包使用其原名 `@dsh-workbench/team`。先恢复迁移前提供方补丁，再重启核查；不要只删除包而继续保留 `workbench-*` 的用户配置行。正式卸载前应结束团队任务并保存交接。
 
 ## 故障定位
 

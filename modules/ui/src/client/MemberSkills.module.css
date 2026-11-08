@@ -1,0 +1,11 @@
+.skills { margin-top: 24px; overflow-wrap: anywhere; }
+.skills h3 { margin-bottom: 8px; font-size: 14px; font-weight: 500; }
+.hint { color: var(--dsw-alias-label-secondary); font-size: 12px; line-height: 1.6; }
+.choices, .versions ul { list-style: none; margin: 0; padding: 0; }
+.choices li { margin: 14px 0; }
+.choices p { margin: 0 0 3px; white-space: pre-wrap; line-height: 1.7; }
+.choices span, .versions { color: var(--dsw-alias-label-secondary); font-size: 12px; }
+.versions summary { cursor: pointer; }
+.versions p { margin: 10px 0; }
+.versions li { margin-top: 12px; line-height: 1.6; }
+.versions code { display: block; margin-top: 3px; white-space: pre-wrap; }

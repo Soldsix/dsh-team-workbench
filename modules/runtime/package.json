@@ -1,0 +1,81 @@
+{
+  "name": "@dsh-workbench/team-runtime",
+  "description": "Implicit-root Agent Teams roster, durable peer mailbox, and shared task DAG",
+  "version": "0.5.0-rc.1",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./experts": {
+      "types": "./lib/types/experts.d.ts",
+      "default": "./lib/experts.js"
+    },
+    "./typert": {
+      "types": "./lib/typert.host.d.ts",
+      "default": "./lib/typert.host.js"
+    },
+    "./remote": {
+      "types": "./lib/typert.remote-client.d.ts",
+      "default": "./lib/typert.remote-client.js"
+    },
+    "./client": {
+      "types": "./lib/types/client.d.ts",
+      "default": "./lib/types/client.js"
+    },
+    "./types": {
+      "types": "./lib/types/types.d.ts",
+      "default": "./lib/types/types.js"
+    },
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "tests",
+    "README.md",
+    "README.zh.md",
+    "locale",
+    "persistence-acknowledgement.json"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^4.4.3",
+    "@dsh-workbench/compat-subagent": "file:../compat-subagent"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-brand": "0.2.1-rc.2",
+    "@deepseek-ai/schemastery": "3.18.5",
+    "@deepseek-ai/dsh-util-values": "0.2.1-rc.2",
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-agent": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session-persistence": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-agent-preset-registry": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-sandbox": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-sandbox-policy": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-fs-sandbox": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-bash-sandbox": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-pwsh-sandbox": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-ptc-runtime-node": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-storage-domain": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-user-questions": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-web": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-typert-protocol": "0.2.1-rc.2",
+    "@deepseek-ai/dsh": "0.2.1-rc.2",
+    "@dsh-workbench/compat-tools": "0.5.0-rc.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  }
+}

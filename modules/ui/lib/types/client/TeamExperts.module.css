@@ -1,0 +1,39 @@
+.catalog { padding-block: 20px; color: var(--dsw-alias-label-primary); }
+.hint { margin: 0; color: var(--dsw-alias-label-secondary); font-size: 12px; line-height: 1.7; }
+.error { color: var(--dsw-alias-state-error-primary); font-size: 13px; }
+.layout { display: grid; grid-template-columns: 216px minmax(0, 1fr); gap: 28px; margin-top: 20px; align-items: start; }
+.sidebar, .editor { min-width: 0; }
+.sidebar { display: flex; flex-direction: column; gap: 14px; }
+.choices { display: flex; flex-direction: column; gap: 4px; max-height: 540px; overflow-y: auto; }
+.choice { display: flex; flex-direction: column; gap: 5px; padding: 12px; border: 0; border-radius: 8px; background: transparent; color: inherit; text-align: start; cursor: pointer; overflow-wrap: anywhere; }
+.choice[aria-pressed="true"] { background: var(--dsw-alias-bg-layer-2); }
+.choice strong { font-size: 13px; font-weight: 600; }
+.choice span, .choice small { color: var(--dsw-alias-label-secondary); font-size: 12px; line-height: 1.5; }
+.actions, .footer, .editorHeader, .binding { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.editorHeader { margin-bottom: 20px; }
+.editorHeader h2 { margin: 0; font-size: 18px; font-weight: 600; overflow-wrap: anywhere; }
+.fields { min-width: 0; padding: 0; margin: 0; border: 0; display: flex; flex-direction: column; gap: 17px; }
+.fields label { display: flex; flex-direction: column; gap: 7px; color: var(--dsw-alias-label-secondary); font-size: 12px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.catalog input:not([type="checkbox"]), .catalog textarea, .catalog select { box-sizing: border-box; min-width: 0; width: 100%; padding: 9px 11px; border: 1px solid var(--dsw-alias-border-l2); border-radius: 7px; background: var(--dsw-alias-bg-layer-1); color: var(--dsw-alias-label-primary); font: inherit; font-size: 13px; line-height: 1.6; }
+.catalog textarea { resize: vertical; }
+.catalog .instructions { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+.catalog :is(input, textarea, select, button):focus-visible { outline: 2px solid var(--dsw-alias-state-business-primary); outline-offset: 2px; }
+.catalog .checkbox { display: flex; flex-direction: row; align-items: center; gap: 8px; font-size: 12px; color: var(--dsw-alias-label-secondary); }
+.models { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 12px; }
+.button, .primaryButton, .textButton { font: inherit; font-size: 12px; cursor: pointer; padding: 8px 12px; border-radius: 7px; }
+.button { border: 1px solid var(--dsw-alias-border-l2); background: transparent; color: var(--dsw-alias-label-primary); }
+.primaryButton { border: 0; background: var(--dsw-alias-state-business-primary); color: var(--dsw-alias-label-on-color, white); }
+.textButton { border: 0; background: transparent; color: var(--dsw-alias-label-secondary); }
+.catalog :disabled { opacity: .5; cursor: default; }
+.footer { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--dsw-alias-border-l2); }
+.bindings { margin-top: 30px; }
+.bindings h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; }
+.bindings > .hint { margin-block: 8px; }
+.binding { border-top: 1px solid var(--dsw-alias-border-l2); padding-block: 8px; font-size: 12px; overflow-wrap: anywhere; }
+.conflict { padding: 12px; margin-bottom: 18px; border: 1px solid var(--dsw-alias-border-l2); border-radius: 7px; font-size: 12px; }
+@media (max-width: 900px) { .models { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .layout { grid-template-columns: 1fr; gap: 24px; }
+  .choices { max-height: 180px; }
+}

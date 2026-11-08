@@ -7,16 +7,20 @@ import { pathToFileURL, fileURLToPath } from 'node:url'
 import { createHash } from 'node:crypto'
 
 const values = new Map()
-const options = new Set(['--cli', '--home', '--profile', '--archive', '--apply', '--host-stopped'])
+const options = new Set(['--cli', '--home', '--profile', '--archive', '--package-name', '--apply', '--host-stopped'])
 for (let i = 2; i < process.argv.length; i++) {
   const key = process.argv[i]
-  if (!options.has(key) || values.has(key)) throw new Error('Use distinct --cli, --home, --profile, --archive and optional --apply --host-stopped')
+  if (!options.has(key) || values.has(key)) throw new Error('Use distinct --cli, --home, --profile, --archive and optional --package-name --apply --host-stopped')
   values.set(key, ['--apply', '--host-stopped'].includes(key) ? true : process.argv[++i])
 }
 for (const key of ['--cli', '--home', '--profile', '--archive']) if (typeof values.get(key) !== 'string') throw new Error(`Required: ${key}`)
 const profile = values.get('--profile')
 if (!/^[a-z0-9][a-z0-9_-]*$/iu.test(profile)) throw new Error('Profile must be a simple profile name')
 const cli = resolve(values.get('--cli')), home = resolve(values.get('--home')), archive = resolve(values.get('--archive'))
+const packageName = values.get('--package-name') ?? '@dsh-workbench/team'
+if (!['@dsh-workbench/team', 'dsh-team-workbench'].includes(packageName)) throw new Error('Unsupported package name')
+const ownPackage = JSON.parse(await readFile(fileURLToPath(new URL('../package.json', import.meta.url)), 'utf8'))
+if (packageName === 'dsh-team-workbench' && ownPackage.name !== packageName) throw new Error('Use the public root installation helper for dsh-team-workbench')
 const require = createRequire(cli)
 const hostVersion = JSON.parse(await readFile(require.resolve('@deepseek-ai/dsh/package.json'), 'utf8')).version
 if (hostVersion !== '0.2.1-rc.2') throw new Error(`This release supports DSH 0.2.1-rc.2, observed ${hostVersion}; do not force an incompatible host`)
@@ -42,6 +46,10 @@ function* rows(list) {
 }
 const effective = yaml.load(cliRun(['--profile', profile, '--dump-config']), { schema: include.entryListSchema })
 if (!Array.isArray(effective)) throw new Error('Host did not return an entry list')
+const otherPackage = packageName === 'dsh-team-workbench' ? '@dsh-workbench/team' : 'dsh-team-workbench'
+if ([...rows(effective)].some(row => row.name === otherPackage && row.disabled !== true)) {
+  throw new Error(`The profile already enables ${otherPackage}; cross-name migration requires a separate profile and must not enable two bundle layers`)
+}
 const dir = join(home, 'profiles', profile)
 const patchPath = join(dir, 'cordis.patch.yml')
 const original = await readFile(patchPath, 'utf8').catch(error => { if (error.code === 'ENOENT') return '[]\n'; throw error })
@@ -54,6 +62,7 @@ const translated = patch.map(row => {
   return { ...row, id: mapping[0], ...row.name ? { name: mapping[1] } : {} }
 })
 const defaults = JSON.parse(await readFile(fileURLToPath(new URL('../examples/v5-migration-defaults.json', import.meta.url)), 'utf8'))
+const expectedPackageVersion = packageName === 'dsh-team-workbench' ? ownPackage.version : defaults.packageVersion
 const addedRuntimeKeys = []
 for (const row of translated) if (row.id === 'agent-team' && row.config !== undefined) {
   if (row.config === null || Array.isArray(row.config) || typeof row.config !== 'object'
@@ -80,7 +89,7 @@ const planDir = join(home, 'workbench-install-plans', new Date().toISOString().r
 await mkdir(planDir, { recursive: true })
 await writeFile(join(planDir, 'cordis.patch.proposed.yml'), output)
 const plan = { profile, hostVersion, migrated,
-  expectedPackageVersion: defaults.packageVersion, addedRuntimeKeys,
+  expectedPackageName: packageName, expectedPackageVersion, addedRuntimeKeys,
   archiveSha256: createHash('sha256').update(await readFile(archive)).digest('hex'),
   touches: ['profile package and lock', 'profile provider overrides', 'stopped profile dependencies'],
   preserves: ['Sessions', 'mode definitions', 'model connections', 'persona files'], applied: false, status: 'planned' }
@@ -104,8 +113,8 @@ try {
   catch (error) { if (error.code !== 'ENOENT') throw error }
   installationStarted = true
   cliRun(['plugin', '--profile', profile, 'add', archive])
-  const installed = JSON.parse(await readFile(join(dir, 'node_modules/@dsh-workbench/team/package.json'), 'utf8'))
-  if (installed.version !== defaults.packageVersion) throw new Error('The archive version does not match this installation helper; restoring the saved profile')
+  const installed = JSON.parse(await readFile(join(dir, 'node_modules', packageName, 'package.json'), 'utf8'))
+  if (installed.name !== packageName || installed.version !== expectedPackageVersion) throw new Error('The archive identity does not match this installation helper; restoring the saved profile')
   const temporary = patchPath + '.workbench-tmp'
   await writeFile(temporary, output)
   await rename(temporary, patchPath)
