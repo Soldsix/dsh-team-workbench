@@ -34,6 +34,9 @@ const mappings = new Map([
   ['web', ['workbench-web', '@dsh-workbench/compat-web', '@deepseek-ai/dsh-web']],
   ['web-fetch-http', ['workbench-web-fetch-http', '@dsh-workbench/compat-fetch', '@deepseek-ai/dsh-web-fetch-http']],
 ])
+if (packageName === 'dsh-team-workbench') {
+  for (const mapping of mappings.values()) mapping[1] = mapping[1].replace('@dsh-workbench/', 'dsh-team-workbench/')
+}
 function cliRun(args) {
   const result = spawnSync(process.execPath, [cli, ...args], { env: { ...process.env, DSH_HOME: home, COREPACK_ENABLE_DOWNLOAD_PROMPT: '0' },
     windowsHide: true, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024, timeout: 360_000 })

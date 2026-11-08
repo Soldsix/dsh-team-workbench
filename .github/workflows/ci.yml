@@ -88,6 +88,8 @@ jobs:
         run: |
           python -m pip install -r requirements-qa.txt
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/test-public-package.py --archive artifacts/dsh-team-workbench-0.5.0-rc.2.tgz --run (Join-Path $env:RUNNER_TEMP 'dsh-public-file-gates')
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python -m playwright install --with-deps chromium
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           npm install --prefix .qa-stock @deepseek-ai/dsh@0.2.1-rc.2 --no-audit --no-fund

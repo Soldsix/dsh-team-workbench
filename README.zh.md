@@ -97,13 +97,13 @@ dsh plugin --profile web add ./dsh-team-workbench-0.5.0-rc.2.tgz
 
 实际主视角样本中 drawCalls 从 7,426 降到 5,169，geometries 从 3,842 降到 2,076。最终还有 14 个细节视角、26 个受控时刻与动作核对；它们说明这些具体条件下的结果，不代表所有硬件的 FPS 保证。源码、图片、动作和剩余不足在[完整案例](docs/harbor-case-study.md)。
 
-两个成品另有自包含 HTML：脚本、Three.js、贴图生成与模型全部内嵌，断网直开和沙箱 iframe 检查通过，可从 [demos/harbor/standalone](demos/harbor/standalone/) 下载查看。
+两个成品另有自包含 HTML：脚本、Three.js、贴图生成与模型全部内嵌，断网直开和沙箱 iframe 检查通过，可从 [demos/harbor/standalone](https://github.com/Soldsix/dsh-team-workbench/tree/main/demos/harbor/standalone) 下载查看。
 
 ## 测试证据怎么读
 
 V5 内部运行时的原候选版完成了本机 **1,492 项测试、2 项平台条件跳过**；对应的 Windows/Linux × Node 22/24 四组 hosted CI 已运行通过。另有 8/20/32 成员流程、原位换模、独立退回、文件交接、安装回滚、中文空格路径和三小时无密钥待命/冷恢复检查。
 
-本次 `0.5.0-rc.2` 调整的是公开根包、GitHub 源码安装入口与介绍，内部运行代码另做字节核对；新增根包的实际安装结果在[公开包说明](docs/public-package.md)。旧版本通过的结果不自动等于新包装已经通过，报告分别记录。
+本次 `0.5.0-rc.2` 调整的是公开根包、GitHub 源码安装入口与介绍，内部模块仅重定位包引用并核对输入与输出摘要；新增根包的实际安装结果在[公开包说明](docs/public-package.md)。旧版本通过的结果不自动等于新包装已经通过，报告分别记录。
 
 三小时测试是待命与周期冷恢复，不是连续高负载或无限运行承诺。模型过程中的权限拒绝、输入缺项、上游 502 和复核退回都保留；不把最后交付成功写成从未失败。详见[测试报告](docs/test-report.md)与[CI 页面](https://github.com/Soldsix/dsh-team-workbench/actions)。
 

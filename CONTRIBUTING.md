@@ -4,13 +4,17 @@
 
 开发依赖固定在 package-lock.json。使用 Node `^22.19 || >=24`，执行 `npm ci`。另行准备已构建的 DSH `0.2.1-rc.2` 检出，将 `DSH_DEV_HOST` 指向它；开发 fixture 只通过链接或副本读取该检出，不在其中安装或修改。
 
-依次执行 `node scripts/setup-dev.mjs`、`node scripts/typecheck.mjs --emit`、`npm run build`、`npm run check:published-types`、`npm test`、`npm run test:ui`、`npm run test:compat`、`npm run check`。再执行 `npm run pack` 生成 bundle。普通用户只需要发行包，不需要上述源码工具链。
+依次执行 `node scripts/setup-dev.mjs`、`node scripts/typecheck.mjs --emit`、`npm run build`、`npm run check:published-types`、`npm test`、`npm run test:ui`、`npm run test:compat`、`npm run check`、`npm run check:public`。`npm run pack:public` 生成当前根包，`npm run pack` 保留历史 `packages/team` 包的回归路径。普通用户只需要发行包或 GitHub 源码安装，不需要上述开发工具链。
+
+实现源在 `packages/team`，根目录的 `src`、`lib`、`modules`、`skills` 是受检查的发行副本。`sync-public.mjs` 只重定位内部包引用，不能手改生成副本。行为变更先通过源码回归并审阅，再明确更新 `validated-v5-sha256.json` 的输入基线，构建后执行根包安装检查；新增文件也要进入清单，不能靠删除摘要条目消除失败。默认配置、角色和额外技能根的使用者自定义见 examples，不需要修改生成代码。
 
 构建读取 setup-dev 准备的 source fixture，固定打包工作目录与浏览器模块的符号链接路径，避免外部 DSH 检出位置进入生成注释。更换 DSH_DEV_HOST 时使用新的开发目录，不复用指向另一个宿主的 fixture。发布归档必须与所附测试证据对应；修改运行代码、默认技能或包配置后，旧证据不能继续批准新包。
 
 发布类型检查使用独立 Host／Client 消费者，解析已构建声明而非插件源码，并验证翻译函数与会话标识没有退化为 any；去掉本地扩展的反向用例必须失败。它使用固定宿主的声明环境，跳过宿主声明内部检查，不代表任意原生 UI 包组合都能通过裸 NodeNext 检查。空的 type import 会被声明输出移除，需保留依赖扩展时使用空的 type export。
 
 真实宿主验收使用 `python scripts/host-smoke.py --cli <官方DSH的lib/bin.js> --archive <构建后的tgz> --run <新的临时目录> --workers 8`。Python 依赖见 requirements-qa.txt；没有 Chrome 的环境可安装 Playwright Chromium。所有端口由系统分配，模型由本地脚本模拟，不使用真实账户或人设。
+
+只验证公开入口时使用[根包复验命令](docs/public-release-checks.md#如何复验)。`host-public-smoke.py` 通过正式 HTTP／RPC 和本地模型验证工具调用，不操作浏览器。实际 Host 的测试目录必须位于仓库外，避免祖先开发依赖干扰宿主模块；需要完整 UI 验收时再单独使用浏览器脚本。
 
 修改调度、持久字段或工具，覆盖有效路径、拒绝路径、取消、重启和重复投递。修改 UI 时检查真实安装后的界面、深浅主题、键盘和窄屏，不以静态原型替代。输出到 private-qa 的原始日志、登录 URL 和配置不得提交。
 

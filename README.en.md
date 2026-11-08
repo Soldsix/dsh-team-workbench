@@ -83,13 +83,13 @@ The test driver supplied scaffolding, interfaces and fixed decomposition. The ad
 
 At the recorded main view, draw calls changed from 7,426 to 5,169 and geometries from 3,842 to 2,076. The final checks include 14 detail views and 26 controlled animation timestamps. These are specific observations, not a universal frame-rate guarantee. The [case study](docs/harbor-case-study.md) includes source, actual pictures, motion evidence and limitations.
 
-Both standalone HTML scenes are in [demos/harbor/standalone](demos/harbor/standalone/). Three.js, scripts, procedural textures and models are embedded; offline file and sandboxed iframe checks passed.
+Both standalone HTML scenes are in [demos/harbor/standalone](https://github.com/Soldsix/dsh-team-workbench/tree/main/demos/harbor/standalone). Three.js, scripts, procedural textures and models are embedded; offline file and sandboxed iframe checks passed.
 
 ## Evidence and limits
 
 The internal V5 candidate passed 1,492 local tests with two platform-conditional skips, plus an actual Windows/Linux × Node 22/24 hosted matrix. Separate checks covered 8/20/32-member flows, model changes, rejection, handoff, rollback, Windows shell/path behavior, and three hours of keyless idle/cold-recovery testing.
 
-The rc.2 public root changes packaging and presentation. Internal runtime files are compared by hash; new package-install results are recorded separately in [public package notes](docs/public-package.md). Earlier green checks are not presented as proof of a new package layout.
+The rc.2 public root changes packaging and presentation. Internal package references are relocated, with input and output hashes checked; new package-install results are recorded separately in [public package notes](docs/public-package.md). Earlier green checks are not presented as proof of a new package layout.
 
 The three-hour run was an idle and periodic-recovery test, not an indefinite high-load guarantee. Tool errors, missing inputs, upstream 502s and review rejections remain in the evidence. The package includes no personal modes, model accounts, persona documents, private Sessions, keys or browser credentials and does not upload diagnostics automatically.
 
