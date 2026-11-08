@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { brandString } from '@deepseek-ai/dsh-brand';
 import { createUserMessage } from '@deepseek-ai/dsh-llm';
 import { SubagentError } from '@deepseek-ai/dsh-subagent';
-import { steerHostSubagentPrompt } from '@dsh-workbench/compat-subagent/internal';
+import { steerHostSubagentPrompt } from 'dsh-team-workbench/compat-subagent/internal';
 import { errorMessage, TeamError } from "./error.js";
 import { readPersistedSession } from "./persisted.js";
 import { resolveActiveMember } from "./roster.js";

@@ -1,7 +1,7 @@
 /**
  * Continuation integration markers and host adapters outside the public
  * Service Definition and model-facing Agent messaging contract.
- * @module @dsh-workbench/compat-subagent/internal
+ * @module dsh-team-workbench/compat-subagent/internal
  */
 import type { Agent } from '@deepseek-ai/dsh-agent';
 import type { ContentBlock, MessageId, MessageSource } from '@deepseek-ai/dsh-llm';

@@ -1,5 +1,5 @@
 import { ReasoningEffortId } from '@deepseek-ai/dsh-llm';
-import { withHostSubagentAncestors } from '@dsh-workbench/compat-subagent/internal';
+import { withHostSubagentAncestors } from 'dsh-team-workbench/compat-subagent/internal';
 import { readProjectPlan } from "./project-plan.js";
 import { TeamError } from "./error.js";
 /** Provision approved members only for independent ready work and materialize their exact plan tasks. */

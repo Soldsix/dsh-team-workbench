@@ -1,7 +1,7 @@
 /**
  * Continuation integration markers and host adapters outside the public
  * Service Definition and model-facing Agent messaging contract.
- * @module @dsh-workbench/compat-subagent/internal
+ * @module dsh-team-workbench/compat-subagent/internal
  */
 /** Process-stable identity carried only by the standard adjacent-Agent messaging tool. */
 export const adjacentAgentSendMessageTool = Symbol.for('dsh.subagent.adjacentAgentSendMessageTool');

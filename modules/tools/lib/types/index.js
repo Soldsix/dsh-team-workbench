@@ -3,7 +3,7 @@ import { createVolatile } from '@deepseek-ai/cosmokit';
 import z from '@deepseek-ai/schemastery';
 import { ReasoningEffortId } from '@deepseek-ai/dsh-llm';
 import { SessionId } from '@deepseek-ai/dsh-session';
-import { TeamTaskId, TeamTaskExecutionId } from '@dsh-workbench/team-runtime';
+import { TeamTaskId, TeamTaskExecutionId } from 'dsh-team-workbench/runtime';
 import { defineTool } from '@deepseek-ai/dsh-tools';
 import { installExpertTools } from "./expert-tools.js";
 import { INITIAL_SKILLS_PARAMETER, requireInitialSkills } from "./skill-parameters.js";

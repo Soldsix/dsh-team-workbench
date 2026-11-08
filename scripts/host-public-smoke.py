@@ -39,6 +39,7 @@ for index, arguments in enumerate((['--profile', 'web', '--dump-default-config']
         raise RuntimeError(f'Isolated installation step {index} failed')
 
 observations = []
+auxiliary = []
 failures = []
 finished = threading.Event()
 
@@ -52,14 +53,22 @@ class Fixture(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
             tools = {tool['function']['name'] for tool in body.get('tools', [])}
             required = {'team_help', 'team_skill_catalog', 'spawn_teammate', 'team_member', 'team_task_update'}
-            if not required.issubset(tools):
-                raise RuntimeError('Actual model request lacks required Team tools')
+            if tools and not required.issubset(tools):
+                raise RuntimeError('Actual model request lacks Team tools: ' + ', '.join(sorted(required - tools)) + '; available: ' + ', '.join(sorted(tools)))
             replies = [message for message in body['messages'] if message.get('role') == 'tool']
             for reply in replies:
                 if 'error' in str(reply.get('content', '')).lower()[:100]:
                     raise RuntimeError('A Team tool returned an error')
-            observations.append({'model': body['model'], 'toolCount': len(tools), 'toolReplies': len(replies)})
-            if len(replies) < 2:
+            if tools:
+                observations.append({'model': body['model'], 'toolCount': len(tools), 'toolReplies': len(replies)})
+            if not tools:
+                last = str(body.get('messages', [{}])[-1].get('content', ''))
+                auxiliary.append({'model': body['model'], 'lastMessagePrefix': last[:180]})
+                summary = '\n\n'.join('## ' + heading + '\n- Read startup help and list skills; do not modify files.' for heading in
+                    ['Primary Request and Intent', 'Key Technical Concepts', 'Files and Code', 'Errors and Fixes', 'Pending Jobs',
+                     'Current Work', 'Next Step', 'Critical Context'])
+                delta, finish = {'role': 'assistant', 'content': summary}, 'stop'
+            elif len(replies) < 2:
                 name = ['team_help', 'team_skill_catalog'][len(replies)]
                 arguments = {'topic': 'start'} if name == 'team_help' else {}
                 delta = {'role': 'assistant', 'tool_calls': [{'index': 0, 'id': f'public-call-{len(replies)}', 'type': 'function',
@@ -183,6 +192,7 @@ finally:
         raise RuntimeError('Local model server did not stop')
     result['hostStopped'] = process is not None and process.poll() is not None
     result['modelRequests'] = observations
+    result['auxiliaryRequests'] = auxiliary
     result['fixtureErrors'] = failures
     (run / 'result.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
-print(json.dumps(result))
+print(json.dumps({key: value for key, value in result.items() if key not in ('providerInventory', 'auxiliaryRequests')}))

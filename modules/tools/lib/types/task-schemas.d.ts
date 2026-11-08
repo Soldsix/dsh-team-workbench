@@ -1,5 +1,5 @@
 /** Shared model schemas for versioned task plans and reviewed executions. */
-import type { TeamTaskPlanInput } from '@dsh-workbench/team-runtime';
+import type { TeamTaskPlanInput } from 'dsh-team-workbench/runtime';
 /** Complete plan fields accepted together when creating or revising a task. */
 export declare const TASK_PLAN_PARAMETERS: {
     readonly input_version: {

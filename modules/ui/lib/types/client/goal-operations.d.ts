@@ -1,6 +1,6 @@
 /** Goal proposals and native human reviews over the Team plugin's Remote namespace. */
 import type { Context } from '@deepseek-ai/cordis';
-import type { ProposeTeamGoalRequest, TeamGoalProposal, TeamGoalReview } from '@dsh-workbench/team-runtime/client';
+import type { ProposeTeamGoalRequest, TeamGoalProposal, TeamGoalReview } from 'dsh-team-workbench/runtime/client';
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
 /** Goal editing never starts a model turn or supplies the user's approval. */
 export interface TeamGoalOperations {

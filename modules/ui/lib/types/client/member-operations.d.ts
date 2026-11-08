@@ -1,7 +1,7 @@
 /** Browser member lifecycle and private-workspace operations. */
 import type { Context } from '@deepseek-ai/cordis';
-import type { TeamMemberView, TeamMemberWorkspace } from '@dsh-workbench/team-runtime/client';
-import type { ConfigureTeamMemberModelRequest, ConfigureTeamMemberRoleRequest } from '@dsh-workbench/team-runtime/client';
+import type { TeamMemberView, TeamMemberWorkspace } from 'dsh-team-workbench/runtime/client';
+import type { ConfigureTeamMemberModelRequest, ConfigureTeamMemberRoleRequest } from 'dsh-team-workbench/runtime/client';
 import type { ModelCatalog } from '@deepseek-ai/dsh-api-session-controller/types';
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
 /** Member actions resolve through the selected Team Lead on each call. */

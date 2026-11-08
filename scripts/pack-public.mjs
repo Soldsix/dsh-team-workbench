@@ -1,4 +1,4 @@
-/** Pack a fresh public-root stage with all eight internal dependencies materialized. */
+/** Pack a fresh public-root stage with eight modules exposed as package subpaths. */
 import { readFile, writeFile, mkdir, mkdtemp, cp, lstat } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -17,14 +17,6 @@ for (const name of ['package.json', ...meta.files]) {
   if ((await lstat(from)).isSymbolicLink()) throw new Error(`Pack entry is a link: ${name}`)
   await cp(from, join(stage, name), { recursive: true, filter: path => !path.split(/[\\/]/u).includes('node_modules') })
 }
-for (const [name, spec] of Object.entries(meta.dependencies).filter(([name]) => name.startsWith('@dsh-workbench/'))) {
-  if (!/^@dsh-workbench\/[a-z-]+$/u.test(name) || !/^file:(?:\.\/)?modules\/[a-z-]+$/u.test(spec)) throw new Error('Invalid internal dependency')
-  const to = join(stage, 'node_modules', name)
-  await mkdir(join(stage, 'node_modules/@dsh-workbench'), { recursive: true })
-  await cp(join(root, spec.slice(5)), to, { recursive: true, filter: path => !path.split(/[\\/]/u).includes('node_modules') })
-}
-await writeFile(join(stage, 'package.json'), JSON.stringify({ ...meta,
-  bundleDependencies: Object.keys(meta.dependencies).filter(name => name.startsWith('@dsh-workbench/')) }, null, 2) + '\n')
 const packed = spawnSync(process.execPath, [npm, 'pack', stage, '--ignore-scripts', '--pack-destination', join(root, 'artifacts'), '--json'],
   { cwd: root, windowsHide: true, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })
 if (packed.error) throw packed.error

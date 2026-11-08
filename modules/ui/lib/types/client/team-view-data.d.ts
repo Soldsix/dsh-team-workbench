@@ -2,8 +2,8 @@
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
 import type { SessionListState } from '@deepseek-ai/dsh-api-session-controller/client';
 import type { ModelSelection, ModelSelectionProjection } from '@deepseek-ai/dsh-api-session-controller/types';
-import type { TeamMemberProjection, TeamProjection } from '@dsh-workbench/team-runtime/client';
-import type { TeamTaskView } from '@dsh-workbench/team-runtime/client';
+import type { TeamMemberProjection, TeamProjection } from 'dsh-team-workbench/runtime/client';
+import type { TeamTaskView } from 'dsh-team-workbench/runtime/client';
 import type { TeamKey } from './locales.ts';
 /** A displayed roster row; legacy rows retain their original Session lifecycle. */
 export type DisplayMember = TeamMemberProjection & {

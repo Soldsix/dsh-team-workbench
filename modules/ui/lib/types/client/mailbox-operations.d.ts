@@ -1,6 +1,6 @@
 /** Browser mailbox operations over the Team Lead's Remote service. */
 import type { Context } from '@deepseek-ai/cordis';
-import type { SendTeamMessageResult, TeamMailboxPage, TeamMessageId, TeamMessageSnapshot } from '@dsh-workbench/team-runtime/client';
+import type { SendTeamMessageResult, TeamMailboxPage, TeamMessageId, TeamMessageSnapshot } from 'dsh-team-workbench/runtime/client';
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
 /** Bounded mailbox reads and explicit recovery actions. */
 export interface TeamMailboxOperations {

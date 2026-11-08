@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 /** Local diagnostics export omitting user prose, personas, skills and connection settings. */
 import { useState } from 'react';
-import { readProjectPlan } from '@dsh-workbench/team-runtime/client';
+import { readProjectPlan } from 'dsh-team-workbench/runtime/client';
 import css from './TeamView.module.css';
 /**
  * Create a metadata-only diagnostic snapshot suitable for local support review.

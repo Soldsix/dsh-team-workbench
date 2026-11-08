@@ -1,7 +1,7 @@
 /** Saved Team roles edited through the existing revision-checked Settings API. */
 import type { Context } from '@deepseek-ai/cordis';
 import type { ModelCatalog } from '@deepseek-ai/dsh-api-session-controller/types';
-import type { TeamRoleProfile } from '@dsh-workbench/team-runtime/client';
+import type { TeamRoleProfile } from 'dsh-team-workbench/runtime/client';
 /** One editable settings generation and its current model choices. */
 export interface TeamRoleSettings {
     readonly revision: number;

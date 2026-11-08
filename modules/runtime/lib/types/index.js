@@ -38,7 +38,7 @@ import { provisionPlan } from "./provision-plan.js";
 import { resourceConflicts } from "./resource-scheduling.js";
 import { teamCoordinationTools, adviserTools, hasNoExternalTaskEffect } from "./tool-capabilities.js";
 import { currentMemberToolMenu } from "./member-tool-menu.js";
-import { capCurrentAgentToolMenu } from '@dsh-workbench/compat-tools/agent-menu';
+import { capCurrentAgentToolMenu } from 'dsh-team-workbench/compat-tools/agent-menu';
 import { memberFunction, memberRoleRevision } from "./member-role.js";
 import { readProjectPlan } from "./project-plan.js";
 import { failureCooldownMs } from "./cooldown.js";

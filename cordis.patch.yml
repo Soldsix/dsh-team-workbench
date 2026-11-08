@@ -14,20 +14,20 @@
 
 - insert:
     - id: workbench-tools
-      name: '@dsh-workbench/compat-tools'
+      name: 'dsh-team-workbench/compat-tools'
     - id: workbench-sandbox-policy
-      name: '@dsh-workbench/compat-policy'
+      name: 'dsh-team-workbench/compat-policy'
     - id: workbench-subagent
-      name: '@dsh-workbench/compat-subagent'
+      name: 'dsh-team-workbench/compat-subagent'
     - id: workbench-web
-      name: '@dsh-workbench/compat-web'
+      name: 'dsh-team-workbench/compat-web'
     - id: workbench-web-fetch-http
-      name: '@dsh-workbench/compat-fetch'
+      name: 'dsh-team-workbench/compat-fetch'
     - id: team-workbench-skills
       name: 'dsh-team-workbench'
 
     - id: agent-team
-      name: '@dsh-workbench/team-runtime'
+      name: 'dsh-team-workbench/runtime'
       config:
         enabledPresets: ['*']
         requireConfirmedGoal: true
@@ -115,10 +115,10 @@
         disposalTimeoutMs: 5000
 
     - id: team-experts
-      name: '@dsh-workbench/team-runtime/experts'
+      name: 'dsh-team-workbench/runtime/experts'
 
     - id: tool-agent-team
-      name: '@dsh-workbench/team-tools'
+      name: 'dsh-team-workbench/tools'
       config:
         freshProvider: spawn
         forkProvider: fork
@@ -128,4 +128,4 @@
         requireMemberSkills: true
 
     - id: ui-agent-team
-      name: '@dsh-workbench/team-ui'
+      name: 'dsh-team-workbench/ui'

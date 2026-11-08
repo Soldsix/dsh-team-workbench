@@ -19,19 +19,19 @@ export declare function diagnosticSnapshot(team: DisplayTeam, now: number): {
         id: import("@deepseek-ai/dsh-session").SessionId;
         parentId: import("@deepseek-ai/dsh-session").SessionId | undefined;
         role: "lead" | "teammate";
-        function: import("@dsh-workbench/team-runtime/client").TeamMemberFunction | undefined;
-        phase: import("@dsh-workbench/team-runtime/client").TeamMemberPhase;
+        function: import("dsh-team-workbench/runtime/client").TeamMemberFunction | undefined;
+        phase: import("dsh-team-workbench/runtime/client").TeamMemberPhase;
         legacy: boolean;
         selectedSkills: number;
     }[];
     tasks: {
-        id: import("@dsh-workbench/team-runtime/client").TeamTaskId;
+        id: import("dsh-team-workbench/runtime/client").TeamTaskId;
         revision: number;
-        status: import("@dsh-workbench/team-runtime/client").TeamTaskStatus;
-        executionId: import("@dsh-workbench/team-runtime/client").TeamTaskExecutionId | undefined;
+        status: import("dsh-team-workbench/runtime/client").TeamTaskStatus;
+        executionId: import("dsh-team-workbench/runtime/client").TeamTaskExecutionId | undefined;
         phase: "accepted" | "rejected" | "cancelled" | "running" | "submitted" | undefined;
         goalRevision: number | undefined;
-        dependencies: import("@dsh-workbench/team-runtime/client").TeamTaskId[];
+        dependencies: import("dsh-team-workbench/runtime/client").TeamTaskId[];
         blocker: import("../../../runtime/src/types.ts").TeamTaskDispatchBlocker | undefined;
         reusable: boolean;
         requiredCriteria: number;

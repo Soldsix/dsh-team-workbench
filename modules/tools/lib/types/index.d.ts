@@ -2,7 +2,7 @@
 import type { Context, Volatile } from '@deepseek-ai/cordis';
 import z from '@deepseek-ai/schemastery';
 import type { Agent } from '@deepseek-ai/dsh-agent';
-import type { TeamRoleProfile } from '@dsh-workbench/team-runtime';
+import type { TeamRoleProfile } from 'dsh-team-workbench/runtime';
 /** Cordis plugin name. */
 export declare const name = "tool-agent-team";
 /** Services required by the Team tool plugin. */

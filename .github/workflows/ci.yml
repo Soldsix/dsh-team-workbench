@@ -92,6 +92,10 @@ jobs:
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           npm install --prefix .qa-stock @deepseek-ai/dsh@0.2.1-rc.2 --no-audit --no-fund
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/host-public-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --package artifacts/dsh-team-workbench-0.5.0-rc.2.tgz --run (Join-Path $env:RUNNER_TEMP 'dsh-public-archive')
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          python scripts/host-public-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --package "git+https://github.com/$env:GITHUB_REPOSITORY.git#$env:GITHUB_SHA" --run (Join-Path $env:RUNNER_TEMP 'dsh-public-source')
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive deployment/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/release-tarball --workers 2 --pending-restart-fixture --browser-locale en-US
           if ($LASTEXITCODE) { exit $LASTEXITCODE }
           python scripts/host-smoke.py --cli .qa-stock/node_modules/@deepseek-ai/dsh/lib/bin.js --archive artifacts/dsh-workbench-team-0.5.0-rc.1.tgz --run private-qa/stock-profile --workers 8 --network-fixture --mcp-fixture --mode-fixture qa-crack-create --image-fixture --ui-model-fixture --pending-restart-fixture --transform-input-fixture --serial-update-fixture --adviser-revision-fixture --browser-locale zh-CN

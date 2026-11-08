@@ -2,9 +2,9 @@
 
 ## 本次变化
 
-`dsh-team-workbench@0.5.0-rc.2` 将完整 profile bundle 暴露在仓库根目录，使 GitHub 源码安装和社区扫描能读取真正的插件包名、版本、`apply(ctx)` 与 `dsh.bundle` 元数据。内部八个模块沿用 V5 已验证文件，原 `packages/team` 的开发与历史发行内容保留。
+`dsh-team-workbench@0.5.0-rc.2` 将完整 profile bundle 暴露在仓库根目录，使 GitHub 源码安装和社区扫描能读取真正的插件包名、版本、`apply(ctx)` 与 `dsh.bundle` 元数据。内部八个模块作为同一包的子路径发布，不依赖尚未上架 npm 的内部包。生成步骤只重定位内部模块引用，其他实现字节保持；原 `packages/team` 的开发与历史发行内容保留。
 
-根包不依赖部署者构建 DSH 或运行 TypeScript。预构建 ESM、浏览器模块和技能资源随源码提供；根 patch 的技能入口使用公开包名，其他兼容模块的服务标识保持。
+根包不依赖部署者构建 DSH 或运行 TypeScript。预构建 ESM、浏览器模块和技能资源随源码提供；根 patch 使用公开子路径，服务 ID 保持。`validated-v5-sha256.json` 约束生成输入，`public-runtime-sha256.json` 与 `SHA256SUMS` 核对重定位后的发行文件。
 
 ## 收录信息
 

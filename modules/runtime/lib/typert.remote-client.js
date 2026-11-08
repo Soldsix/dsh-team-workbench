@@ -884,7 +884,7 @@ let _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_3_stri
 const _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_3_strict$schema = () => (_deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_3_strict$schema$value ??= z.boolean())
 
 export const TYPERT_REMOTE = createTypertRemoteInfo({
-  package: '@dsh-workbench/team-runtime',
+  package: 'dsh-team-workbench/runtime',
   methods: {
     'agentTeams/adoptMessage': {
       service: 'agentTeams',
@@ -920,13 +920,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamMessageId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamMessageId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_adoptMessage_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamMessageId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamMessageId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_adoptMessage_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -935,7 +935,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#SendTeamMessageResult',
+        typeSymbol: 'dsh-team-workbench/runtime/client#SendTeamMessageResult',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_adoptMessage_result$schema,
         description: 'the new message\'s identity and immediate delivery observation.',
         jsonSchema: {"type":"object","properties":{"messageId":{"type":"string"},"status":{"type":"string","enum":["accepted","queued"]}},"required":["messageId","status"],"additionalProperties":true},
@@ -976,13 +976,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ConfigureTeamMemberModelRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ConfigureTeamMemberModelRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_configureMemberModel_parameter_1$schema,
             jsonSchema: {"type":"object","properties":{"expectedRevision":{"type":"number","description":"Optional route revision from listMembers; concurrent conflicting changes are rejected."},"target":{"type":"string"},"modelProvider":{"type":"string"},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["target","modelProvider","model"],"additionalProperties":true},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ConfigureTeamMemberModelRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ConfigureTeamMemberModelRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_configureMemberModel_parameter_1_strict$schema,
             jsonSchema: {"type":"object","properties":{"expectedRevision":{"type":"number","description":"Optional route revision from listMembers; concurrent conflicting changes are rejected."},"target":{"type":"string"},"modelProvider":{"type":"string"},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["target","modelProvider","model"],"additionalProperties":false},
           },
@@ -991,7 +991,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamMemberView',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamMemberView',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_configureMemberModel_result$schema,
         description: 'updated member row.',
         jsonSchema: {"type":"object","properties":{"id":{"type":"string"},"parentId":{"type":"string"},"parentName":{"type":"string"},"name":{"type":"string"},"role":{"type":"string","enum":["lead","teammate"]},"status":{"type":"string","enum":["failed","running","provisioning","retired","inactive"]},"description":{"type":"string"},"provider":{"type":"string"},"context":{"type":"string","enum":["fresh","fork"]},"diagnostics":{"type":"array","items":{"type":"string"}},"modelRouteRevision":{"type":"number","description":"Revision of an in-place model choice; absent when still using the creation route."},"roleRevision":{"type":"number","description":"Revision of the current responsibility; omitted for the creation-time role."},"teamFunction":{"type":"string","enum":["planning_adviser","quality_adviser","domain_adviser","group_lead","executor","verifier"],"description":"Team responsibility chosen by the delegating member; absent historical rows stay valid."},"expert":{"type":"object","properties":{"id":{"type":"string"},"revision":{"type":"number"},"name":{"type":"string"}},"required":["id","revision","name"],"additionalProperties":true,"description":"Creation-time profile identity; repeated assignment reuses this member."},"modelProvider":{"type":"string","description":"Registered language-model provider, distinct from the subagent provider."},"model":{"type":"string","description":"Exact model selected when the member was created."},"reasoningEffort":{"type":"string","description":"Adapter-supported reasoning effort selected for this member."},"persona":{"type":"string","description":"Persona persisted with the continuation and reapplied on resume."}},"required":["id","name","role","status","diagnostics"],"additionalProperties":true},
@@ -1032,13 +1032,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ConfigureTeamMemberRoleRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ConfigureTeamMemberRoleRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_configureMemberRole_parameter_1$schema,
             jsonSchema: {"type":"object","properties":{"target":{"type":"string"},"expectedRevision":{"type":"number"},"teamFunction":{"type":"string","enum":["planning_adviser","quality_adviser","domain_adviser","group_lead","executor","verifier"]},"reason":{"type":"string"}},"required":["target","expectedRevision","teamFunction","reason"],"additionalProperties":true},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ConfigureTeamMemberRoleRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ConfigureTeamMemberRoleRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_configureMemberRole_parameter_1_strict$schema,
             jsonSchema: {"type":"object","properties":{"target":{"type":"string"},"expectedRevision":{"type":"number"},"teamFunction":{"type":"string","enum":["planning_adviser","quality_adviser","domain_adviser","group_lead","executor","verifier"]},"reason":{"type":"string"}},"required":["target","expectedRevision","teamFunction","reason"],"additionalProperties":false},
           },
@@ -1047,7 +1047,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamMemberView',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamMemberView',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_configureMemberRole_result$schema,
         description: 'updated member row.',
         jsonSchema: {"type":"object","properties":{"id":{"type":"string"},"parentId":{"type":"string"},"parentName":{"type":"string"},"name":{"type":"string"},"role":{"type":"string","enum":["lead","teammate"]},"status":{"type":"string","enum":["failed","running","provisioning","retired","inactive"]},"description":{"type":"string"},"provider":{"type":"string"},"context":{"type":"string","enum":["fresh","fork"]},"diagnostics":{"type":"array","items":{"type":"string"}},"modelRouteRevision":{"type":"number","description":"Revision of an in-place model choice; absent when still using the creation route."},"roleRevision":{"type":"number","description":"Revision of the current responsibility; omitted for the creation-time role."},"teamFunction":{"type":"string","enum":["planning_adviser","quality_adviser","domain_adviser","group_lead","executor","verifier"],"description":"Team responsibility chosen by the delegating member; absent historical rows stay valid."},"expert":{"type":"object","properties":{"id":{"type":"string"},"revision":{"type":"number"},"name":{"type":"string"}},"required":["id","revision","name"],"additionalProperties":true,"description":"Creation-time profile identity; repeated assignment reuses this member."},"modelProvider":{"type":"string","description":"Registered language-model provider, distinct from the subagent provider."},"model":{"type":"string","description":"Exact model selected when the member was created."},"reasoningEffort":{"type":"string","description":"Adapter-supported reasoning effort selected for this member."},"persona":{"type":"string","description":"Persona persisted with the continuation and reapplied on resume."}},"required":["id","name","role","status","diagnostics"],"additionalProperties":true},
@@ -1085,7 +1085,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamGoalReview',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamGoalReview',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_getGoal_result$schema,
         description: 'detached proposal, decision, and current goal records.',
         jsonSchema: {"type":"object","properties":{"goal":{"type":"object","properties":{"revision":{"type":"number"},"proposalRevision":{"type":"number"},"status":{"type":"string","enum":["active","revoked"]},"definition":{"type":"object","properties":{"objective":{"type":"string"},"acceptanceCriteria":{"type":"array","items":{"type":"string"}},"scope":{"type":"object","properties":{"coverage":{"type":"string","enum":["full","partial","task"]},"targets":{"type":"array","items":{"type":"string"}},"allowedActions":{"type":"array","items":{"type":"string"}},"excludedTargets":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}},"execution":{"type":"object","properties":{"readPaths":{"type":"array","items":{"type":"string"}},"writePaths":{"type":"array","items":{"type":"string"}},"webOrigins":{"type":"array","items":{"type":"string"}},"allowSearch":{"type":"boolean"},"allowUnrestrictedExecution":{"type":"boolean","description":"Allows opaque programs only with unrestricted resource grants; sandbox ceilings still apply."}},"required":["readPaths","writePaths","webOrigins","allowSearch","allowUnrestrictedExecution"],"additionalProperties":true,"description":"Absent in legacy goals; ordinary scope text never substitutes for these resource checks."}},"required":["coverage","targets","allowedActions","excludedTargets","constraints"],"additionalProperties":true},"plan":{"type":"string","description":"Complete member, model, task, dependency, and delivery plan reviewed with this goal."}},"required":["objective","acceptanceCriteria","scope"],"additionalProperties":true},"decidedAt":{"type":"number"},"revocationReason":{"type":"string"}},"required":["revision","proposalRevision","status","definition","decidedAt"],"additionalProperties":true},"goalProposal":{"type":"object","properties":{"revision":{"type":"number"},"baseRevision":{"type":"number"},"proposedBy":{"type":"string"},"change":{"oneOf":[{"type":"object","properties":{"kind":{"type":"string","const":"replace"},"definition":{"type":"object","properties":{"objective":{"type":"string"},"acceptanceCriteria":{"type":"array","items":{"type":"string"}},"scope":{"type":"object","properties":{"coverage":{"type":"string","enum":["full","partial","task"]},"targets":{"type":"array","items":{"type":"string"}},"allowedActions":{"type":"array","items":{"type":"string"}},"excludedTargets":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}},"execution":{"type":"object","properties":{"readPaths":{"type":"array","items":{"type":"string"}},"writePaths":{"type":"array","items":{"type":"string"}},"webOrigins":{"type":"array","items":{"type":"string"}},"allowSearch":{"type":"boolean"},"allowUnrestrictedExecution":{"type":"boolean","description":"Allows opaque programs only with unrestricted resource grants; sandbox ceilings still apply."}},"required":["readPaths","writePaths","webOrigins","allowSearch","allowUnrestrictedExecution"],"additionalProperties":true,"description":"Absent in legacy goals; ordinary scope text never substitutes for these resource checks."}},"required":["coverage","targets","allowedActions","excludedTargets","constraints"],"additionalProperties":true},"plan":{"type":"string","description":"Complete member, model, task, dependency, and delivery plan reviewed with this goal."}},"required":["objective","acceptanceCriteria","scope"],"additionalProperties":true}},"required":["kind","definition"],"additionalProperties":true},{"type":"object","properties":{"kind":{"type":"string","const":"revoke"},"reason":{"type":"string"}},"required":["kind","reason"],"additionalProperties":true}]}},"required":["revision","baseRevision","proposedBy","change"],"additionalProperties":true},"goalDecision":{"type":"object","properties":{"proposalRevision":{"type":"number"},"outcome":{"type":"string","enum":["accepted","rejected"]},"comment":{"type":"string"},"decidedAt":{"type":"number"},"channel":{"type":"string","const":"user-question"}},"required":["proposalRevision","outcome","comment","decidedAt","channel"],"additionalProperties":true}},"required":[],"additionalProperties":true},
@@ -1126,13 +1126,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamMessageId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamMessageId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_getMessage_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamMessageId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamMessageId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_getMessage_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1140,7 +1140,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamMessageSnapshot',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamMessageSnapshot',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_getMessage_result$schema,
         description: 'a detached saved message including its full content.',
         jsonSchemaError: 'typert tool schema: unsupported never value',
@@ -1181,13 +1181,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/getWorkspace:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/getWorkspace:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_getWorkspace_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/getWorkspace:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/getWorkspace:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_getWorkspace_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1195,7 +1195,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime#agentTeams/getWorkspace:result',
+        typeSymbol: 'dsh-team-workbench/runtime#agentTeams/getWorkspace:result',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_getWorkspace_result$schema,
         description: 'its saved isolation details, or null for a shared-workspace member.',
         jsonSchema: {"oneOf":[{"type":"null","const":null},{"type":"object","properties":{"cwd":{"type":"string"},"baselineManifestPath":{"type":"string"},"maxMode":{"type":"string","enum":["read-only","workspace-write"]}},"required":["cwd","baselineManifestPath","maxMode"],"additionalProperties":true}]},
@@ -1236,13 +1236,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/integrateWorkspace:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/integrateWorkspace:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_integrateWorkspace_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/integrateWorkspace:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/integrateWorkspace:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_integrateWorkspace_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1251,7 +1251,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime#agentTeams/integrateWorkspace:result',
+        typeSymbol: 'dsh-team-workbench/runtime#agentTeams/integrateWorkspace:result',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_integrateWorkspace_result$schema,
         description: 'the paths recorded by the resumable integration receipt.',
         jsonSchema: {"type":"object","properties":{"paths":{"type":"array","items":{"type":"string"}}},"required":["paths"],"additionalProperties":true},
@@ -1292,13 +1292,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/listMessagePage:offset',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/listMessagePage:offset',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listMessagePage_parameter_1$schema,
             jsonSchema: {"type":"number"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/listMessagePage:offset',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/listMessagePage:offset',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listMessagePage_parameter_1_strict$schema,
             jsonSchema: {"type":"number"},
           },
@@ -1309,13 +1309,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/listMessagePage:limit',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/listMessagePage:limit',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listMessagePage_parameter_2$schema,
             jsonSchema: {"type":"number"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/listMessagePage:limit',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/listMessagePage:limit',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listMessagePage_parameter_2_strict$schema,
             jsonSchema: {"type":"number"},
           },
@@ -1323,7 +1323,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamMailboxPage',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamMailboxPage',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listMessagePage_result$schema,
         description: 'delivery summaries and the total available count.',
         jsonSchema: {"type":"object","properties":{"total":{"type":"number"},"items":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"senderId":{"type":"string"},"senderName":{"type":"string"},"targetId":{"type":"string"},"goalRevision":{"type":"number"},"adoptedFrom":{"type":"string"},"status":{"type":"string","enum":["pending","quarantined","delivered","retry-exhausted"]},"attempts":{"type":"number"},"error":{"type":"string"},"nextAttemptAt":{"type":"number"}},"required":["id","senderId","senderName","targetId","status","attempts"],"additionalProperties":true}}},"required":["total","items"],"additionalProperties":true},
@@ -1361,7 +1361,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime#agentTeams/listMessages:result',
+        typeSymbol: 'dsh-team-workbench/runtime#agentTeams/listMessages:result',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listMessages_result$schema,
         description: 'ordered mailbox summaries, including quarantined history.',
         jsonSchema: {"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"senderId":{"type":"string"},"senderName":{"type":"string"},"targetId":{"type":"string"},"goalRevision":{"type":"number"},"adoptedFrom":{"type":"string"},"status":{"type":"string","enum":["pending","quarantined","delivered","retry-exhausted"]},"attempts":{"type":"number"},"error":{"type":"string"},"nextAttemptAt":{"type":"number"}},"required":["id","senderId","senderName","targetId","status","attempts"],"additionalProperties":true}},
@@ -1402,13 +1402,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ListTeamTaskArchiveRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ListTeamTaskArchiveRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listTaskArchive_parameter_1$schema,
             jsonSchema: {"type":"object","properties":{"after":{"type":"string","description":"Exclusive cursor from the preceding archive page."},"limit":{"type":"number"}},"required":["limit"],"additionalProperties":true},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ListTeamTaskArchiveRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ListTeamTaskArchiveRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listTaskArchive_parameter_1_strict$schema,
             jsonSchema: {"type":"object","properties":{"after":{"type":"string","description":"Exclusive cursor from the preceding archive page."},"limit":{"type":"number"}},"required":["limit"],"additionalProperties":false},
           },
@@ -1416,7 +1416,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamTaskArchivePage',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamTaskArchivePage',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_listTaskArchive_result$schema,
         description: 'retained task views and the next cursor when more completions exist.',
         jsonSchema: {"type":"object","properties":{"tasks":{"type":"array","items":{"type":"object","properties":{"dispatchBlocker":{"type":"string","enum":["goal","dependencies","reviewer_missing","adviser_review","skills","manual"]},"work":{"type":"object","properties":{"plan":{"type":"object","properties":{"inputPaths":{"type":"array","items":{"type":"string"}},"adviserGate":{"type":"string","const":"dual"},"revision":{"type":"number"},"plannerId":{"type":"string"},"goalRevision":{"type":"number","description":"Zero denotes a Team that has no confirmed goal yet."},"inputs":{"type":"array","items":{"type":"object","properties":{"path":{"type":"string","description":"Logical project-relative output path."},"bytes":{"type":"number","description":"Host-observed byte length."},"sha256":{"type":"string","description":"Lowercase hexadecimal digest of the complete file bytes."}},"required":["path","bytes","sha256"],"additionalProperties":true},"description":"Host-observed inputs; absent on legacy plans."},"environment":{"type":"object","properties":{"workspaceRoot":{"type":"string"},"platform":{"type":"string"},"arch":{"type":"string"},"nodeVersion":{"type":"string"}},"required":["workspaceRoot","platform","arch","nodeVersion"],"additionalProperties":true,"description":"Host-observed local runtime; absent on legacy plans."},"inputVersion":{"type":"string","description":"Version of the supplied inputs; this declaration alone does not inspect files."},"environmentVersion":{"type":"string","description":"Version of the relevant tools, devices, and runtime conditions."},"acceptanceCriteria":{"type":"array","items":{"type":"string"}}},"required":["revision","plannerId","goalRevision","inputVersion","environmentVersion","acceptanceCriteria"],"additionalProperties":true},"attempts":{"type":"number"},"execution":{"type":"object","properties":{"id":{"type":"string"},"ownerId":{"type":"string"},"planRevision":{"type":"number"},"dependencies":{"type":"array","items":{"type":"object","properties":{"taskId":{"type":"string"},"revision":{"type":"number"}},"required":["taskId","revision"],"additionalProperties":true}},"phase":{"type":"string","enum":["cancelled","running","submitted","accepted","rejected"]},"effectTracking":{"type":"string","const":"observed","description":"Absent on attempts created before tool dispatch tracking was installed."},"effectReview":{"type":"object","properties":{"reviewerId":{"type":"string"},"resolution":{"type":"string","enum":["none","known"]},"summary":{"type":"string"},"evidence":{"type":"array","items":{"type":"string"}},"observedCalls":{"type":"number"}},"required":["reviewerId","resolution","summary","evidence","observedCalls"],"additionalProperties":true},"submission":{"type":"object","properties":{"result":{"type":"string"},"evidence":{"type":"array","items":{"type":"string"}},"artifacts":{"type":"array","items":{"type":"object","properties":{"path":{"type":"string","description":"Logical project-relative output path."},"bytes":{"type":"number","description":"Host-observed byte length."},"sha256":{"type":"string","description":"Lowercase hexadecimal digest of the complete file bytes."}},"required":["path","bytes","sha256"],"additionalProperties":true},"description":"Host-observed output files; absent on legacy submissions."},"environment":{"type":"object","properties":{"workspaceRoot":{"type":"string"},"platform":{"type":"string"},"arch":{"type":"string"},"nodeVersion":{"type":"string"}},"required":["workspaceRoot","platform","arch","nodeVersion"],"additionalProperties":true,"description":"Host-observed executor workspace and runtime for the artifact receipts."},"sideEffects":{"type":"string","enum":["unknown","none","known"],"description":"Caller declaration, never by itself proof that no external side effect occurred."},"sideEffectEvidence":{"type":"array","items":{"type":"string"}}},"required":["result","evidence"],"additionalProperties":true},"review":{"type":"object","properties":{"reviewerId":{"type":"string"},"decision":{"type":"string","enum":["accepted","rejected"]},"summary":{"type":"string"},"evidence":{"type":"array","items":{"type":"string"}}},"required":["reviewerId","decision","summary","evidence"],"additionalProperties":true}},"required":["id","ownerId","planRevision","dependencies","phase"],"additionalProperties":true}},"required":["plan","attempts"],"additionalProperties":true},"validity":{"type":"object","properties":{"reusable":{"type":"boolean"},"reasons":{"type":"array","items":{"type":"string"}}},"required":["reusable","reasons"],"additionalProperties":true},"recovery":{"type":"object","properties":{"reason":{"type":"string","const":"owner_inactive"},"action":{"type":"string","enum":["resume","reconcile","review","inspect"]}},"required":["reason","action"],"additionalProperties":true,"description":"Runtime-only next step when an inactive owner leaves a task in progress."},"id":{"type":"string"},"revision":{"type":"number"},"subject":{"type":"string"},"description":{"type":"string"},"status":{"type":"string","enum":["completed","pending","in_progress","deleted"]},"blockedBy":{"type":"array","items":{"type":"string"}},"writeScopes":{"type":"array","items":{"type":"string"}},"ownerName":{"type":"string"},"reviewerName":{"type":"string"},"requiredSkill":{"type":"string"},"autoAssign":{"type":"boolean"},"ready":{"type":"boolean"},"writeScopeWarnings":{"type":"array","items":{"type":"string"}},"inputKey":{"type":"string","description":"Caller-supplied input version, or a configured hash of the original task inputs."},"result":{"type":"string","description":"Reusable completion summary."},"evidence":{"type":"array","items":{"type":"string"},"description":"Artifact paths, source URLs, or executed verification facts supporting the result."}},"required":["validity","id","revision","subject","description","status","blockedBy","writeScopes","ready","writeScopeWarnings"],"additionalProperties":true}},"nextCursor":{"type":"string"}},"required":["tasks"],"additionalProperties":true},
@@ -1457,13 +1457,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ProposeTeamGoalRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ProposeTeamGoalRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_proposeGoal_parameter_1$schema,
             jsonSchema: {"type":"object","properties":{"expectedProposalRevision":{"type":"number"},"expectedGoalRevision":{"type":"number"},"change":{"oneOf":[{"type":"object","properties":{"kind":{"type":"string","const":"replace"},"definition":{"type":"object","properties":{"objective":{"type":"string"},"acceptanceCriteria":{"type":"array","items":{"type":"string"}},"scope":{"type":"object","properties":{"coverage":{"type":"string","enum":["full","partial","task"]},"targets":{"type":"array","items":{"type":"string"}},"allowedActions":{"type":"array","items":{"type":"string"}},"excludedTargets":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}},"execution":{"type":"object","properties":{"readPaths":{"type":"array","items":{"type":"string"}},"writePaths":{"type":"array","items":{"type":"string"}},"webOrigins":{"type":"array","items":{"type":"string"}},"allowSearch":{"type":"boolean"},"allowUnrestrictedExecution":{"type":"boolean","description":"Allows opaque programs only with unrestricted resource grants; sandbox ceilings still apply."}},"required":["readPaths","writePaths","webOrigins","allowSearch","allowUnrestrictedExecution"],"additionalProperties":true,"description":"Absent in legacy goals; ordinary scope text never substitutes for these resource checks."}},"required":["coverage","targets","allowedActions","excludedTargets","constraints"],"additionalProperties":true},"plan":{"type":"string","description":"Complete member, model, task, dependency, and delivery plan reviewed with this goal."}},"required":["objective","acceptanceCriteria","scope"],"additionalProperties":true}},"required":["kind","definition"],"additionalProperties":true},{"type":"object","properties":{"kind":{"type":"string","const":"revoke"},"reason":{"type":"string"}},"required":["kind","reason"],"additionalProperties":true}]}},"required":["expectedProposalRevision","expectedGoalRevision","change"],"additionalProperties":true},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#ProposeTeamGoalRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#ProposeTeamGoalRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_proposeGoal_parameter_1_strict$schema,
             jsonSchema: {"type":"object","properties":{"expectedProposalRevision":{"type":"number"},"expectedGoalRevision":{"type":"number"},"change":{"oneOf":[{"type":"object","properties":{"kind":{"type":"string","const":"replace"},"definition":{"type":"object","properties":{"objective":{"type":"string"},"acceptanceCriteria":{"type":"array","items":{"type":"string"}},"scope":{"type":"object","properties":{"coverage":{"type":"string","enum":["full","partial","task"]},"targets":{"type":"array","items":{"type":"string"}},"allowedActions":{"type":"array","items":{"type":"string"}},"excludedTargets":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}},"execution":{"type":"object","properties":{"readPaths":{"type":"array","items":{"type":"string"}},"writePaths":{"type":"array","items":{"type":"string"}},"webOrigins":{"type":"array","items":{"type":"string"}},"allowSearch":{"type":"boolean"},"allowUnrestrictedExecution":{"type":"boolean","description":"Allows opaque programs only with unrestricted resource grants; sandbox ceilings still apply."}},"required":["readPaths","writePaths","webOrigins","allowSearch","allowUnrestrictedExecution"],"additionalProperties":false,"description":"Absent in legacy goals; ordinary scope text never substitutes for these resource checks."}},"required":["coverage","targets","allowedActions","excludedTargets","constraints"],"additionalProperties":false},"plan":{"type":"string","description":"Complete member, model, task, dependency, and delivery plan reviewed with this goal."}},"required":["objective","acceptanceCriteria","scope"],"additionalProperties":false}},"required":["kind","definition"],"additionalProperties":false},{"type":"object","properties":{"kind":{"type":"string","const":"revoke"},"reason":{"type":"string"}},"required":["kind","reason"],"additionalProperties":false}]}},"required":["expectedProposalRevision","expectedGoalRevision","change"],"additionalProperties":false},
           },
@@ -1472,7 +1472,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamGoalProposal',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamGoalProposal',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_proposeGoal_result$schema,
         description: 'the pending proposal shown in the native user review.',
         jsonSchema: {"type":"object","properties":{"revision":{"type":"number"},"baseRevision":{"type":"number"},"proposedBy":{"type":"string"},"change":{"oneOf":[{"type":"object","properties":{"kind":{"type":"string","const":"replace"},"definition":{"type":"object","properties":{"objective":{"type":"string"},"acceptanceCriteria":{"type":"array","items":{"type":"string"}},"scope":{"type":"object","properties":{"coverage":{"type":"string","enum":["full","partial","task"]},"targets":{"type":"array","items":{"type":"string"}},"allowedActions":{"type":"array","items":{"type":"string"}},"excludedTargets":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}},"execution":{"type":"object","properties":{"readPaths":{"type":"array","items":{"type":"string"}},"writePaths":{"type":"array","items":{"type":"string"}},"webOrigins":{"type":"array","items":{"type":"string"}},"allowSearch":{"type":"boolean"},"allowUnrestrictedExecution":{"type":"boolean","description":"Allows opaque programs only with unrestricted resource grants; sandbox ceilings still apply."}},"required":["readPaths","writePaths","webOrigins","allowSearch","allowUnrestrictedExecution"],"additionalProperties":true,"description":"Absent in legacy goals; ordinary scope text never substitutes for these resource checks."}},"required":["coverage","targets","allowedActions","excludedTargets","constraints"],"additionalProperties":true},"plan":{"type":"string","description":"Complete member, model, task, dependency, and delivery plan reviewed with this goal."}},"required":["objective","acceptanceCriteria","scope"],"additionalProperties":true}},"required":["kind","definition"],"additionalProperties":true},{"type":"object","properties":{"kind":{"type":"string","const":"revoke"},"reason":{"type":"string"}},"required":["kind","reason"],"additionalProperties":true}]}},"required":["revision","baseRevision","proposedBy","change"],"additionalProperties":true},
@@ -1513,13 +1513,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/reactivateMember:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/reactivateMember:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_reactivateMember_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/reactivateMember:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/reactivateMember:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_reactivateMember_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1528,7 +1528,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamMemberView',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamMemberView',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_reactivateMember_result$schema,
         description: 'the active member\'s current row; sending a message starts its next work.',
         jsonSchema: {"type":"object","properties":{"id":{"type":"string"},"parentId":{"type":"string"},"parentName":{"type":"string"},"name":{"type":"string"},"role":{"type":"string","enum":["lead","teammate"]},"status":{"type":"string","enum":["failed","running","provisioning","retired","inactive"]},"description":{"type":"string"},"provider":{"type":"string"},"context":{"type":"string","enum":["fresh","fork"]},"diagnostics":{"type":"array","items":{"type":"string"}},"modelRouteRevision":{"type":"number","description":"Revision of an in-place model choice; absent when still using the creation route."},"roleRevision":{"type":"number","description":"Revision of the current responsibility; omitted for the creation-time role."},"teamFunction":{"type":"string","enum":["planning_adviser","quality_adviser","domain_adviser","group_lead","executor","verifier"],"description":"Team responsibility chosen by the delegating member; absent historical rows stay valid."},"expert":{"type":"object","properties":{"id":{"type":"string"},"revision":{"type":"number"},"name":{"type":"string"}},"required":["id","revision","name"],"additionalProperties":true,"description":"Creation-time profile identity; repeated assignment reuses this member."},"modelProvider":{"type":"string","description":"Registered language-model provider, distinct from the subagent provider."},"model":{"type":"string","description":"Exact model selected when the member was created."},"reasoningEffort":{"type":"string","description":"Adapter-supported reasoning effort selected for this member."},"persona":{"type":"string","description":"Persona persisted with the continuation and reapplied on resume."}},"required":["id","name","role","status","diagnostics"],"additionalProperties":true},
@@ -1569,13 +1569,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamTaskArtifactReadRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamTaskArtifactReadRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_readTaskArtifact_parameter_1$schema,
             jsonSchema: {"type":"object","properties":{"taskId":{"type":"string"},"executionId":{"type":"string"},"path":{"type":"string"},"byteOffset":{"type":"number"}},"required":["taskId","executionId","path"],"additionalProperties":true},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamTaskArtifactReadRequest',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamTaskArtifactReadRequest',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_readTaskArtifact_parameter_1_strict$schema,
             jsonSchema: {"type":"object","properties":{"taskId":{"type":"string"},"executionId":{"type":"string"},"path":{"type":"string"},"byteOffset":{"type":"number"}},"required":["taskId","executionId","path"],"additionalProperties":false},
           },
@@ -1584,7 +1584,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamTaskArtifactReadResult',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamTaskArtifactReadResult',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_readTaskArtifact_result$schema,
         description: 'verified text and the next byte offset when more remains.',
         jsonSchema: {"type":"object","properties":{"taskId":{"type":"string"},"executionId":{"type":"string"},"path":{"type":"string"},"sha256":{"type":"string"},"totalBytes":{"type":"number"},"byteOffset":{"type":"number"},"content":{"type":"string"},"nextByteOffset":{"type":"number"}},"required":["taskId","executionId","path","sha256","totalBytes","byteOffset","content"],"additionalProperties":true},
@@ -1625,13 +1625,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/retireMember:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/retireMember:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_retireMember_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/retireMember:target',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/retireMember:target',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_retireMember_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1640,7 +1640,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamMemberView',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamMemberView',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_retireMember_result$schema,
         description: 'the retired member\'s current row.',
         jsonSchema: {"type":"object","properties":{"id":{"type":"string"},"parentId":{"type":"string"},"parentName":{"type":"string"},"name":{"type":"string"},"role":{"type":"string","enum":["lead","teammate"]},"status":{"type":"string","enum":["failed","running","provisioning","retired","inactive"]},"description":{"type":"string"},"provider":{"type":"string"},"context":{"type":"string","enum":["fresh","fork"]},"diagnostics":{"type":"array","items":{"type":"string"}},"modelRouteRevision":{"type":"number","description":"Revision of an in-place model choice; absent when still using the creation route."},"roleRevision":{"type":"number","description":"Revision of the current responsibility; omitted for the creation-time role."},"teamFunction":{"type":"string","enum":["planning_adviser","quality_adviser","domain_adviser","group_lead","executor","verifier"],"description":"Team responsibility chosen by the delegating member; absent historical rows stay valid."},"expert":{"type":"object","properties":{"id":{"type":"string"},"revision":{"type":"number"},"name":{"type":"string"}},"required":["id","revision","name"],"additionalProperties":true,"description":"Creation-time profile identity; repeated assignment reuses this member."},"modelProvider":{"type":"string","description":"Registered language-model provider, distinct from the subagent provider."},"model":{"type":"string","description":"Exact model selected when the member was created."},"reasoningEffort":{"type":"string","description":"Adapter-supported reasoning effort selected for this member."},"persona":{"type":"string","description":"Persona persisted with the continuation and reapplied on resume."}},"required":["id","name","role","status","diagnostics"],"additionalProperties":true},
@@ -1681,13 +1681,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamMessageId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamMessageId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_retryMessage_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamMessageId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamMessageId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_retryMessage_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1696,7 +1696,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#SendTeamMessageResult',
+        typeSymbol: 'dsh-team-workbench/runtime/client#SendTeamMessageResult',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_retryMessage_result$schema,
         description: 'its immediate delivery observation.',
         jsonSchema: {"type":"object","properties":{"messageId":{"type":"string"},"status":{"type":"string","enum":["accepted","queued"]}},"required":["messageId","status"],"additionalProperties":true},
@@ -1737,13 +1737,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/reviewGoal:proposalRevision',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/reviewGoal:proposalRevision',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_reviewGoal_parameter_1$schema,
             jsonSchema: {"type":"number"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#agentTeams/reviewGoal:proposalRevision',
+            typeSymbol: 'dsh-team-workbench/runtime#agentTeams/reviewGoal:proposalRevision',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_reviewGoal_parameter_1_strict$schema,
             jsonSchema: {"type":"number"},
           },
@@ -1752,7 +1752,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamGoalReview',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamGoalReview',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_reviewGoal_result$schema,
         description: 'committed goal review state; stale answers cannot apply.',
         jsonSchema: {"type":"object","properties":{"goal":{"type":"object","properties":{"revision":{"type":"number"},"proposalRevision":{"type":"number"},"status":{"type":"string","enum":["active","revoked"]},"definition":{"type":"object","properties":{"objective":{"type":"string"},"acceptanceCriteria":{"type":"array","items":{"type":"string"}},"scope":{"type":"object","properties":{"coverage":{"type":"string","enum":["full","partial","task"]},"targets":{"type":"array","items":{"type":"string"}},"allowedActions":{"type":"array","items":{"type":"string"}},"excludedTargets":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}},"execution":{"type":"object","properties":{"readPaths":{"type":"array","items":{"type":"string"}},"writePaths":{"type":"array","items":{"type":"string"}},"webOrigins":{"type":"array","items":{"type":"string"}},"allowSearch":{"type":"boolean"},"allowUnrestrictedExecution":{"type":"boolean","description":"Allows opaque programs only with unrestricted resource grants; sandbox ceilings still apply."}},"required":["readPaths","writePaths","webOrigins","allowSearch","allowUnrestrictedExecution"],"additionalProperties":true,"description":"Absent in legacy goals; ordinary scope text never substitutes for these resource checks."}},"required":["coverage","targets","allowedActions","excludedTargets","constraints"],"additionalProperties":true},"plan":{"type":"string","description":"Complete member, model, task, dependency, and delivery plan reviewed with this goal."}},"required":["objective","acceptanceCriteria","scope"],"additionalProperties":true},"decidedAt":{"type":"number"},"revocationReason":{"type":"string"}},"required":["revision","proposalRevision","status","definition","decidedAt"],"additionalProperties":true},"goalProposal":{"type":"object","properties":{"revision":{"type":"number"},"baseRevision":{"type":"number"},"proposedBy":{"type":"string"},"change":{"oneOf":[{"type":"object","properties":{"kind":{"type":"string","const":"replace"},"definition":{"type":"object","properties":{"objective":{"type":"string"},"acceptanceCriteria":{"type":"array","items":{"type":"string"}},"scope":{"type":"object","properties":{"coverage":{"type":"string","enum":["full","partial","task"]},"targets":{"type":"array","items":{"type":"string"}},"allowedActions":{"type":"array","items":{"type":"string"}},"excludedTargets":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}},"execution":{"type":"object","properties":{"readPaths":{"type":"array","items":{"type":"string"}},"writePaths":{"type":"array","items":{"type":"string"}},"webOrigins":{"type":"array","items":{"type":"string"}},"allowSearch":{"type":"boolean"},"allowUnrestrictedExecution":{"type":"boolean","description":"Allows opaque programs only with unrestricted resource grants; sandbox ceilings still apply."}},"required":["readPaths","writePaths","webOrigins","allowSearch","allowUnrestrictedExecution"],"additionalProperties":true,"description":"Absent in legacy goals; ordinary scope text never substitutes for these resource checks."}},"required":["coverage","targets","allowedActions","excludedTargets","constraints"],"additionalProperties":true},"plan":{"type":"string","description":"Complete member, model, task, dependency, and delivery plan reviewed with this goal."}},"required":["objective","acceptanceCriteria","scope"],"additionalProperties":true}},"required":["kind","definition"],"additionalProperties":true},{"type":"object","properties":{"kind":{"type":"string","const":"revoke"},"reason":{"type":"string"}},"required":["kind","reason"],"additionalProperties":true}]}},"required":["revision","baseRevision","proposedBy","change"],"additionalProperties":true},"goalDecision":{"type":"object","properties":{"proposalRevision":{"type":"number"},"outcome":{"type":"string","enum":["accepted","rejected"]},"comment":{"type":"string"},"decidedAt":{"type":"number"},"channel":{"type":"string","const":"user-question"}},"required":["proposalRevision","outcome","comment","decidedAt","channel"],"additionalProperties":true}},"required":[],"additionalProperties":true},
@@ -1793,13 +1793,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamTaskId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamTaskId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_validateTaskReuse_parameter_1$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamTaskId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamTaskId',
             create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_validateTaskReuse_parameter_1_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1808,7 +1808,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamTaskReuseCheck',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamTaskReuseCheck',
         create: _deepseek_ai_dsh_experimental_agent_team_agentTeams_validateTaskReuse_result$schema,
         description: 'the current reuse decision and concrete observations.',
         jsonSchema: {"type":"object","properties":{"taskId":{"type":"string"},"revision":{"type":"number"},"checkedAt":{"type":"number"},"validity":{"type":"object","properties":{"reusable":{"type":"boolean"},"reasons":{"type":"array","items":{"type":"string"}}},"required":["reusable","reasons"],"additionalProperties":true},"inputs":{"type":"array","items":{"type":"object","properties":{"path":{"type":"string","description":"Logical project-relative output path."},"bytes":{"type":"number","description":"Host-observed byte length."},"sha256":{"type":"string","description":"Lowercase hexadecimal digest of the complete file bytes."}},"required":["path","bytes","sha256"],"additionalProperties":true}},"artifacts":{"type":"array","items":{"type":"object","properties":{"path":{"type":"string","description":"Logical project-relative output path."},"bytes":{"type":"number","description":"Host-observed byte length."},"sha256":{"type":"string","description":"Lowercase hexadecimal digest of the complete file bytes."}},"required":["path","bytes","sha256"],"additionalProperties":true}},"environment":{"type":"object","properties":{"workspaceRoot":{"type":"string"},"platform":{"type":"string"},"arch":{"type":"string"},"nodeVersion":{"type":"string"}},"required":["workspaceRoot","platform","arch","nodeVersion"],"additionalProperties":true},"artifactEnvironment":{"type":"object","properties":{"workspaceRoot":{"type":"string"},"platform":{"type":"string"},"arch":{"type":"string"},"nodeVersion":{"type":"string"}},"required":["workspaceRoot","platform","arch","nodeVersion"],"additionalProperties":true}},"required":["taskId","revision","checkedAt","validity","inputs","artifacts"],"additionalProperties":true},
@@ -1826,13 +1826,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertDefinition',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertDefinition',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_create_parameter_0$schema,
             jsonSchema: {"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":true},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertDefinition',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertDefinition',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_create_parameter_0_strict$schema,
             jsonSchema: {"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":false},
           },
@@ -1841,7 +1841,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertView',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertView',
         create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_create_result$schema,
         description: 'the committed revision-one profile.',
         jsonSchema: {"type":"object","properties":{"id":{"type":"string"},"definition":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":true},"revision":{"type":"number"},"createdAt":{"type":"number"},"updatedAt":{"type":"number"},"archived":{"type":"boolean"},"ownerTeamId":{"type":"string","description":"Model-created profiles belong to one Team; absent ownership denotes a user-managed shared template."},"ownerMemberId":{"type":"string","description":"Member that authored this Team-local profile."}},"required":["id","definition","revision","createdAt","updatedAt","archived"],"additionalProperties":true},
@@ -1859,13 +1859,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertId',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_get_parameter_0$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertId',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_get_parameter_0_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1873,7 +1873,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertView',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertView',
         create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_get_result$schema,
         description: 'a detached profile; missing identities throw.',
         jsonSchema: {"type":"object","properties":{"id":{"type":"string"},"definition":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":true},"revision":{"type":"number"},"createdAt":{"type":"number"},"updatedAt":{"type":"number"},"archived":{"type":"boolean"},"ownerTeamId":{"type":"string","description":"Model-created profiles belong to one Team; absent ownership denotes a user-managed shared template."},"ownerMemberId":{"type":"string","description":"Member that authored this Team-local profile."}},"required":["id","definition","revision","createdAt","updatedAt","archived"],"additionalProperties":true},
@@ -1891,13 +1891,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#teamExperts/list:includeArchived',
+            typeSymbol: 'dsh-team-workbench/runtime#teamExperts/list:includeArchived',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_list_parameter_0$schema,
             jsonSchema: {"type":"boolean"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#teamExperts/list:includeArchived',
+            typeSymbol: 'dsh-team-workbench/runtime#teamExperts/list:includeArchived',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_list_parameter_0_strict$schema,
             jsonSchema: {"type":"boolean"},
           },
@@ -1905,7 +1905,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       ],
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime#teamExperts/list:result',
+        typeSymbol: 'dsh-team-workbench/runtime#teamExperts/list:result',
         create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_list_result$schema,
         description: 'detached profiles in stable creation order.',
         jsonSchema: {"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"definition":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":true},"revision":{"type":"number"},"createdAt":{"type":"number"},"updatedAt":{"type":"number"},"archived":{"type":"boolean"},"ownerTeamId":{"type":"string","description":"Model-created profiles belong to one Team; absent ownership denotes a user-managed shared template."},"ownerMemberId":{"type":"string","description":"Member that authored this Team-local profile."}},"required":["id","definition","revision","createdAt","updatedAt","archived"],"additionalProperties":true}},
@@ -1923,13 +1923,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertId',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_0$schema,
             jsonSchema: {"type":"string"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertId',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertId',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_0_strict$schema,
             jsonSchema: {"type":"string"},
           },
@@ -1940,13 +1940,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#teamExperts/update:expectedRevision',
+            typeSymbol: 'dsh-team-workbench/runtime#teamExperts/update:expectedRevision',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_1$schema,
             jsonSchema: {"type":"number"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#teamExperts/update:expectedRevision',
+            typeSymbol: 'dsh-team-workbench/runtime#teamExperts/update:expectedRevision',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_1_strict$schema,
             jsonSchema: {"type":"number"},
           },
@@ -1957,13 +1957,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertDefinition',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertDefinition',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_2$schema,
             jsonSchema: {"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":true},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertDefinition',
+            typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertDefinition',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_2_strict$schema,
             jsonSchema: {"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":false},
           },
@@ -1974,13 +1974,13 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
           source: 'json',
           codec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#teamExperts/update:archived',
+            typeSymbol: 'dsh-team-workbench/runtime#teamExperts/update:archived',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_3$schema,
             jsonSchema: {"type":"boolean"},
           },
           strictCodec: {
             mode: 'strict',
-            typeSymbol: '@dsh-workbench/team-runtime#teamExperts/update:archived',
+            typeSymbol: 'dsh-team-workbench/runtime#teamExperts/update:archived',
             create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_parameter_3_strict$schema,
             jsonSchema: {"type":"boolean"},
           },
@@ -1989,7 +1989,7 @@ export const TYPERT_REMOTE = createTypertRemoteInfo({
       cancellation: { parameter: 'signal' },
       result: {
         mode: 'strict',
-        typeSymbol: '@dsh-workbench/team-runtime/client#TeamExpertView',
+        typeSymbol: 'dsh-team-workbench/runtime/client#TeamExpertView',
         create: _deepseek_ai_dsh_experimental_agent_team_teamExperts_update_result$schema,
         description: 'the committed next profile revision.',
         jsonSchema: {"type":"object","properties":{"id":{"type":"string"},"definition":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"persona":{"type":"string"},"instructions":{"type":"string","description":"AGENT.md text copied into the continuable member's logged persona."},"skills":{"type":"array","items":{"type":"string"},"description":"Available skill names to consult; these references do not install skills."},"modelProvider":{"type":"string","description":"Omit provider and model together to inherit the assigning parent's route."},"model":{"type":"string"},"reasoningEffort":{"type":"string"}},"required":["name","description","persona","instructions","skills"],"additionalProperties":true},"revision":{"type":"number"},"createdAt":{"type":"number"},"updatedAt":{"type":"number"},"archived":{"type":"boolean"},"ownerTeamId":{"type":"string","description":"Model-created profiles belong to one Team; absent ownership denotes a user-managed shared template."},"ownerMemberId":{"type":"string","description":"Member that authored this Team-local profile."}},"required":["id","definition","revision","createdAt","updatedAt","archived"],"additionalProperties":true},

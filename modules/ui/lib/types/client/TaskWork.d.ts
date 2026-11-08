@@ -1,8 +1,8 @@
 /** Recorded task versions and independent review details in the native Team views. */
-import type { TeamMemberProjection, TeamTaskView } from '@dsh-workbench/team-runtime/client';
+import type { TeamMemberProjection, TeamTaskView } from 'dsh-team-workbench/runtime/client';
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
 import type { PropsRuntime, TranslateNS } from '@deepseek-ai/dsh-client-ui-slots';
-import type { TeamProjection } from '@dsh-workbench/team-runtime/client';
+import type { TeamProjection } from 'dsh-team-workbench/runtime/client';
 import { NS, type TeamKey } from './locales.ts';
 /**
  * Select the recorded workflow state without treating old completion flags as reviewed results.

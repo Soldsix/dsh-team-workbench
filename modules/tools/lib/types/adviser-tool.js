@@ -1,4 +1,4 @@
-import { TeamTaskExecutionId, TeamTaskId } from '@dsh-workbench/team-runtime';
+import { TeamTaskExecutionId, TeamTaskId } from 'dsh-team-workbench/runtime';
 import { defineTool } from '@deepseek-ai/dsh-tools';
 /**
  * Register the current-execution adviser review tool in one Team member scope.

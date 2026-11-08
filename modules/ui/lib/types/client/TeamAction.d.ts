@@ -1,5 +1,5 @@
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
-import type { TeamProjection } from '@dsh-workbench/team-runtime/client';
+import type { TeamProjection } from 'dsh-team-workbench/runtime/client';
 import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots';
 import { NS } from './locales.ts';
 import type { TeamRoleOperations } from './role-settings.ts';

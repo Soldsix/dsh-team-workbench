@@ -1,5 +1,5 @@
 /** Browser entry registering the Agent Teams conversation-header action. */
-import teamRemote from '@dsh-workbench/team-runtime/remote';
+import teamRemote from 'dsh-team-workbench/runtime/remote';
 import { inject as viewInject, registerAgentTeamUi } from "./mount.js";
 /** The optional Team plugin mounts its own Remote contribution. */
 export const inject = ['remote'];

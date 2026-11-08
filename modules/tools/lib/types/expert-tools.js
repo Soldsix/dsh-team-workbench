@@ -1,4 +1,4 @@
-import { TeamExpertId, parseTeamExpertDefinition } from '@dsh-workbench/team-runtime/experts';
+import { TeamExpertId, parseTeamExpertDefinition } from 'dsh-team-workbench/runtime/experts';
 import { defineTool } from '@deepseek-ai/dsh-tools';
 import { INITIAL_SKILLS_PARAMETER, requireInitialSkills } from "./skill-parameters.js";
 /**

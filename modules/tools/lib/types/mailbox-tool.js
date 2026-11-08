@@ -1,4 +1,4 @@
-import { TeamMessageId } from '@dsh-workbench/team-runtime';
+import { TeamMessageId } from 'dsh-team-workbench/runtime';
 import { defineTool } from '@deepseek-ai/dsh-tools';
 /**
  * Register mailbox state and explicit recovery for one Team member.

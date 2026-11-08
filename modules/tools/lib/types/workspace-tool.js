@@ -1,4 +1,4 @@
-import { TeamTaskId, TeamTaskExecutionId } from '@dsh-workbench/team-runtime';
+import { TeamTaskId, TeamTaskExecutionId } from 'dsh-team-workbench/runtime';
 import { defineTool } from '@deepseek-ai/dsh-tools';
 /**
  * Register workspace operations for one live Team member.

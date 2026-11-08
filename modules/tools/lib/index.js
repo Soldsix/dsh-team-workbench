@@ -3,11 +3,11 @@ import { createVolatile } from "@deepseek-ai/cosmokit";
 import z from "@deepseek-ai/schemastery";
 import { ReasoningEffortId as ReasoningEffortId2 } from "@deepseek-ai/dsh-llm";
 import { SessionId } from "@deepseek-ai/dsh-session";
-import { TeamTaskId as TeamTaskId5, TeamTaskExecutionId as TeamTaskExecutionId4 } from "@dsh-workbench/team-runtime";
+import { TeamTaskId as TeamTaskId5, TeamTaskExecutionId as TeamTaskExecutionId4 } from "dsh-team-workbench/runtime";
 import { defineTool as defineTool9 } from "@deepseek-ai/dsh-tools";
 
 // packages/team/modules/tools/lib/types/expert-tools.js
-import { TeamExpertId, parseTeamExpertDefinition } from "@dsh-workbench/team-runtime/experts";
+import { TeamExpertId, parseTeamExpertDefinition } from "dsh-team-workbench/runtime/experts";
 import { defineTool } from "@deepseek-ai/dsh-tools";
 
 // packages/team/modules/tools/lib/types/skill-parameters.js
@@ -232,7 +232,7 @@ var PROJECT_PLAN_PARAMETER = {
 
 // packages/team/modules/tools/lib/types/goal-tools.js
 import { createHash } from "node:crypto";
-import { readProjectPlan } from "@dsh-workbench/team-runtime";
+import { readProjectPlan } from "dsh-team-workbench/runtime";
 function goalReadResult(state, runtime) {
   const proposalRevision = state.goalProposal?.revision ?? 0;
   const decisionForLatest = state.goalDecision?.proposalRevision === proposalRevision ? state.goalDecision : void 0;
@@ -459,7 +459,7 @@ function modelTaskPlan(args) {
 }
 
 // packages/team/modules/tools/lib/types/mailbox-tool.js
-import { TeamMessageId } from "@dsh-workbench/team-runtime";
+import { TeamMessageId } from "dsh-team-workbench/runtime";
 import { defineTool as defineTool3 } from "@deepseek-ai/dsh-tools";
 function installMailboxTool(scoped, agent, ctx) {
   return scoped.tools.register(defineTool3({
@@ -491,7 +491,7 @@ function installMailboxTool(scoped, agent, ctx) {
 }
 
 // packages/team/modules/tools/lib/types/workspace-tool.js
-import { TeamTaskId, TeamTaskExecutionId } from "@dsh-workbench/team-runtime";
+import { TeamTaskId, TeamTaskExecutionId } from "dsh-team-workbench/runtime";
 import { defineTool as defineTool4 } from "@deepseek-ai/dsh-tools";
 function installWorkspaceTool(scoped, agent, ctx) {
   return scoped.tools.register(defineTool4({
@@ -546,7 +546,7 @@ function installWorkspaceTool(scoped, agent, ctx) {
 
 // packages/team/modules/tools/lib/types/history-tools.js
 import { ReasoningEffortId } from "@deepseek-ai/dsh-llm";
-import { TeamTaskId as TeamTaskId2 } from "@dsh-workbench/team-runtime";
+import { TeamTaskId as TeamTaskId2 } from "dsh-team-workbench/runtime";
 import { defineTool as defineTool5 } from "@deepseek-ai/dsh-tools";
 function installHistoryTools(scoped, agent, ctx, freshProvider) {
   const member = scoped.tools.register(defineTool5({
@@ -936,7 +936,7 @@ function installHelpTool(scoped, agent) {
 }
 
 // packages/team/modules/tools/lib/types/adviser-tool.js
-import { TeamTaskExecutionId as TeamTaskExecutionId2, TeamTaskId as TeamTaskId3 } from "@dsh-workbench/team-runtime";
+import { TeamTaskExecutionId as TeamTaskExecutionId2, TeamTaskId as TeamTaskId3 } from "dsh-team-workbench/runtime";
 import { defineTool as defineTool7 } from "@deepseek-ai/dsh-tools";
 function installAdviserTool(scoped, agent, ctx) {
   return scoped.tools.register(defineTool7({
@@ -974,7 +974,7 @@ function installAdviserTool(scoped, agent, ctx) {
 }
 
 // packages/team/modules/tools/lib/types/task-operation-tools.js
-import { TeamTaskExecutionId as TeamTaskExecutionId3, TeamTaskId as TeamTaskId4 } from "@dsh-workbench/team-runtime";
+import { TeamTaskExecutionId as TeamTaskExecutionId3, TeamTaskId as TeamTaskId4 } from "dsh-team-workbench/runtime";
 import { defineTool as defineTool8 } from "@deepseek-ai/dsh-tools";
 function installTaskOperationTools(scoped, agent, ctx) {
   const identity = {

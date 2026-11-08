@@ -1,5 +1,5 @@
 /** Current independent adviser findings beside a key task's acceptance record. */
-import type { TeamAdviserDecision, TeamTaskView } from '@dsh-workbench/team-runtime/client';
+import type { TeamAdviserDecision, TeamTaskView } from 'dsh-team-workbench/runtime/client';
 import type { PropsLocale } from '@deepseek-ai/dsh-client-ui-slots';
 import { NS } from './locales.ts';
 /**

@@ -4,7 +4,7 @@ import type {
   TypertRemoteInfo,
   TypertRemoteMethod,
 } from '@deepseek-ai/dsh-typert-protocol'
-import type { ConfigureTeamMemberModelRequest, ConfigureTeamMemberRoleRequest, ListTeamTaskArchiveRequest, ProposeTeamGoalRequest, SendTeamMessageResult, TeamExpertDefinition, TeamExpertId, TeamExpertView, TeamGoalProposal, TeamGoalReview, TeamMailboxMessageView, TeamMailboxPage, TeamMemberView, TeamMemberWorkspace, TeamMessageId, TeamMessageSnapshot, TeamTaskArchivePage, TeamTaskArtifactReadRequest, TeamTaskArtifactReadResult, TeamTaskId, TeamTaskReuseCheck } from '@dsh-workbench/team-runtime/client'
+import type { ConfigureTeamMemberModelRequest, ConfigureTeamMemberRoleRequest, ListTeamTaskArchiveRequest, ProposeTeamGoalRequest, SendTeamMessageResult, TeamExpertDefinition, TeamExpertId, TeamExpertView, TeamGoalProposal, TeamGoalReview, TeamMailboxMessageView, TeamMailboxPage, TeamMemberView, TeamMemberWorkspace, TeamMessageId, TeamMessageSnapshot, TeamTaskArchivePage, TeamTaskArtifactReadRequest, TeamTaskArtifactReadResult, TeamTaskId, TeamTaskReuseCheck } from 'dsh-team-workbench/runtime/client'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
 
 declare module '@deepseek-ai/dsh-typert-protocol' {

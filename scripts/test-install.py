@@ -110,7 +110,7 @@ if explicit['autoProvisionPlannedMembers'] is not False or explicit['finalDelive
 files = ['package.json', 'cordis.yml', 'cordis.patch.yml', 'pnpm-lock.yaml', 'pnpm-workspace.yaml']
 hashes = {name: hashlib.sha256((profile / name).read_bytes()).hexdigest() for name in files}
 dependency_path = bundle.resolve()
-runtime_path = bundle / 'node_modules/@dsh-workbench/team-runtime/lib/index.js'
+runtime_path = bundle / ('modules/runtime/lib/index.js' if args.package_name == 'dsh-team-workbench' else 'node_modules/@dsh-workbench/team-runtime/lib/index.js')
 runtime_hash = hashlib.sha256(runtime_path.read_bytes()).hexdigest()
 wrong = run / 'wrong-version.tgz'
 with tarfile.open(archive, 'r:gz') as source, tarfile.open(wrong, 'w:gz') as target:

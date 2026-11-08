@@ -1,4 +1,4 @@
-import type { TeamMemberProjection } from '@dsh-workbench/team-runtime/client';
+import type { TeamMemberProjection } from 'dsh-team-workbench/runtime/client';
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
 import type { PropsLocale } from '@deepseek-ai/dsh-client-ui-slots';
 import type { TeamMemberOperations } from './member-operations.ts';

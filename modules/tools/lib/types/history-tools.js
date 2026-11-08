@@ -1,5 +1,5 @@
 import { ReasoningEffortId } from '@deepseek-ai/dsh-llm';
-import { TeamTaskId } from '@dsh-workbench/team-runtime';
+import { TeamTaskId } from 'dsh-team-workbench/runtime';
 import { defineTool } from '@deepseek-ai/dsh-tools';
 /**
  * Register retained-member and bounded task-history operations.

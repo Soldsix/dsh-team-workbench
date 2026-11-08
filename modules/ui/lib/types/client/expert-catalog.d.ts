@@ -1,7 +1,7 @@
 /** Expert catalog operations over the plugin's authenticated Remote namespace. */
 import type { Context } from '@deepseek-ai/cordis';
 import type { ModelCatalog } from '@deepseek-ai/dsh-api-session-controller/types';
-import type { TeamExpertDefinition, TeamExpertView } from '@dsh-workbench/team-runtime/client';
+import type { TeamExpertDefinition, TeamExpertView } from 'dsh-team-workbench/runtime/client';
 /** Durable profiles together with the configured model choices. */
 export interface TeamExpertCatalog {
     readonly profiles: readonly TeamExpertView[];

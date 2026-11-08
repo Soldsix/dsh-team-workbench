@@ -1,5 +1,5 @@
 import type { SessionId } from '@deepseek-ai/dsh-session/types';
-import type { TeamProjection } from '@dsh-workbench/team-runtime/client';
+import type { TeamProjection } from 'dsh-team-workbench/runtime/client';
 /** Plugin-owned fresh Team values and their React subscription lifetime. */
 export interface TeamProjectionRecovery {
     /**

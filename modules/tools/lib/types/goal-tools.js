@@ -2,7 +2,7 @@
 import { defineTool } from '@deepseek-ai/dsh-tools';
 import { PROJECT_PLAN_PARAMETER } from "./project-plan-parameter.js";
 import { createHash } from 'node:crypto';
-import { readProjectPlan } from '@dsh-workbench/team-runtime';
+import { readProjectPlan } from 'dsh-team-workbench/runtime';
 function goalReadResult(state, runtime) {
     const proposalRevision = state.goalProposal?.revision ?? 0;
     const decisionForLatest = state.goalDecision?.proposalRevision === proposalRevision

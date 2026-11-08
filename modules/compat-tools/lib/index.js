@@ -1,5 +1,5 @@
 // packages/team/modules/compat-tools/lib/types/agent-menu.js
-var agentMenuHook = Symbol.for("@dsh-workbench/compat-tools/agent-menu");
+var agentMenuHook = Symbol.for("dsh-team-workbench/compat-tools/agent-menu");
 
 // packages/team/modules/compat-tools/lib/types/index.js
 import { Service } from "@deepseek-ai/cordis";

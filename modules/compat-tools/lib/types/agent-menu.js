@@ -1,5 +1,5 @@
 /** Host-private provider hook; it is not serialized into model requests or Session records. */
-export const agentMenuHook = Symbol.for('@dsh-workbench/compat-tools/agent-menu');
+export const agentMenuHook = Symbol.for('dsh-team-workbench/compat-tools/agent-menu');
 /**
  * Narrow one Session's menu without narrowing its children's independent roles.
  * @param runtime - Compatibility Tools service implementing the host-private hook.

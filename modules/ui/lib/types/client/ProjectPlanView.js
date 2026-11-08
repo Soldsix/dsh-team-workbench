@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 /** Complete human-readable roster, task graph and budget from the reviewed project plan. */
-import { readProjectPlan } from '@dsh-workbench/team-runtime/client';
+import { readProjectPlan } from 'dsh-team-workbench/runtime/client';
 import css from './TeamView.module.css';
 const roles = { planning_adviser: 'view.function.planningAdviser', quality_adviser: 'view.function.qualityAdviser',
     domain_adviser: 'view.function.domainAdviser', group_lead: 'view.function.groupLead', executor: 'view.function.executor', verifier: 'view.function.verifier' };

@@ -1,5 +1,5 @@
 /** Saved skill choices for one member, without transferring instruction bodies. */
-import type { TeamProjection } from '@dsh-workbench/team-runtime/client';
+import type { TeamProjection } from 'dsh-team-workbench/runtime/client';
 import type { PropsLocale } from '@deepseek-ai/dsh-client-ui-slots';
 import { NS } from './locales.ts';
 type Props = PropsLocale<typeof NS> & {

@@ -12,13 +12,13 @@ if (meta.dsh?.bundle?.patch !== './cordis.patch.yml') errors.push('Profile bundl
 if (!meta.keywords?.includes('dsh-plugin') || meta.license !== 'MIT') errors.push('Community classification or license is missing')
 if (meta.repository?.url !== 'git+https://github.com/Soldsix/dsh-team-workbench.git') errors.push('Repository owner differs from the publication target')
 if (meta.peerDependencies?.['@deepseek-ai/dsh'] !== '0.2.1-rc.2') errors.push('Unverified host range')
-const internal = Object.entries(meta.dependencies ?? {}).filter(([name]) => name.startsWith('@dsh-workbench/'))
-if (internal.length !== 8 || meta.bundleDependencies !== undefined) errors.push('Git source must resolve eight local modules; archive bundling belongs to pack:public')
-for (const [name, spec] of internal) {
-  if (!/^file:(?:\.\/)?modules\/[a-z-]+$/u.test(spec)) { errors.push(`Unsafe internal module path: ${name}`); continue }
-  const dir = join(root, spec.slice(5))
+const internal = ['runtime', 'ui', 'tools', 'compat-tools', 'compat-policy', 'compat-subagent', 'compat-web', 'compat-fetch']
+if (Object.keys(meta.dependencies ?? {}).some(name => name.startsWith('@dsh-workbench/')) || meta.bundleDependencies !== undefined) errors.push('The public package must not depend on unpublished internal packages')
+for (const slug of internal) {
+  const dir = join(root, 'modules', slug)
   const module = JSON.parse(await readFile(join(dir, 'package.json'), 'utf8'))
-  if (module.name !== name) errors.push(`Internal module identity mismatch: ${name}`)
+  const exported = meta.exports?.[`./${slug}`]
+  if (exported?.default !== `./modules/${slug}/lib/index.js`) errors.push(`Internal module export missing: ${slug}`)
   await access(join(dir, 'lib/index.js'))
 }
 const patch = await readFile(join(root, 'cordis.patch.yml'), 'utf8')
@@ -46,4 +46,4 @@ for (const name of ['README.md', 'README.zh.md', 'README.en.md', 'docs/public-pa
 const readme = await readFile(join(root, 'README.md'), 'utf8')
 if (!readme.includes('[English](README.en.md)') || !readme.includes('dsh plugin --profile web add github:Soldsix/dsh-team-workbench')) errors.push('Language switch or source-install command missing')
 if (errors.length) { process.stderr.write(errors.join('\n') + '\n'); process.exitCode = 1 }
-else console.log(`Public root checks passed: ${meta.name}@${meta.version}, ${internal.length} modules, ${Object.keys(baseline).length} unchanged runtime/source/skill files.`)
+else console.log(`Public root checks passed: ${meta.name}@${meta.version}, ${internal.length} package module exports, ${Object.keys(baseline).length} runtime/source/skill file hashes.`)

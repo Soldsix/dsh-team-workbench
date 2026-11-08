@@ -81,7 +81,7 @@ var CoordinationLocks = class {
 
 // packages/team/modules/runtime/lib/types/provision-plan.js
 import { ReasoningEffortId } from "@deepseek-ai/dsh-llm";
-import { withHostSubagentAncestors } from "@dsh-workbench/compat-subagent/internal";
+import { withHostSubagentAncestors } from "dsh-team-workbench/compat-subagent/internal";
 
 // packages/team/modules/runtime/lib/types/project-plan.js
 import { z } from "zod";
@@ -540,7 +540,7 @@ function currentMemberToolMenu(state, id2, names) {
 }
 
 // packages/team/modules/runtime/lib/types/index.js
-import { capCurrentAgentToolMenu } from "@dsh-workbench/compat-tools/agent-menu";
+import { capCurrentAgentToolMenu } from "dsh-team-workbench/compat-tools/agent-menu";
 
 // packages/team/modules/runtime/lib/types/cooldown.js
 function failureCooldownMs(failure, rateDelay, quotaDelay) {
@@ -1632,7 +1632,7 @@ import { randomUUID as randomUUID3 } from "node:crypto";
 import { brandString as brandString6 } from "@deepseek-ai/dsh-brand";
 import { createUserMessage } from "@deepseek-ai/dsh-llm";
 import { SubagentError } from "@deepseek-ai/dsh-subagent";
-import { steerHostSubagentPrompt } from "@dsh-workbench/compat-subagent/internal";
+import { steerHostSubagentPrompt } from "dsh-team-workbench/compat-subagent/internal";
 
 // packages/team/modules/runtime/lib/types/roster.js
 import { randomUUID as randomUUID2 } from "node:crypto";
